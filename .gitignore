@@ -1,0 +1,52 @@
+# LaTeX auxiliary files
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.blg
+*.bbl
+*.bcf
+*.run.xml
+*.lof
+*.lot
+*.idx
+*.ind
+*.ilg
+*.glo
+*.gls
+*.ist
+*.acn
+*.acr
+*.alg
+*.glg
+*.nav
+*.snm
+*.vrb
+*.figlist
+*.makefile
+*.fgdb
+*.figlist
+*.makefile
+*.fgdb
+
+# Biber
+*.bcf
+*.run.xml
+
+# Build directory
+build/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Linux
+*~
