@@ -1,0 +1,100 @@
+\documentclass[twoside, 11pt, a4paper]{scrreprt}
+
+\author{Lucas Hirschfeld}
+\title{X-ray photoelectron spectroscopy (XPS) of Quinacridone (QA) on Ag(100)}
+\date{\today}
+
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+
+\usepackage[all]{nowidow}
+\usepackage{amsmath,amsthm,amssymb,bm}
+\usepackage{graphicx}
+\usepackage{caption, booktabs, ltablex}
+\usepackage{subcaption}
+\usepackage{tabulary}
+\usepackage{multirow}
+\usepackage{chngcntr}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{csquotes}
+\usepackage[hidelinks, unicode]{hyperref}
+
+% Bibliographie-Einstellungen
+\usepackage[backend=biber,
+    citestyle=numeric-comp,
+    bibstyle=numeric,
+    bibwarn=true,
+    autocite=superscript,
+    abbreviate=true, 
+    sorting=none, 
+    url=false, 
+    doi=false,
+    eprint=false,
+    isbn=false]{biblatex}
+\addbibresource{literature.bib}
+
+% Custom cite command
+\DeclareCiteCommand{\supercite}[\mkbibsuperscript]%
+{\usebibmacro{cite:init}%
+    \let\multicitedelim\supercitedelim%
+    \iffieldundef{prenote}%
+    {}%
+    {\BibliographyWarning{Ignoring prenote argument}}%
+    \iffieldundef{postnote}%
+    {}%
+    {\BibliographyWarning{Ignoring postnote argument}}%
+    \bibleftbracket%
+}%
+{\usebibmacro{citeindex}%
+    \usebibmacro{cite:comp}}
+{}%
+{\usebibmacro{cite:dump}%
+    \bibrightbracket%
+}
+
+\usepackage{acronym}
+\usepackage{scrhack}
+\usepackage[version=4]{mhchem}
+
+% Tabellen-Einstellungen
+\usepackage{booktabs}
+\belowrulesep=0em
+\aboverulesep=0em
+\usepackage{hhline}
+
+% SI-Einheiten
+\usepackage{siunitx}
+\DeclareSIUnit\angstrom{\text{Å}}
+\DeclareSIUnit\atomicmassunit{u}
+
+% Seitenstil
+\usepackage{scrlayer-scrpage}
+\clearpairofpagestyles
+\ihead{\leftmark}
+\ohead{\rightmark}
+\ofoot*{\pagemark}
+\cfoot*{}
+\pagestyle{scrheadings}
+\addtokomafont{pageheadfoot}{\normalfont}
+
+\renewcommand*{\chaptermarkformat}{\thechapter.\ }
+\renewcommand*{\sectionmarkformat}{\thesection.\ }
+
+% Layout-Einstellungen
+\newcommand{\mylinespread}{1.5}
+\setlength{\parindent}{0em}
+
+\begin{document}
+\include{0Titlepage}
+\include{1Introduction}
+\include{2Literature}
+\include{3Theory}
+\include{4Experimental}
+\include{5Results}
+\include{6Discussion}
+\include{7Summary}
+\include{8Appendix}
+\printbibliography[heading=bibintoc]
+\end{document}
