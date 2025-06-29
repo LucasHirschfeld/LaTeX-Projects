@@ -1,0 +1,144 @@
+\documentclass[fontsize=11pt,reqno,a4paper,oneside]{scrartcl}
+
+% ---- Sprache und Textformatierung ----
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+\usepackage[onehalfspacing]{setspace}
+\usepackage{microtype}
+\usepackage{csquotes}
+\usepackage{acronym}
+
+% ---- KOMA-Script Seiteneinstellungen ----
+\usepackage[headsepline]{scrlayer-scrpage}
+\usepackage{scrhack}
+\automark[section]{section}
+\ihead{\headmark}
+\ofoot{\pagemark}
+
+% ---- Mathematik und Symbole ----
+\usepackage{amsmath, amsthm, amssymb, mathtools}
+\usepackage[version=4]{mhchem}
+\usepackage{chemformula}
+\newcommand{\angstrom}{\text{\normalfont\AA}}
+
+% ---- Graphische Pakete ----
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{siunitx}
+\usepackage{textpos}
+
+% ---- Text-Positionierung ----
+\usepackage[pscoord]{eso-pic}
+\newcommand{\placetextbox}[3]{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \setbox0=\hbox{#3}% Put <stuff> in a box
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(\LenToUnit{#1\paperwidth},\LenToUnit{#2\paperheight}){\vtop{{\null}\makebox[0pt][c]{#3}}}%
+  }%
+}%
+
+% ---- Bibliographie ----
+\usepackage[backend=biber,
+    citestyle=numeric-comp,
+    bibstyle=numeric,
+    bibwarn=true,
+    autocite=superscript,
+    abbreviate=true, 
+    sorting=none, 
+    url=false, 
+    doi=false,
+    eprint=false,
+    isbn=false]{biblatex}
+
+% Definition eines neuen Zitierbefehls mit eckigen Klammern
+\DeclareCiteCommand{\supercite}[\mkbibsuperscript]%
+    {\usebibmacro{cite:init}%
+        \let\multicitedelim\supercitedelim%
+        \iffieldundef{prenote}%
+        {}%
+        {\BibliographyWarning{Ignoring prenote argument}}%
+        \iffieldundef{postnote}%
+        {}%
+        {\BibliographyWarning{Ignoring postnote argument}}%
+        \bibleftbracket}%
+    {\usebibmacro{citeindex}%
+        \usebibmacro{cite:comp}}
+    {}%
+    {\usebibmacro{cite:dump}%
+        \bibrightbracket}
+
+% Bibliographie-Dateien
+\addbibresource{/Users/lucashirschfeld/sciebo/LaTeX-Projects/bibliography/zotero.bib}
+
+% ---- Hyperlinks ----
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=black, citecolor=black, urlcolor=black}
+
+% ---- Dokumenteinstellungen ----
+\setlength{\parindent}{0pt}
+
+% ---- Metadaten ----
+\def\Autor{Lucas Hirschfeld, s6luhirs@uni-bonn.de}
+\def\Titel{Low Energy Electron Diffraction (\ac{LEED})}
+\def\Date{First Submission: \today}
+\def\PiC{Supervisor: Morris Mühlpointner}
+\def\Abstract{Low Energy Electron Diffraction (\ac{LEED}) is a powerful technique for the structural analysis of crystalline surfaces. This report explores the principles, experimental setup, and applications of \ac{LEED} in surface science.} 
+
+\begin{document}
+\pagestyle{empty}
+\begin{titlepage}
+    \begin{center}
+        \vspace*{\fill}
+        {\LARGE\bfseries \Titel}\par\vspace{2cm}
+        {\Autor\par\vspace{0.5cm}\PiC\par\vspace{1cm}\par\vspace{0.2cm}\Date\par\vspace{5cm}}
+    \end{center}
+    {\Abstract\vspace{0.5cm}\par}\vfill
+\end{titlepage}
+
+\pagestyle{scrheadings}
+\tableofcontents
+\pagenumbering{arabic}
+\clearpage
+
+\section{Introduction}
+
+\ac{LEED} has established itself as one of the most powerful and widely used techniques for determining the surface structure of crystalline materials\supercite{VanHove1986}. The technique exploits the wave nature of electrons, first proposed by de Broglie in 1924, utilizing electrons with energies typically between 20-200 eV. At these energies, electrons possess wavelengths comparable to interatomic distances (0.1-0.3 nm) while exhibiting limited penetration depths of only a few atomic layers\supercite{Woodruff2016}.
+
+The historical significance of \ac{LEED} extends back to 1927 when Davisson and Germer first observed electron diffraction from a nickel surface, providing experimental confirmation of de Broglie's matter wave hypothesis\supercite{Davisson1927}. However, it was not until the 1960s that \ac{LEED} evolved into a reliable analytical technique, coinciding with advancements in ultra-high vacuum technology and computational methods\supercite{Pendry1990}.
+
+The fundamental principle of \ac{LEED} relies on elastic scattering of low-energy electrons from a periodic crystal surface. The resulting diffraction pattern directly reflects the reciprocal lattice of the surface structure, allowing determination of the surface symmetry, lattice parameters, and reconstruction phenomena\supercite{Ertl}. In contrast to X-ray diffraction techniques that probe bulk properties, \ac{LEED}'s surface sensitivity arises from the limited mean free path of low-energy electrons in solid materials, making it uniquely suited for surface crystallography\supercite{Seah1979}.
+
+Modern \ac{LEED} analysis extends beyond qualitative pattern interpretation to include quantitative structural determinations. By systematically measuring diffraction spot intensities as a function of electron energy (I-V curves) and comparing them with theoretical calculations, atomic positions within the surface unit cell can be determined with precision approaching 0.01 nm. This approach has been crucial in elucidating complex surface reconstructions, adsorbate structures, and the atomic mechanisms underlying surface phenomena\supercite{Heinz1995}.
+
+The integration of \ac{LEED} with complementary techniques such as \ac{STM}, \ac{XPS}, and \ac{AES} has created powerful methodological combinations for comprehensive surface characterization\supercite{Fadley2010}. Furthermore, recent innovations including \ac{SPALEED} and \ac{LEEM} have extended the capabilities to include analysis of surface defects, domain sizes, and dynamic processes\supercite{Henzler1991}.
+
+This report explores the experimental foundations, working principles, and practical applications of \ac{LEED} in surface science. Particular emphasis is placed on the interpretation of diffraction patterns, quantitative analysis methodologies, and case studies demonstrating \ac{LEED}'s role in solving significant surface structural problems in heterogeneous catalysis, thin film growth, and materials science.
+
+\clearpage
+\section{Experimental}
+% Hier Ihren Text für den Experimental-Teil einfügen
+
+\clearpage
+\section{Results}
+% Hier Ihren Text für den Results-Teil einfügen
+
+\clearpage
+\section{Discussion}
+% Hier Ihren Text für den Discussion-Teil einfügen
+
+\clearpage
+\section{Appendix}
+\printbibliography[heading=bibintoc, title={References}] 
+
+\begin{acronym}
+    \acro{LEED}{low energy electron diffraction}
+    \acro{LEEM}{low energy electron microscopy}
+    \acro{STM}{scanning tunneling microscopy}
+    \acro{XPS}{x-ray photoelectron spectroscopy}
+    \acro{AES}{auger electron spectroscopy}
+    \acro{SPALEED}{spot-profile analysis low energy electron diffraction}
+\end{acronym}
+
+\end{document}

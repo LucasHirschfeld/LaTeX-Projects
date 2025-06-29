@@ -1,7 +1,7 @@
 \documentclass[twoside, 11pt, a4paper]{scrreprt}
 
 \author{Lucas Hirschfeld}
-\title{X-ray photoelectron spectroscopy (XPS) of Quinacridone (QA) on Ag(100)}
+\title{X-ray photoelectron spectroscopy (XPS) of Quinacridone (QA) on Ag(100) surface}
 \date{\today}
 
 \usepackage{fontspec}
@@ -33,7 +33,7 @@
     doi=false,
     eprint=false,
     isbn=false]{biblatex}
-\addbibresource{literature.bib}
+\addbibresource{/Users/lucashirschfeld/sciebo/LaTeX-Projects/bibliography/zotero.bib}
 
 % Custom cite command
 \DeclareCiteCommand{\supercite}[\mkbibsuperscript]%
@@ -72,12 +72,26 @@
 % Seitenstil
 \usepackage{scrlayer-scrpage}
 \clearpairofpagestyles
-\ihead{\leftmark}
-\ohead{\rightmark}
+\automark[chapter]{chapter}
+\ohead{\headmark}
+\ihead{}
 \ofoot*{\pagemark}
 \cfoot*{}
 \pagestyle{scrheadings}
 \addtokomafont{pageheadfoot}{\normalfont}
+\setkomafont{pageheadfoot}{\normalfont}
+\KOMAoption{headsepline}{0.4pt:}
+
+% Plain-Stil für Kapitelanfangsseiten anpassen
+\renewcommand*{\chapterpagestyle}{scrheadings}
+
+% Anpassung des Abstands vor Kapitelüberschriften
+\RedeclareSectionCommand[
+  beforeskip=-1sp,
+  afterskip=2.3em
+]{chapter}
+
+\renewcommand*{\chapterheadstartvskip}{\vspace*{1em}}
 
 \renewcommand*{\chaptermarkformat}{\thechapter.\ }
 \renewcommand*{\sectionmarkformat}{\thesection.\ }
@@ -85,6 +99,13 @@
 % Layout-Einstellungen
 \newcommand{\mylinespread}{1.5}
 \setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+\defbibheading{bibliography}[\bibname]{%
+  \section*{#1}%
+  \markboth{#1}{#1}%
+  \addcontentsline{toc}{section}{#1}%
+}
 
 \begin{document}
 \include{0Titlepage}
@@ -96,5 +117,5 @@
 \include{6Discussion}
 \include{7Summary}
 \include{8Appendix}
-\printbibliography[heading=bibintoc]
+\printbibliography[heading=bibliography]
 \end{document}
