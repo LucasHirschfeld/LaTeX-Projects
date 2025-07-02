@@ -1,0 +1,5 @@
+angle / °	distance / pixel
+0	0
+5	132
+10	192
+15	328
