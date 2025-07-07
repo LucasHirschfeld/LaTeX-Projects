@@ -60,12 +60,12 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="0.63785276"
-     inkscape:cx="210.86371"
-     inkscape:cy="327.66183"
+     inkscape:zoom="1.8561774"
+     inkscape:cx="247.55177"
+     inkscape:cy="314.6251"
      inkscape:window-width="1472"
      inkscape:window-height="817"
-     inkscape:window-x="0"
+     inkscape:window-x="1194"
      inkscape:window-y="37"
      inkscape:window-maximized="0"
      inkscape:current-layer="g1" />
@@ -87,13 +87,11 @@
        id="text3-2"
        style="font-size:18.6667px;line-height:0.4;font-family:sans-serif;-inkscape-font-specification:sans-serif;text-align:center;writing-mode:lr-tb;direction:ltr;text-orientation:sideways;white-space:pre;shape-inside:url(#rect3-3);display:inline;fill:#ff7300;fill-opacity:1;stroke:#ff7300;stroke-width:1.7;stroke-linecap:square;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
        transform="translate(-846.85708,96.412558)"><tspan
-         x="1014.8345"
+         x="1020.7681"
          y="271.27263"
-         id="tspan8">a<tspan
-   style="baseline-shift:super"
-   id="tspan2">*</tspan><tspan
+         id="tspan3">a<tspan
    style="font-size:65%;baseline-shift:sub"
-   id="tspan6">1</tspan></tspan></text>
+   id="tspan2">1</tspan></tspan></text>
     <path
        sodipodi:type="star"
        style="fill:none;fill-opacity:1;stroke:#2200ff;stroke-width:4;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;paint-order:markers stroke fill"
@@ -123,13 +121,11 @@
        id="text3"
        style="font-size:18.6667px;line-height:0.4;font-family:sans-serif;-inkscape-font-specification:sans-serif;text-align:center;writing-mode:lr-tb;direction:ltr;text-orientation:sideways;white-space:pre;shape-inside:url(#rect3);display:inline;fill:#ff7300;fill-opacity:1;stroke:#ff7300;stroke-width:1.7;stroke-linecap:square;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
        transform="translate(-738.58996,22.387936)"><tspan
-         x="1012.7578"
+         x="1020.7681"
          y="271.27263"
-         id="tspan11">a<tspan
-   style="baseline-shift:super"
-   id="tspan9">*</tspan><tspan
-   style="baseline-shift:sub"
-   id="tspan10">2</tspan></tspan></text>
+         id="tspan5">a<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan4">2</tspan></tspan></text>
     <path
        style="fill:#ff7300;fill-opacity:1;stroke:#ff7300;stroke-width:1.7;stroke-linecap:square;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
        d="m 183.00113,406.65718 118.42524,0.32094 57.7684,-98.84814 -58.0894,97.5644 z"
