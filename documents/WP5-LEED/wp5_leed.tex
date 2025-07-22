@@ -11,6 +11,7 @@
 % ---- KOMA-Script Seiteneinstellungen ----
 \usepackage[onehalfspacing]{setspace}  
 \usepackage[headsepline]{scrlayer-scrpage}
+\usepackage{nowidow}
 
 % Kopfzeilen-Konfiguration
 \clearpairofpagestyles  % Alle bestehenden Kopf- und Fußzeilen löschen
@@ -88,8 +89,8 @@
 
 % ---- Metadaten ----
 \def\Autor{Lucas Hirschfeld, s6luhirs@uni-bonn.de}
-\def\Titel{Low Energy Electron Diffraction (\ac{LEED})}
-\def\Date{First Submission: \today}
+\def\Titel{Low Energy Electron Diffraction (LEED) of the Au(111) surface and PTCDA on the Au(111) surface}
+\def\Date{First Submission: July 9, 2025 \\ Second Submission: \today}
 \def\PiC{Supervisor: Morris Mühlpointner}
 \def\Abstract{} 
 
@@ -111,7 +112,7 @@
 
 \section{Introduction}
 
-\ac{LEED} is a powerful and standard technique for investigating the surface structure of crystalline materials by the diffraction of low energy electrons. The technique was first used by Davisson and Germer in 1927 on a Nickel crystal.\autocite{Davisson1927} Since then, \ac{LEED} has become a widely used technique in surface science and materials research.\autocite{Kolasinski2012}
+\Ac{LEED} is a powerful and standard technique for investigating the surface structure of crystalline materials by the diffraction of low energy electrons. The technique was first used by Davisson and Germer in 1927 on a Nickel crystal.\autocite{Davisson1927} Since then, \ac{LEED} has become a widely used technique in surface science and materials research.\autocite{Kolasinski2012}
 
 The basic principle of \ac{LEED} is to direct a beam of low-energy electrons onto a crystalline surface and to analyze the resulting diffraction pattern. The diffraction pattern is formed by the interference of the scattered electrons from the surface atoms, which leads to a characteristic pattern of bright spots on a fluorescent screen. The positions and intensities of these spots provide information about the surface structure, such as the lattice constant, surface reconstruction, and orientation of the surface.\autocite{Kolasinski2012}
 
@@ -134,7 +135,7 @@ The \ac{LEED} experiments in this report aim to determine the surface lattice co
 
 \subsection{Experimental Setup}
 
-The \ac{LEED} measurements were conducted in an \ac{UHV} chamber with a base pressure below $5 \cdot 10^{-10}$~\si{mbar}. The chamber was equipped with a turbomolecular pump and an ion getter pump. The sample was mounted on a sample holder that allowed for precise rotation and translation in all directions. As sample, a single crystal of Au(111) was used, which was chosen for its well-known surface structure. The sample holder was equipped with a resistive heating element to facilitate annealing procedures and a thermocouple for temperature measurement.
+The \ac{LEED} measurements were conducted in an \ac{UHV} chamber with a base pressure below $5 \cdot 10^{-10}$~\si{mbar}. The chamber was equipped with a turbomolecular pump and an ion getter pump. The sample was mounted on a sample holder that allowed for precise rotation and translation in all directions. As sample, a single crystal of Au(111) was used. The sample holder was equipped with a resistive heating element to facilitate annealing procedures and a thermocouple for temperature measurement.
 
 Furthermore, the chamber was equipped with a \ac{LEED} optics system, which included an electron gun, a hemispherical fluorescent screen and a camera for recording the diffraction patterns.
 
@@ -155,11 +156,11 @@ After the \ac{LEED} measurements on the Au(111) surface, \ac{PTCDA} was evaporat
 
 \subsection{LEED Measurements}
 
-\Ac{LEED} measurements were performed using \ac{LEED} system explained before. The electron gun was operated at various energies between 25-200~\si{eV}. The filament heating was set to a constant current of 3.1 A. The electron beam was focused onto the sample surface, and the resulting diffraction pattern was depicted on the fluorescent screen. The diffraction patterns were captured using a camera, which allowed for high-resolution imaging of the diffraction spots.
+\Ac{LEED} measurements were performed using the \ac{LEED} system explained before. The electron gun was operated at various energies between 25-200~\si{eV}. The filament heating was set to a constant current of 3.1 A. The electron beam was focused onto the sample surface, and the resulting diffraction pattern was depicted on the fluorescent screen. The diffraction patterns were captured using a camera, which allowed for high-resolution imaging of the diffraction spots.
 
 With the optimized \ac{LEED} setup, several diffraction patterns were recorded at different electron energies and angles. First, the pure Au(111) surface was measured to obtain a reference pattern. Subsequently, the sample was rotated in steps of 5° to investigate the influence of the surface orientation on the diffraction pattern.
 
-Afterwards, the diffraction pattern of the Au(111) surface was recorded at different electron energies, ranging from 80~\si{eV} to 200~\si{eV}. The diffraction patterns were analyzed to determine the spot distances and the lattice constant of the Au(111) surface. In addition, the reconstruction of the Au(111) surface was investigated by measuring the diffraction pattern. The \ac{LEED} patterns were analyzed to determine the Au(111) surface reconstruction.
+Afterwards, the diffraction pattern of the Au(111) surface was recorded at different electron energies, ranging from 80~\si{eV} to 200~\si{eV}. The diffraction patterns were analyzed to determine the spot distances and the lattice constant of the Au(111) surface. In addition, the reconstruction of the Au(111) surface was investigated by measuring the diffraction pattern at lower energies. The \ac{LEED} patterns from \autoref{sec:reconstruction} were analyzed to investigate the Au(111) surface reconstruction.
 
 Finally, \ac{PTCDA} was deposited on the Au(111) surface by evaporation. The \ac{LEED} pattern of \ac{PTCDA} on the Au(111) surface was recorded at an electron energy of 23.4~\si{eV} to investigate the epitaxial growth of \ac{PTCDA} on the Au(111) surface.
 
@@ -170,7 +171,7 @@ The results of the \ac{LEED} measurements are presented in the following section
 
 \subsection{Orientation of the surface}
 
-The orientation of the Au(111) surface in the diffraction pattern in comparison to a hard-sphere model was determined using the \ac{LEED} pattern obtained at an electron energy of 179.3~\si{eV}. The diffraction spots were analyzed and compared to the expected positions of the diffraction spots for a perfect Au(111) surface. \autoref{fig:surface_orientations} shows the surface orientation of the Au(111) crystal structure in comparison to the hard-sphere model.
+The orientation of the Au(111) surface in the diffraction pattern in comparison to a hard-sphere model was determined using the \ac{LEED} pattern obtained at an electron energy of 179.3~\si{eV}. The diffraction spots were analyzed by comparing the recorded diffraction pattern to the expected positions of the diffraction spots for a perfect Au(111) surface. \autoref{fig:surface_orientations} shows the surface orientation of the Au(111) crystal structure in comparison to the hard-sphere model.
 
 \begin{figure}[htbp]
     \centering
@@ -318,7 +319,7 @@ The wave vector $|\mathbf{k_0}|$ can be calculated for each electron energy used
     \label{fig:leed_patterns_energy}
 \end{figure}
 
-The \ac{LEED} patterns of the Au(111) surface at different electron energies are shown in \autoref{fig:leed_patterns_energy}. The distances between the diffraction spots were measured in pixels and are summarized in \autoref{tab:spot_distances_energy}. The distances were measured from the center of the diffraction pattern to the center of the diffraction spots. For each electron energy, the distances were measured for six different diffraction spots and the average distance was calculated. The average distance is shown in the last row of \autoref{tab:spot_distances_energy}.
+The \ac{LEED} patterns of the Au(111) surface at different electron energies are shown in \autoref{fig:leed_patterns_energy}. The distances between the diffraction spots were measured in pixels and are summarized in \autoref{tab:leed_lattice_parameters}. The distances were measured from the center of the diffraction pattern to the center of the diffraction spots. For each electron energy, the distances were measured for six different diffraction spots and the average distance was calculated. The average distance is shown in the last row of \autoref{tab:leed_lattice_parameters}.
 
 With the measured distances of the diffraction spots $d$, the lattice constant in reciprocal space $a^*$ of the Au(111) surface can be determined using \autoref{eq:lattice_constant_reciprocal}. Using the reciprocal lattice vector $\mathbf{a^*}$, the surface lattice constant $\mathbf{a}$ in real space can be calculated using the formula:
 
@@ -381,7 +382,7 @@ The bulk lattice constant $\mathbf{a_b}$ can be calculated from the surface latt
     \label{tab:leed_lattice_parameters}
 \end{table}
 
-\autoref{tab:leed_lattice_parameters} summarizes the measured distances between the diffraction spots $d$ in pixels, the calculated wave vector $|\mathbf{k_0}|$ in \AA$^{-1}$, the calculated reciprocal lattice constant $\mathbf{a^*}$ in \AA$^{-1}$, the calculated surface lattice constant $\mathbf{a}$ in \AA, and the calculated bulk lattice constant $\mathbf{a_b}$ in \AA for the Au(111) surface at different electron energies. Furthermore, it is noteworthy that the obtained values for the electron energy of 80.0~\si{eV} and 119.6~\si{eV} are very similar larger than the values for the electron energies of 179.3~\si{eV} and 198.7~\si{eV}. This indicates that there is a systematic error in the measurements.
+\autoref{tab:leed_lattice_parameters} summarizes the measured distances between the diffraction spots $d$ in pixels, the calculated wave vector $|\mathbf{k_0}|$ in \AA$^{-1}$, the calculated reciprocal lattice constant $\mathbf{a^*}$ in \AA$^{-1}$, the calculated surface lattice constant $\mathbf{a}$ in \AA, and the calculated bulk lattice constant $\mathbf{a_b}$ in \AA~or the Au(111) surface at different electron energies. Furthermore, it is noteworthy that the obtained values for the electron energy of 80.0~\si{eV} and 119.6~\si{eV} are very similar larger than the values for the electron energies of 179.3~\si{eV} and 198.7~\si{eV}. This indicates that there is a systematic error in the measurements.
 
 The final values for the reciprocal lattice constant, the surface lattice constant, and the bulk lattice constant of the Au(111) surface, averaged over all measured electron energies, are:
 
@@ -391,21 +392,23 @@ The final values for the reciprocal lattice constant, the surface lattice consta
     \mathbf{a_b} &= 4.49 \pm 0.47~\text{\AA}
 \end{align*}
 
-These values are in agreement with the literature values for the Au(111) surface, which are 2.8810~\AA for the surface lattice constant and 4.0743~\AA for the bulk lattice constant\autocite{Dutta1963}.
+These values are in agreement with the literature values for the Au(111) surface, which are 2.8810~\AA~for the surface lattice constant and 4.0743~\AA~for the bulk lattice constant\autocite{Dutta1963}.
 
 \clearpage
 \subsection{The reconstruction of the Au(111) surface}
+\label{sec:reconstruction}
+
 The reconstruction of the Au(111) surface was investigated by measuring the \ac{LEED} patterns with lower electron energies. The \ac{LEED} patterns of the Au(111) surface at two different electron energies are shown in \autoref{fig:reconstruction}. The blue circles indicate the positions of the substrate spots, while the red circles indicate the positions of the reconstruction spots.
 
 \begin{figure}[htbp]
     \centering
     \subfloat[23.6~\si{eV}]{
-        \includegraphics[width=0.47\textwidth]{images/(R-23.6eV-320-204-334331-243-153-((11,0),(0.5,1.0)).jpg}
+        \includegraphics[width=0.47\textwidth]{images/R-23.6eV-320-204-334331-243-153-((22,0),(1,2)).jpg}
         \label{fig:reconstruction_23.4eV}
     }
     \hfill
     \subfloat[67.4~\si{eV}]{
-        \includegraphics[width=0.47\textwidth]{images/R-67.4eV-821-646-846-927-691-417-((11,0),(0.5,1)).jpg}
+        \includegraphics[width=0.47\textwidth]{images/R-67.4eV-821-646-846-927-691-417-((22,0),(1,2)).jpg}
         \label{fig:reconstruction_67.4eV}
     }
 
@@ -422,8 +425,8 @@ The reconstruction of the Au(111) surface can be described by a (22x$\sqrt{3}$) 
 \begin{equation*}
     \mathbf{M} =
 \begin{pmatrix}
-11 & 0 \\
-0.5 & 1
+22 & 0 \\
+1 & 2
 \end{pmatrix}.
 \end{equation*} 
 
@@ -460,7 +463,7 @@ The lattice constant of the Au(111) surface was determined from the \ac{LEED} pa
 
 The obtained values for the surface lattice constant $\mathbf{a}$ and the bulk lattice constant $\mathbf{a_b}$ of the Au(111) surface are: $\mathbf{a} = 3.17\pm0.33$~\text{\AA}, and $\mathbf{a_b} = 4.49\pm0.47$~\text{\AA}.
 
-The values are in agreement with the literature\autocite{Dutta1963}, which reports a surface lattice constant of 2.8810~\AA and a bulk lattice constant of 4.0743~\AA. The difference between the obtained values and the literature values can be attributed to systematic errors in the measurements of distances, such as the determination of the distance between the sample and the \ac{LEED} screen and the distance of the diffraction spots to the center. 
+The values are in agreement with the literature\autocite{Dutta1963}, which reports a surface lattice constant of 2.8810~\AA~and a bulk lattice constant of 4.0743~\AA. The difference between the obtained values and the literature values can be attributed to systematic errors in the measurements of distances, such as the determination of the distance between the sample and the \ac{LEED} screen and the distance of the diffraction spots to the center. 
 
 \subsection{Reconstruction of the Au(111) surface}
 
@@ -468,7 +471,17 @@ The reconstruction of the Au(111) surface is described by a (22x$\sqrt{3}$) supe
 
 The \ac{LEED} patterns of the Au(111) surface at different electron energies show the characteristic diffraction pattern of the (22x$\sqrt{3}$) reconstruction. Furthermore, the additional diffraction spots could be fitted with a superstructure matrix $\mathbf{M}$, which describes the positions of the additional diffraction spots in the \ac{LEED} pattern.
 
-Nevertheless, the superstructure unit cell used is (11x$\frac{\sqrt{3}}{2}$), which leads to a smaller unit cell than the (22x$\sqrt{3}$) reconstruction. This could be explained by the fact that the second order spots are higher in intensity that the first order spots and therefore the second order spots are used to fit the superstructure matrix $\mathbf{M}$. This intensity difference with higher intensity for the second order spots could be explained by the fact that the second order spots have strong Fourier coefficients, as stated by Harten \textit{et al.}\autocite{Harten1985}.
+The superstructure matrix $\mathbf{M}$ for the (22x$\sqrt{3}$) reconstruction is given by:
+\begin{equation*}
+    \mathbf{M} =
+\begin{pmatrix}
+22 & 0 \\
+1 & 2
+\end{pmatrix}.
+\end{equation*}
+
+As conclusion, the Au(111) surface reconstruction is observed in the \ac{LEED} experiments in this report and could be characterized by a (22x$\sqrt{3}$) superstructure. 
+
 
 \subsection{PTCDA on the Au(111) surface}
 
@@ -492,16 +505,10 @@ This superstructure matrix $\mathbf{M}$ corresponds to an possible superstructur
 
 \begin{acronym}
     \acro{LEED}{low energy electron diffraction}
-    \acro{LEEM}{low energy electron microscopy}
-    \acro{STM}{scanning tunneling microscopy}
-    \acro{XPS}{x-ray photoelectron spectroscopy}
-    \acro{AES}{auger electron spectroscopy}
-    \acro{SPA-LEED}{spot-profile analysis low energy electron diffraction}
     \acro{PTCDA}{perylenetetracarboxylic dianhydride}
     \acro{UHV}{ultra-high vacuum}
 \end{acronym}
 
-\clearpage
 \printbibliography[heading=bibintoc, title={References}] 
 
 \end{document}

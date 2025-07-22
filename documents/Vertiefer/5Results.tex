@@ -2,7 +2,7 @@
 \label{sec:results}
 \raggedbottom
 
-The ensuing results will be divided into three categories: the $\alpha$-phase (\autoref{sec:res-alpha}), the phase transition (\autoref{sec:res-phase-transition}) from the $\alpha$- to the $\beta$-phase and the $\beta$-phase (\autoref{sec:res-beta}). A compendium of all recorded \ac{XPS} spectra, organized according to the different photoemission lines, is available for perusal in \autoref{sec:appendix}.
+The ensuing results will be presented under three topics: the $\alpha$-phase (\autoref{sec:res-alpha}), the phase transition (\autoref{sec:res-phase-transition}) from the $\alpha$- to the $\beta$-phase and the $\beta$-phase (\autoref{sec:res-beta}). A compendium of all recorded \ac{XPS} spectra, organized according to the different photoemission lines, is available for perusal in \autoref{sec:appendix}.
 
 \section{The 1D \texorpdfstring{$\alpha$}{alpha}-Phase}
 \label{sec:res-alpha}
@@ -19,13 +19,13 @@ Therefore, the present chapter has been subdivided into discrete sections, each 
 
 Despite the overall similarity in the spectra, particulary in peak position and general shape, there are notable differences in intensity and variations in peak broadening as a function of coverage. The most apparent trend is the systematic increase in signal intensity with increasing coverage, indicating a proportional growth in the number of photoemitting carbon atoms due to the accumulation of molecules.
 
-The spectrum with the highest intensity that is not a multilayer spectrum is set to 1~\ac{ML}. The adsorbed layers of the other spectra are then assigned accordingly. This classification of the coverage is used for all \ac{XPS} spectra for the $\alpha$-phase.
-From the C1s \ac{XPS} spectra, it can be concluded that there are different peaks corresponding to the carbon atoms in \ac{QA}. This will be discussed in more detail below.
+The spectrum with the highest integrated intensity that was not a multilayer spectrum is set to 1~\ac{ML}. The difference between the monolayer and multilayer spectrum was the significant change in the peak shape, as seen in \autoref{fig:C1s-alpha-multilayer}. The adsorbed layers of the other spectra were assigned accordingly. This classification of the coverage was used for all \ac{XPS} spectra for the $\alpha$-phase.
+From the C1s \ac{XPS} spectra, it can be concluded that there are different peaks corresponding to the C atoms in \ac{QA}. This will be discussed in more detail below.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.85\textwidth]{images/C1s-alpha-comparison.png}
-	\caption{Overview of C1s \ac{XPS} spectra for all preparation of the $\alpha$-phase of \ac{QA} on Ag(100).}
+	\includegraphics[width=0.95\textwidth]{images/C1s-alpha-comparison.pdf}
+	\caption{Overview of C1s \ac{XPS} spectra for monolayer preparation of the $\alpha$-phase of \ac{QA} on Ag(100) with a coverage between 0.08~\ac{ML} and 1.00~\ac{ML}. The line corresponds to the envelope of the fitted peaks and the circles are the measured data points.}
 	\label{fig:C1s-comparison}
 \end{figure}
 
@@ -34,23 +34,23 @@ The \ac{XPS} spectrum for a coverage of 1~\ac{ML} in \autoref{fig:C1s-alpha} dem
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.85\textwidth]{images/C1s-alpha-P1.png}
-	\caption{C1s \ac{XPS} spectrum for the $\alpha$-phase of \ac{QA} on Ag(100) for a coverage of 1~\ac{ML}.}
+	\caption{C1s \ac{XPS} spectrum for the $\alpha$-phase of \ac{QA} on Ag(100) for a coverage of 1~\ac{ML} with the experimental data points, the fitted components and the resulting envelope.}
 	\label{fig:C1s-alpha}
 \end{figure}
 
-The \ac{XPS} spectra for the C1s photoemission lines of \ac{QA} on Ag(100) reveals consistent spectral features. The main peak ($\mathrm{C_{arom}}$) contains the carbon atoms from the aromatic system that are not part of the ring containing the keto and the amine groups. Next, there is a peak for the two atoms next to the amine ($\mathrm{C_{NH}}$) and another peak for the two atoms next to the ketone ($\mathrm{C_{CO}}$). Finally, there is one peak for the carbon atoms of the ketone ($\mathrm{C_{O}}$). The values corresponding to each peak can be found in \autoref{tab:C1s-alpha-fit}.
+The \ac{XPS} spectra for the C1s photoemission lines of \ac{QA} on Ag(100) reveals consistent spectral features. The main peak ($\mathrm{C_{arom}}$) contains contributions of the carbon atoms from the aromatic rings that are not part of the two rings containing the keto and the amine groups. Next, there is a peak for the two atoms next to the amine ($\mathrm{C_{NH}}$) and another peak for the two atoms next to the ketone ($\mathrm{C_{CO}}$). Finally, there is one peak for the carbonyl carbon atoms of the ketone ($\mathrm{C_{O}}$). The values corresponding to each peak can be found in \autoref{tab:C1s-alpha-fit}.
 
 \begin{table}[H]
 	\centering
 	\caption{Fit parameter used in CasaXPS\autocite{CasaSoftwareLtd2022} for the $\alpha$-phase of \ac{QA} on Ag(100) for the C1s photoemission lines.}
-	\begin{tabular}{|c|c|c|c|}
-		\hline
+	\begin{tabular}{@{}cccc@{}} \toprule
 		peak & \ac{BE} / eV & area ratio & FWHM / eV \\
-		\hline
-		$\mathrm{C_{arom}}$ & 285.016 & 10 & 0.938 \\ \hline
-		$\mathrm{C_{NH}}$ & 284.308 & 4 & 0.764 \\ \hline
-		$\mathrm{C_{CO}}$ & 286.010 & 4 & 1.200 \\ \hline
-		$\mathrm{C_{O}}$ & 286.723 & 2 & 1.152 \\ \hline
+		\midrule
+		$\mathrm{C_{arom}}$ & 285.016 & 10 & 0.938 \\
+		$\mathrm{C_{NH}}$ & 284.308 & 4 & 0.764 \\
+		$\mathrm{C_{CO}}$ & 286.010 & 4 & 1.200 \\ 
+		$\mathrm{C_{O}}$ & 286.723 & 2 & 1.152 \\
+		\bottomrule
 	\end{tabular}
 	\label{tab:C1s-alpha-fit}
 \end{table}
@@ -58,16 +58,31 @@ The \ac{XPS} spectra for the C1s photoemission lines of \ac{QA} on Ag(100) revea
 As illustrated in \autoref{fig:C1s-alpha} and \autoref{tab:C1s-alpha-fit}, the detailed fitting model can be described as follows:
 The \ac{BE} of the $\mathrm{C_{arom}}$ peak is measured at 285.016~\si{\eV}, with a \ac{FWHM} of 0.938~\si{\eV}. The $\mathrm{C_{NH}}$ peak is next to the aforementioned peak, with a \ac{BE} of 284.308~\si{\eV} and a \ac{FWHM} of 0.764~\si{\eV}. The analysis of the data reveals that the $\mathrm{C_{CO}}$ peak is located to the left of the $\mathrm{C_{arom}}$ peak. The \ac{BE} of the $\mathrm{C_{CO}}$ peak is 286.010~\si{\eV} and its \ac{FWHM} is 1.200~\si{\eV}. The $\mathrm{C_{O}}$ peak is located to the left of this peak at a \ac{BE} of 286.723~\si{\eV} and a \ac{FWHM} of 1.152~\si{\eV}.
 
-In contrast to the $\alpha$-phase C1s \ac{XPS} spectra of the monolayer, the multilayer spectrum in \autoref{fig:C1s-alpha-multilayer} exhibits a divergent shape.
+In contrast to the $\alpha$-phase C1s \ac{XPS} spectra of the monolayer, the multilayer spectrum in \autoref{fig:C1s-alpha-multilayer} exhibits a different shape.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{images/C1s-multilayer.png}
-	\caption{C1s \ac{XPS} spectrum for the $\alpha$-phase of \ac{QA} on Ag(100) for a mutlilayer coverage compared to the \ac{XPS} spectrum for a coverage of 1~\ac{ML}.}
+	\caption{C1s \ac{XPS} spectrum for the $\alpha$-phase of \ac{QA} on Ag(100) for a mutlilayer coverage compared to the \ac{XPS} spectrum for a coverage of 1~\ac{ML} with the experimental data points, the fitted components and the resulting envelope.}
 	\label{fig:C1s-alpha-multilayer}
 \end{figure}
 
-Initially, the multilayer spectrum can still be adequately characterized by using the four distinct peaks, which possess equivalent area ratios to those of the monolayer spectrum. However, it is evident that the multilayer spectrum exhibits a significantly heightened intensity relative to the monolayer spectrum. The primary distinctions are evident in the \ac{BE} and the \ac{FWHM} of the peaks. The spectrum displays a discernible minimum between the aromatic carbon peak $\mathrm{C_{arom}}$ and the carbonyl carbon peak $\mathrm{C_{O}}$. The peak associated with the amine group ($\mathrm{C_{NH}}$) exhibits a shift towards the $\mathrm{C_{arom}}$ peak.
+Initially, the multilayer spectrum can still be adequately characterized by using the four distinct peaks, which possess equivalent area ratios to those of the monolayer spectrum. However, it is evident that the multilayer spectrum exhibits a significantly higher intensity relative to the monolayer spectrum. The primary distinctions are evident in the \ac{BE} and the \ac{FWHM} of the peaks. The spectrum displays a discernible minimum between the aromatic carbon peak $\mathrm{C_{arom}}$ and the carbonyl carbon peak $\mathrm{C_{O}}$. The peak associated with the amine group ($\mathrm{C_{NH}}$) exhibits a shift towards the $\mathrm{C_{arom}}$ peak.
+
+\begin{table}[H]
+	\centering
+	\caption{Fit parameter used in CasaXPS\autocite{CasaSoftwareLtd2022} for the multilayer $\alpha$-phase of \ac{QA} on Ag(100) for the C1s photoemission lines.}
+	\begin{tabular}{@{}cccc@{}} \toprule
+		peak & \ac{BE} / eV & area ratio & FWHM / eV \\
+		\midrule
+		$\mathrm{C_{arom}}$ &  & 10 &  \\
+		$\mathrm{C_{NH}}$ &  & 4 &  \\
+		$\mathrm{C_{CO}}$ &  & 4 &  \\ 
+		$\mathrm{C_{O}}$ &  & 2 &  \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:C1s-multilayer-fit}
+\end{table}
 
 
 \cleardoublepage
@@ -75,43 +90,41 @@ Initially, the multilayer spectrum can still be adequately characterized by usin
 
 \autoref{fig:O1s-comparison} presents a series of \ac{XPS} spectra for the O1s photoemission lines of \ac{QA} at three different coverages: 0.33~\ac{ML}, 0.79~\ac{ML} and 1~\ac{ML}. A prominent peak centered near 531~\si{\eV} is exhibited by all spectra, a characteristic of the oxygen atoms in carbonyl functional groups present in the \ac{QA} molecule. Additionally, the shape of the peak suggests the presence of a more intricate structure than a single peak. The spectra exhibit a comparable overall shape and peak position across the various surface coverages.
 
-As anticipated, the spectral intensity increases with coverage, indicative of an increased number of \ac{QA} molecules adsorbed on the surface. Beyond the intensity changes, differences in peak width and asymmetry are also observed. The spectrum at the lowest coverage (0.33~\si{ML}) is narrower and more symmetric, whereas the spectra at higher coverages become progressively broader and more asymmetric.
-
-In summary, the O1s \ac{XPS} spectra of \ac{QA} on Ag(100) are qualitatively similar across coverages. A peak assignment and more detailed evaluation will be provided in a subsequent part to elucidate the specific spectral components contributing to the observed features.
+As anticipated, the spectral intensity increases with coverage, indicative of an increased number of \ac{QA} molecules adsorbed on the surface. Beyond the intensity changes, differences in the peak width and asymmetry are also observed. The spectrum at the lowest coverage (0.33~\si{ML}) is narrower and more symmetric, whereas the spectra at higher coverages become progressively broader and more asymmetric.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{images/O1s-alpha-comparison.png}
-	\caption{Overview of O1s \ac{XPS} spectra for all preparation of the $\alpha$-phase of \ac{QA} on Ag(100)}
+	\caption{Overview of O1s \ac{XPS} spectra for monolayer preparation of the $\alpha$-phase of \ac{QA} on Ag(100) with a coverage between 0.33~\ac{ML} and 1.00~\ac{ML}. The line corresponds to the envelope of the fitted peaks and the circles are the measured data points.}
 	\label{fig:O1s-comparison}
 \end{figure}
 
-A detailed O1s spectrum of \ac{QA} on Ag(100) at a 1~\ac{ML} coverage reveals two distinguishable spectral components, which is shown in \autoref{fig:O1s-alpha}.
+The O1s \ac{XPS} spectrum of \ac{QA} on Ag(100) at a 1~\ac{ML} coverage reveals two distinguishable spectral components, which is shown in \autoref{fig:O1s-alpha}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{images/O1s-alpha-P1.png}
-	\caption{O1s \ac{XPS} spectrum for the $\alpha$-phase of \ac{QA} on Ag(100) for a coverage of 1~\ac{ML}.}
+	\caption{O1s \ac{XPS} spectrum for the $\alpha$-phase of \ac{QA} on Ag(100) for a coverage of 1~\ac{ML} with the experimental data points, the fitted components and the resulting envelope.}
 	\label{fig:O1s-alpha}
 \end{figure}
 
-As illustrated in \autoref{fig:O1s-alpha} and \autoref{tab:O1s-alpha-fit}, the primary component ($\mathrm{O1}$) is at a \ac{BE} of 530.657~\si{\eV}, exhibiting a \ac{FWHM} of 1.360~\si{\eV}. This peal is attributed to the core-level photoemission from oxygen atoms situated within carbonly functionalities. The relatively broad linewidth is indicative of slight variations in the local chemical environment of these oxygen atoms.
+As illustrated in \autoref{fig:O1s-alpha} and \autoref{tab:O1s-alpha-fit}, the primary component ($\mathrm{O1}$) is at a \ac{BE} of 530.657~\si{\eV}, exhibiting a \ac{FWHM} of 1.360~\si{\eV}. This peak is attributed to the core-level photoemission from oxygen atoms situated within carbonyl functionalities. The relatively broad linewidth in comparison to the linewidths of the C1s \ac{XPS} spectra is indicative of slight variations in the local chemical environment of these oxygen atoms.
 
 A secondary, less intense component ($\mathrm{O1_{sat}}$) is observed at a higher \ac{BE} of 531.273~\si{\eV} with a narrower \ac{FWHM} of 0.712~\si{\eV}. This feature is interpreted as a shake-up satellite, arising from e.g. a $\pi-\pi^*$ transition within the conjugated $\pi$ system of the \ac{QA} molecule.
 
-Quantitative analysis of the peak areas reveals that the satellite-to-main peak area ratio is approximately 0.27, which is equivalent to 21~\% of the total O1s intensity. This ratio is consistent with the expected intensity of shake-up features in aromatic systems with significant conjugation.\autocite{Bauer2014}
+Quantitative analysis of the peak areas reveals that the satellite-to-main peak area ratio is approximately 1~:~0.27, which is equivalent to 21~\% of the total O1s intensity. This ratio is consistent with the expected intensity of shake-up features in aromatic systems with significant conjugation.\autocite{Bauer2014}
 
 The combination of these two components provides a comprehensive representation of the O1s photoemission lines of \ac{QA}. This representation reflects both the intrinsic chemical identity of the oxygen atoms and the dynamic electron processes that accompany core-level photoemission.
 
 \begin{table}[H]
 	\centering
 	\caption{Fit parameter used in CasaXPS\autocite{CasaSoftwareLtd2022} for the $\alpha$-phase of \ac{QA} on Ag(100) for the O1s photoemission lines..}
-	\begin{tabular}{|c|c|c|c|}
-		\hline
+	\begin{tabular}{@{}cccc@{}} \toprule
 		peak & \ac{BE} / eV & area ratio & FWHM / eV \\
-		\hline
-		$\mathrm{O1}$ & 530.657 & 2.00 & 1.360 \\ \hline
-		$\mathrm{O1_{sat}}$ & 531.273 & 0.53 & 0.712 \\ \hline
+		\midrule
+		$\mathrm{O1}$ & 530.657 & 2.00 & 1.360 \\
+		$\mathrm{O1_{sat}}$ & 531.273 & 0.53 & 0.712 \\
+		\bottomrule
 	\end{tabular}
 	\label{tab:O1s-alpha-fit}
 \end{table}
@@ -121,13 +134,26 @@ In \autoref{fig:O1s-alpha-multilayer}, a \ac{XPS} spectrum with a multilayer cov
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.84\textwidth]{images/O1s-multilayer.png}
-	\caption{O1s \ac{XPS} spectrum for the $\alpha$-phase of \ac{QA} on Ag(100) for a mutlilayer coverage compared to the \ac{XPS} spectrum for a coverage of 1~\ac{ML}.}
+	\caption{O1s \ac{XPS} spectrum for the $\alpha$-phase of \ac{QA} on Ag(100) for a mutlilayer coverage compared to the \ac{XPS} spectrum for a coverage of 1~\ac{ML} with the experimental data points, the fitted components and the resulting envelope.}
 	\label{fig:O1s-alpha-multilayer}
 \end{figure}
 
 The O1s \ac{XPS} spectrum recorded for \ac{QA} on Ag(100) at multilayer coverage reveals a well-defined structure characterized by two distinct photoemission peaks. The primary component ($\mathrm{O1}$) is at a \ac{BE} of 530.733~\si{\eV} and a \ac{FWHM} of 0.75~\si{\eV}. In comparison with the \ac{ML} $\mathrm{O1}$ peak, the peak position undergoes a change of approximately 0.076~\si{\eV}. A more salient finding is the change in the \ac{FWHM} of approximately 0.61~\si{\eV}, which nearly corresponds to a 50~\% alteration.
 
- The satellite peak ($\mathrm{O1_{sat}}$) is observed at 531.24~\si{\eV} with a \ac{FWHM} of 0.5~\si{\eV}. Once more, the position of the $\mathrm{O1_{sat}}$ peak in relation to the \ac{ML} remains constant. However, the \ac{FWHM} of the peak decreases by 0.21~\si{\eV}, which corresponds to approximately 30~\%. This alteration may be attributable to the enhanced intensity exhibited by the multilayer \ac{XPS} spectrum. The satellite-to-main ratio experiences a decrease from 0.27 in the \ac{ML} to 0.18 in the multilayer, indicating a reduced skake-up process.
+ The satellite peak ($\mathrm{O1_{sat}}$) is observed at 531.24~\si{\eV} with a \ac{FWHM} of 0.5~\si{\eV}. Once more, the position of the $\mathrm{O1_{sat}}$ peak in relation to the \ac{ML} remains constant. However, the \ac{FWHM} of the peak decreases by 0.21~\si{\eV}, which corresponds to approximately 30~\%. This alteration may be attributable to the enhanced intensity exhibited by the multilayer \ac{XPS} spectrum. The satellite-to-main ratio experiences a decrease from 1~:~0.27 in the \ac{ML} to 1~:~0.18 in the multilayer, indicating a reduced shake-up process.
+
+\begin{table}[H]
+	\centering
+	\caption{Fit parameter used in CasaXPS\autocite{CasaSoftwareLtd2022} for the multilayer $\alpha$-phase of \ac{QA} on Ag(100) for the O1s photoemission lines..}
+	\begin{tabular}{@{}cccc@{}} \toprule
+		peak & \ac{BE} / eV & area ratio & FWHM / eV \\
+		\midrule
+		$\mathrm{O1}$ &  &  &  \\
+		$\mathrm{O1_{sat}}$ &  &  &  \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:O1s-multilayer-fit}
+\end{table}
 
 \cleardoublepage
 \subsection{N1s spectra}
@@ -139,7 +165,7 @@ Additionally, a secondary peak is evident on the low-\ac{BE} side of the main pe
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{images/N1s-alpha-comparison.png}
-	\caption{Overview of N1s \ac{XPS} spectra for all preparation of the $\alpha$-phase of \ac{QA} on Ag(100)}
+	\caption{Overview of N1s \ac{XPS} spectra for monolayer preparation of the $\alpha$-phase of \ac{QA} on Ag(100) with a coverage between 0.26~\ac{ML} and 1.00~\ac{ML}. The line corresponds to the envelope of the fitted peaks and the circles are the measured data points.}
 	\label{fig:N1s-comparison}
 \end{figure}
 
@@ -148,7 +174,7 @@ The N1s \ac{XPS} spectrum of \ac{QA} on Ag(100) with a coverage of 1~\ac{ML}, as
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{images/N1s-alpha-P1.png}
-	\caption{N1s \ac{XPS} spectrum for the $\alpha$-phase of \ac{QA} on Ag(100) for a coverage of 1~\ac{ML}.}
+	\caption{N1s \ac{XPS} spectrum for the $\alpha$-phase of \ac{QA} on Ag(100) for a coverage of 1~\ac{ML} with the experimental data points, the fitted components and the resulting envelope.}
 	\label{fig:N1s-alpha}
 \end{figure}
 
@@ -161,12 +187,12 @@ A thorough qualitative analysis was conducted, which yielded a damage-intensity-
 \begin{table}[H]
 	\centering
 	\caption{Fit parameter used in CasaXPS\autocite{CasaSoftwareLtd2022} for the $\alpha$-phase of \ac{QA} on Ag(100) for the N1s photoemission lines.}
-	\begin{tabular}{|c|c|c|c|}
-		\hline
+	\begin{tabular}{@{}cccc@{}} \toprule
 		peak & \ac{BE} / eV & area ratio & FWHM / eV \\
-		\hline
-		$\mathrm{N1}$ & 400.054 & 2.00 & 1.017 \\ \hline
-		$\mathrm{N1_{damage}}$ & 397.656 & 0.31 & 1.160 \\ \hline
+		\midrule
+		$\mathrm{N1}$ & 400.054 & 2.00 & 1.017 \\
+		$\mathrm{N1_{damage}}$ & 397.656 & 0.31 & 1.160 \\
+		\bottomrule
 	\end{tabular}
 	\label{tab:N1s-alpha-fit}
 \end{table}
@@ -176,12 +202,25 @@ A comparison of the N1s \ac{XPS} spectrum of the monolayer and the spectrum corr
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{images/N1s-multilayer.png}
-	\caption{N1s \ac{XPS} spectrum for the $\alpha$-phase of \ac{QA} on Ag(100) for a mutlilayer coverage compared to the \ac{XPS} spectrum for a coverage of 1~\ac{ML}.}
+	\caption{N1s \ac{XPS} spectrum for the $\alpha$-phase of \ac{QA} on Ag(100) for a mutlilayer coverage compared to the \ac{XPS} spectrum for a coverage of 1~\ac{ML} with the experimental data points, the fitted components and the resulting envelope.}
 	\label{fig:N1s-alpha-multilayer}
 \end{figure}
 
 The \ac{XPS} spectrum with a multilayer coverage reveals a single component ($\mathrm{N1}$ centered at a \ac{BE} of 400.147~\si{\eV}, accompanied by a \ac{FWHM} of 0.82~\si{\eV}. This observation signifies a subtle modification in the chemical environment surrounding the nitrogen atom. The peak associated with beam damage ($\mathrm{N1_{damage}}$) remains undetected. This absence indicated that the spectrum of the multilayer originated predominantly from chemically intact nitrogen species. The \ac{BE} exhibits a slight increase (0.93~\si{\eV}) in the multilayer, accompanied by a narrower \ac{FWHM}.
 
+
+\begin{table}[H]
+	\centering
+	\caption{Fit parameter used in CasaXPS\autocite{CasaSoftwareLtd2022} for the multilayer $\alpha$-phase of \ac{QA} on Ag(100) for the N1s photoemission lines.}
+	\begin{tabular}{@{}cccc@{}} \toprule
+		peak & \ac{BE} / eV & area ratio & FWHM / eV \\
+		\midrule
+		$\mathrm{N1}$ &  &  &  \\
+		$\mathrm{N1_{damage}}$ &  &  &  \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:N1s-multilayer-fit}
+\end{table}
 
 \cleardoublepage
 \section{C1s XPS spectra for the phase transition}
@@ -231,14 +270,14 @@ In summary, the \ac{XPS} spectrum for C1s components of the $\beta$-phase offers
 \begin{table}[H]
 	\centering
 	\caption{Fit model of the $\beta$-phase for C1s.}
-	\begin{tabular}{|c|c|c|c|}
-		\hline
+	\begin{tabular}{@{}cccc@{}} \toprule
 		peak & \ac{BE} / eV & area ratio & FWHM / eV \\
-		\hline
-		$\mathrm{C_{arom}}$ & 284.545 & 10 & 1.132 \\ \hline
-		$\mathrm{C_{NH}}$ & 284.275 & 4 & 0.618 \\ \hline
-		$\mathrm{C_{CO}}$ & 285.322 & 4 & 1.107 \\ \hline
-		$\mathrm{C_{O}}$ & 286.072 & 2 & 0.785 \\ \hline
+		\midrule
+		$\mathrm{C_{arom}}$ & 284.545 & 10 & 1.132 \\
+		$\mathrm{C_{NH}}$ & 284.275 & 4 & 0.618 \\ 
+		$\mathrm{C_{CO}}$ & 285.322 & 4 & 1.107 \\
+		$\mathrm{C_{O}}$ & 286.072 & 2 & 0.785 \\
+		\bottomrule
 	\end{tabular}
 	\label{tab:C1s-beta-fit}
 \end{table}
@@ -279,14 +318,14 @@ In summary, the \ac{FWHM} of two peaks are around 0.7~\si{\eV} and both have a s
 \begin{table}[H]
 	\centering
 	\caption{Fit model of the $\beta$-phase for O1s.}
-	\begin{tabular}{|c|c|c|c|}
-		\hline
+	\begin{tabular}{@{}cccc@{}} \toprule
 		peak & \ac{BE} / eV & area ratio & FWHM / eV \\
-		\hline
-		$\mathrm{O1}$ & 530.683 & 1 & 0.712 \\ \hline
-		$\mathrm{O1_{sat}}$ & 531.661 & 0.05 & 0.362 \\ \hline
-		$\mathrm{O2}$ & 530.186 & 1 & 0.681 \\ \hline
-		$\mathrm{O2_{sat}}$ & 531.200 & 0.14 & 0.451 \\ \hline
+		\midrule
+		$\mathrm{O1}$ & 530.683 & 1 & 0.712 \\
+		$\mathrm{O1_{sat}}$ & 531.661 & 0.05 & 0.362 \\
+		$\mathrm{O2}$ & 530.186 & 1 & 0.681 \\
+		$\mathrm{O2_{sat}}$ & 531.200 & 0.14 & 0.451 \\
+		\bottomrule
 	\end{tabular}
 	\label{tab:O1s-beta-fit}
 \end{table}
@@ -323,12 +362,12 @@ The main difference of the two peaks is their \ac{BE}. The N1 peak is located at
 \begin{table}[H]
 	\centering
 	\caption{Fit model of the $\beta$-phase for N1s.}
-	\begin{tabular}{|c|c|c|c|}
-		\hline
+	\begin{tabular}{@{}cccc@{}} \toprule
 		peak & \ac{BE} / eV & area ratio & FWHM / eV \\
-		\hline
-		$\mathrm{N1}$ & 399.865 & 1 & 0.774\\ \hline
-		$\mathrm{N2}$ & 397.661 & 1 & 0.686 \\ \hline
+		\midrule
+		$\mathrm{N1}$ & 399.865 & 1 & 0.774\\
+		$\mathrm{N2}$ & 397.661 & 1 & 0.686 \\
+		\bottomrule
 	\end{tabular}
 	\label{tab:N1s-beta-fit}
 \end{table}
