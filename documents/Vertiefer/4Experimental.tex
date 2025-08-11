@@ -2,6 +2,7 @@
 \section{Material}
 
 \subsection{The Ag(100) crystal surface}
+
 A silver (Ag) single crystal that was provided by the team of the I09 beamline of the Diamond Light Source with a surfaces orientation of (100) was used as the substrate for the \ac{XPS} experiments. It is important that a single crystal is used, as this has a uniform and precisely defined surface and has almost no structural defects.
 
 Silver forms a \ac{fcc} crystal system, which is shown in \autoref{fig:Ag(100)}. This corresponds to the Pearson symbol cF. In the crystal system of silver, one silver atom is surrounded by twelve next neighbor atoms. Furthermore, the Ag(100) surface does not reconstruct. The lattice constant of silver in the volume crystal is $4.0853\pm0.0013$~\si{\angstrom} at a temperature of $23\pm3$~\si{\celsius}\autocite{Liu1973}.
@@ -36,11 +37,11 @@ All \ac{XPS} measurements were performed in an \ac{UHV} chamber at the I09 endst
 	\label{fig:experimental}
 \end{figure}
 
-The experimental sample preparation is described in the following. First, the Ag(100) surface was cleaned by sputtering with argon ions. Therefore, argon was dosed into the chamber up to a pressure of $5\cdot 10^{-5}$~\si{mbar} and Ar$^+$ ions were accelerated with a voltage of 1~\si{keV}. Afterwards, the surface was heated up to 825~\si{K} for 45~\si{min} to increase the thermal diffusion and heal defects on the Ag(100) surface.
+The experimental sample preparation is described in the following. First, the Ag(100) surface was cleaned by sputtering with Ar$^+$ ions. Therefore, argon was dosed into the chamber up to a pressure of $5\cdot 10^{-5}$~\si{mbar} and Ar$^+$ ions were accelerated with a voltage of 1~\si{keV}. Afterwards, the surface was heated up to 825~\si{K} for 45~\si{min} to increase the thermal diffusion and heal defects on the Ag(100) surface.
 
 Subsequently, \ac{QA} was evaporated onto the Ag(100) surface with the sample being at room temperature. Therefore, the evaporator was heated to about 500~\si{\degreeCelsius}. The deposition process was performed according to procedures derived in the lab in Bonn, where the depostion could be controlled by a mass spectrometer and \ac{SPA-LEED} measurements. After evaporation, the phase of the \ac{QA} molecules was characterized using \ac{LEED}.
 
-For the measurements of the \ac{XPS} spectra, soft x-ray radiation with an energy of either 500~\si{\eV} for C1s and N1s or 630~\si{\eV} for O1s was used. For data collection, the sample normal was rotated by -45\si{\degree} out of the x-ray beam in the polar direction towards the analyzer.
+For the measurements of the \ac{XPS} spectra, x-ray radiation with an energy of either 500~\si{\eV} for C1s and N1s or 630~\si{\eV} for O1s was used. For data collection, the sample normal was rotated by -45\si{\degree} out of the x-ray beam in the polar direction towards the analyzer.
 
 The detailed parameters for the data acquistion are listed in \autoref{tab:experimental}. The pass energy $E_\mathrm{pass}$ of the analyzer determines the kinetic energy of the photoelectrons and therefore the energy resolution of the measurement. The step width is the energy difference between two consecutive data points in the \ac{XPS} spectrum. The number of frames is the number of times the same spectrum was measured and averaged to reduce noise in the data.
 
@@ -60,15 +61,15 @@ The detailed parameters for the data acquistion are listed in \autoref{tab:exper
 
 The parameters for the measurements were chosen to achieve a good signal-to-noise ratio and a high energy resolution. Furthermore, the acquisition time for each spectrum was as short as possible to prevent beam damage of the sample.
 
-\ac{XPS} spectra for the Fermi energy $E_\mathrm{F}$ was measured after each \ac{XPS} measurement of C1s, O1s and N1s to ensure that the \ac{BE} of the measured spectra can be calibrated against the Fermi level. $E_\mathrm{F}$ was measured with the same photon energy as the corresponding orbital and a pass energy of 20~\si{\eV}. The step width was set to 40~\si{meV} and the number of frames was changed for each measurement.
+\Ac{XPS} spectra for the Fermi energy $E_\mathrm{F}$ were measured after each \ac{XPS} measurement of C1s, O1s and N1s for calibrating the \ac{BE} of the measured spectra against the Fermi level. $E_\mathrm{F}$ was measured with the same photon energy as the corresponding orbital and a pass energy of 20~\si{\eV}. The step width was set to 40~\si{meV} and the number of frames was changed for each measurement.
 
 \section{Data processing}
 
 The measured data were then subjected to an initial processing stage, whereby the values from multiple datasets employing identical settings for the measurements were averaged to obtain an increased signal-to-noise ratio. Subsequently, the data underwent further processing with the software CasaXPS.\autocite{CasaSoftwareLtd2022} Each XPS spectrum was processed in a consistent manner, as outlined below.
 
-Initially, the \ac{BE} of the \ac{XPS} spectrum was calibrated against the Fermi energy $E_\mathrm{F}$. For this purpose, an \ac{XPS} spectrum of the Fermi edge with the same photon energy as the corresponding component \ac{XPS} spectrum was used and fitted with a Fermi function. Without inaccuracies of the devices, $E_\mathrm{F}$ should be zero. Accordingly, the binding energy was shifted by the value of the Fermi energy, which was determined from the fit of the Fermi function.
+Initially, the \ac{BE} of the \ac{XPS} spectrum was calibrated against the Fermi energy $E_\mathrm{F}$. For this purpose, an \ac{XPS} spectrum of the Fermi edge with the same photon energy as the corresponding component was fitted with a Fermi function. Without inaccuracies of the devices, $E_\mathrm{F}$ should be zero. Accordingly, the binding energy was shifted by the value of the Fermi energy, which was determined from the fit of the Fermi function.
 
-Afterwards, a linear background was fitted to the raw and averaged data. This background was then substracted for further data processing. Afterwards, the corresponding fitting models from \autoref{sec:results} were applied. The different peaks with line shape and constraints from \autoref{tab:casa} were used. These settings were the same for each processed dataset.
+Afterwards, a linear background was fitted to the averaged and calibrated data. This background was then substracted for further data processing. Then, the corresponding fitting models from \autoref{sec:results} were applied. The different peaks with line shape and constraints from \autoref{tab:casa} were used. These settings were the same for each processed dataset.
 Subsequently, the processed data was exported from CasaXPS and illustrated using a customized python script, enabling the generation of various plots as outlined in \autoref{sec:results}.
 
 
@@ -76,7 +77,7 @@ Subsequently, the processed data was exported from CasaXPS and illustrated using
 	\centering
 	\caption{Parameters in CasaXPS\autocite{CasaSoftwareLtd2022} for the different peaks of the \ac{XPS} spectra of \ac{QA} on Ag(100).}
 \begin{tabular}{@{}ccc@{}} \toprule
-	~~~~~~peak~~~~~~ & ~~~~~~line shape~~~~~~ & ~~~~~~area constraint~~~~~~ \\
+	~~~~~~peak~~~~~~ & ~~~~~~line shape~~~~~~ & ~~~~~~area ratio~~~~~~ \\
 	\midrule
 	$\mathrm{C_{arom}}$ & LA(1,8,800) & 10 \\
 	$\mathrm{C_{NH}}$ & LA(1,8,800) & 4 \\
@@ -96,10 +97,10 @@ Subsequently, the processed data was exported from CasaXPS and illustrated using
 	\label{tab:casa}
 \end{table}
 
-\textbf{EXPLAIN LA(x,y,z)}
+For the line shapes, the LA($\alpha$,$\beta$,m) function was used, which is a numerical convolution of a Lorentzian and a Gaussian. The parameters $\alpha$ and $\beta$ define the asymmetry of the line shape, where $\alpha$ describes the left part and $\beta$ the right part. The parameter $m$ defines the width of the Gaussian.
 
 The line shapes for the different components were slightly changed in order to observe the best description of the \ac{XPS} spectra. In general, the objective was to maintain consistency in the lines to the greatest extent possible.
 
-Furthermore, the areas of the peaks were constrained to a certain value. This was done to ensure that the areas of the peaks are consistent with the stochiometry of \ac{QA}. The area constraints for the C1s \ac{XPS} spectra were the same for both phases, whereas the area constraints of the O1s and N1s \ac{XPS} spectra differed between the two phases. This was due to the changed number of hydrogen bonds per molecule in the two phases, which led to a changed number of distinct oxygen and nitrogen atoms in the \ac{XPS} spectra.
+Furthermore, the areas of the peaks were constrained to a certain value in order to ensure that the areas of the peaks are consistent with the stochiometry of \ac{QA}. The area constraints for the C1s \ac{XPS} spectra were the same for both phases, whereas the area constraints of the O1s and N1s \ac{XPS} spectra differed between the two phases. This was due to the changed number of hydrogen bonds per molecule in the two phases, which led to a changed number of distinct oxygen and nitrogen atoms in the \ac{XPS} spectra.
 
 \cleardoublepage

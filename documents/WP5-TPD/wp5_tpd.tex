@@ -89,7 +89,7 @@
 % ---- Metadaten ----
 \def\Autor{Lucas Hirschfeld, s6luhirs@uni-bonn.de}
 \def\Titel{\Acf{TDS} of Phenol on the Ag(111) surface}
-\def\Date{First Submission: July 14, 2025 \\Second Submission: \today}
+\def\Date{First Submission: July 14, 2025 \\Second Submission: July 17, 2025}
 \def\PiC{Supervisor: Anna Juliana Kny}
 \def\Abstract{} 
 
@@ -205,7 +205,7 @@ The results of the residual gas analysis are summarized in \autoref{tab:rga_spec
     \label{tab:rga_spectra_assignment}
 \end{table}
 
-The \ac{RGA} shows that the \ac{UHV} chamber has some contamination.Significant contamination could be observed in the mass spectrum at m/z=94~u/e and at m/z=66~u/e, which are likely due to phenol from previous experiments.
+The \ac{RGA} shows that the \ac{UHV} chamber has some contamination. Significant contamination could be observed in the mass spectrum at m/z=94~u/e and at m/z=66~u/e, which are likely due to phenol from previous experiments.
 
 Possible further contamination is indicated by the peaks at m/z=12, 16~u/e, 17~u/e, 18~u/e, 28~u/e and 44~u/e. The peak at m/z=2~u/e is likely due to the residual hydrogen in the chamber. The peaks at m/z=16~u/e, 17~u/e, 18~u/e are due to water inside the chamber. The peaks at m/z=28~u/e and 44~u/e are likely due to carbon monoxide and carbon dioxide, respectively.
 
@@ -268,7 +268,7 @@ The \ac{TDS} spectra of phenol on Ag(111) were recorded with the \ac{QMS} for di
     \label{fig:tds_phenol_all}
 \end{figure}
 
-\autoref{fig:tds_phenol_all} shows the \ac{TDS} spectra of phenol on Ag(111) for different coverages. The spectra show a first clear peak at around 220~K. The peak intensity increases with increasing coverage, indicating that more phenol is desorbing from the surface. This first peak gets broader and shifts towards slightly lower temperatures with increasing coverage.
+\autoref{fig:tds_phenol_all} shows the \ac{TDS} spectra of phenol on Ag(111) for different coverages. The spectra show a first clear peak at around 220~K. The peak intensity increases with increasing coverage, indicating that more phenol is desorbing from the surface. This first peak gets broader and slightly shifts towards lower temperatures with increasing coverage.
 
 A second peak is visible at around 185~K for coverages above 1~\ac{ML}, which is also increasing in intensity with increasing coverage. This second peak is changes its position with increasing coverage, which indicates that the desorption process is affected by the coverage.
 
@@ -346,9 +346,9 @@ Lee et al.\autocite{Lee2001} have shown that it is possible to make two differen
 \subsection{Sticking Factor}
 \label{sec:sticking}
 
-For the evaluation of the sticking factor, the coverage is plotted as a function of the impingement rate. The impingement rate can be calculated using the formula:
+For the evaluation of the sticking factor, the coverage is plotted as a function of the impingement rate. The time integrated impingement rate can be calculated using the formula:
 \begin{equation}
-N_\mathrm{imp} = \frac{D}{2\pi m k_\mathrm{B} T}
+\widetilde{N}_\mathrm{imp} = \frac{D}{\sqrt{2\pi m k_\mathrm{B} T}}
 \end{equation}
 where $D$ is the dosage, $m$ is the mass of the adsorbate, $k_\mathrm{B}$ is the Boltzmann constant and $T$ is the temperature.
 
@@ -359,7 +359,7 @@ Furthermore, the number of impinging molecules can be transformed into the unit 
     \caption{Dosage, coverage, and impingement rate for phenol on Ag(111).}
     \begin{tabular}{@{}ccc@{}}
         \toprule
-        Dosage $D$ [mbar s] & Coverage $\theta$ [ML] & $N_\mathrm{imp}$ [cm$^{-2}$] \\
+        Dosage $D$ [mbar s] & Coverage $\theta$ [ML] & $\widetilde{N}_\mathrm{imp}$ [cm$^{-2}$] \\
         \midrule
         $1.70 \cdot 10^{-8}$ & 0.22 & $4.62 \cdot 10^{12}$ \\
         $1.40 \cdot 10^{-7}$ & 0.54 & $3.80 \cdot 10^{13}$ \\
@@ -418,7 +418,7 @@ Nevertheless, the sticking factor for p(2x2) and p(4x4) models is higher than 1,
 \clearpage
 \subsection{Desorption Energy and Pre-Exponential Factor for the Multilayer}
 
-The desorption energy and the pre-exponential factor for the multilayer of phenol on Ag(111) are calculated using the Menzel-Schlichting method.\autocite{Schlichting1992} The Menzel-Schlichting plot for three different coverages is shown in \autoref{fig:Menzel_Schlichting_plot}. The desorption rate is converted to the unit ML/s by dividing the intesity of the \ac{QMS} by the integral of the reference \ac{TDS} spectrum of 1~ML of phenol on Ag(111) from \autoref{fig:phenol_TPD_1ML} and multiplying with the heating constant of 1~K/s.
+The desorption energy and the pre-exponential factor for the multilayer of phenol on Ag(111) are calculated using the Menzel-Schlichting method.\autocite{Schlichting1992} The Menzel-Schlichting plot for three different coverages is shown in \autoref{fig:Menzel_Schlichting_plot}. The desorption rate is converted to the unit ML/s by dividing the intensity of the \ac{QMS} by the integral of the reference \ac{TDS} spectrum of 1~ML of phenol on Ag(111) from \autoref{fig:phenol_TPD_1ML} and multiplying with the heating constant of 1~K/s.
 
 \begin{figure}[htbp]
     \centering
@@ -527,16 +527,16 @@ The simulation is done using the desorption energy and the pre-exponential facto
 \clearpage
 \section{Discussion}
 \subsection{Residual Gas Analysis and Mass Spectra}
-\Acl{RGA} was performed to identify the desorbed species during the \acl{TDS} measurements. The \ac{RGA} data showed clear signals of the common gases in the atmosphere, such as water and carbon dioxide, but with intensities that were on the smallest scale of the \ac{QMS}. This indicates that the \ac{UHV} chamber was clean and that no significant contamination was present.
+\Acl{RGA} was performed to identify the desorbed species during the \acl{TDS} measurements. The \ac{RGA} data showed clear signals of the common gases in the residual atmosphere, such as water and carbon dioxide, but with intensities that were on the smallest scale of the \ac{QMS}. This indicates that the \ac{UHV} chamber was clean and that no significant contamination was present.
 The argon dosing did not show any significant contamination either, as the argon peak was clearly visible at m/z=40 u/e. The filament degasing showed a peak at m/z=28 u/e, which is likely due to carbon monoxide.
 
-Furthermore, the mass spectra for phenol and benzene were recorded using the \ac{QMS} in the \ac{UHV} chamber. The mass spectra showed the characteristic fragmentation patterns for both molecules. Furthermore, the mass spectra indicated that the m/z value of 93 u/e for phenol and 77 u/e for benzene are the best choices for the \ac{TDS} experiments, as these values correspond to the molecular ions of phenol and benzene, respectively.
+Furthermore, the mass spectra for phenol and benzene were recorded using the \ac{QMS} in the \ac{UHV} chamber. The mass spectra showed the characteristic fragmentation patterns for both molecules. Furthermore, the mass spectra indicated that the m/z value of 93 u/e for phenol and 77 u/e for benzene are the best choices for the \ac{TDS} experiments, as these values correspond to the single charged molecular ions of phenol and benzene, respectively.
 
 \subsection{TDS spectra of Phenol on Ag(111)}
 
 The \ac{TDS} spectra of phenol on Ag(111) showed a first clear peak at around 220~K, which increased in intensity with increasing coverage. For coverages above 1~ML, a second peak was visible at around 185~K, which also increased in intensity with increasing coverage. A third peak was visible at around 175~K for even higher coverages. The position of this third peak changed towards higher temperatures with increasing coverage. This indicates that the first peak is a first order desorption peak, while the second and third peaks are likely zeroth order desorption processes.
 
-The experiments are similar to the experiments of Lee et al.\autocite{Lee2001}, who also observed a first order desorption peak at around 240~K and a second desorption peak at around 200~K for phenol on Ag(111). The third peak was around 190~K. In comparison to the experiments in this report, all peaks are shifted towards higher temperatures. This is likely due to the different experimental conditions, such as the heating rate and the coverage. Lee et al.\autocite{Lee2001} used a heating rate of 2~K/s, while this report used a heating rate of 1~K/s. The lower heating rate in this report leads to lower peak temperatures in comparison to the literature. Overall, the \ac{TDS} spectra in this report match to the literature data\autocite{Lee2001}, what indicates that the experimental data is reliable.
+The results are similar to the experiments of Lee et al.\autocite{Lee2001}, who also observed a first order desorption peak at around 240~K and a second desorption peak at around 200~K for phenol on Ag(111). The third peak was around 190~K. In comparison to the experiments in this report, all peaks are shifted towards higher temperatures. This is likely due to the different experimental conditions, such as the heating rate and the coverage. Lee et al.\autocite{Lee2001} used a heating rate of 2~K/s, while this report used a heating rate of 1~K/s. The lower heating rate in this report leads to lower peak temperatures in comparison to the literature. Overall, the \ac{TDS} spectra in this report match to the literature data\autocite{Lee2001}, what indicates that the experimental data is reliable.
 
 
 \subsection{Monolayer Desorption}
@@ -552,7 +552,7 @@ In addition, the desorption process of the monolayer of phenol on Ag(111) was si
 
 \subsection{Sticking Factor and Geometric Model}
 
-The sticking factor for the adsorption of phenol on Ag(111) was calculated using the coverage as a function of the impingement rate. The results showed that the sticking factor for the p(2x2) model and the p(4x4) model is higher than 1, which is impossible. This indicates that the geometric model is not suitable for the description of the adsorption process of phenol on Ag(111).
+The sticking factor for the adsorption of phenol on Ag(111) was calculated using the coverage as a function of the time integrated impingement rate. The results showed that the sticking factor for the p(2x2) model and the p(4x4) model is higher than 1, which is impossible. This indicates that the geometric model is not suitable for the description of the adsorption process of phenol on Ag(111).
 
 The sticking factor for the p(6x6) model is lower than 1, which indicates that this model is more suitable for the description of the adsorption process of phenol on Ag(111). The p(6x6) model yields a sticking factor of 0.417 for coverages below 1~ML and a sticking factor of 0.557 for coverages above 1~ML. This shows that the sticking factor for the monolayer is lower than for the multilayer, which is expected, as the monolayer has more interactions with the surface than the multilayer.
 

@@ -31,6 +31,7 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{siunitx}
+\usepackage{booktabs}
 \usepackage{textpos}
 \usepackage{subfig}
 \usepackage{svg}
@@ -89,7 +90,7 @@
 
 % ---- Metadaten ----
 \def\Autor{Lucas Hirschfeld, s6luhirs@uni-bonn.de}
-\def\Titel{Low Energy Electron Diffraction (LEED) of the Au(111) surface and PTCDA on the Au(111) surface}
+\def\Titel{\Acl{LEED} of the Au(111) surface and \acs{PTCDA} on the Au(111) surface}
 \def\Date{First Submission: July 9, 2025 \\ Second Submission: \today}
 \def\PiC{Supervisor: Morris Mühlpointner}
 \def\Abstract{} 
@@ -112,7 +113,7 @@
 
 \section{Introduction}
 
-\Ac{LEED} is a powerful and standard technique for investigating the surface structure of crystalline materials by the diffraction of low energy electrons. The technique was first used by Davisson and Germer in 1927 on a Nickel crystal.\autocite{Davisson1927} Since then, \ac{LEED} has become a widely used technique in surface science and materials research.\autocite{Kolasinski2012}
+\Acl{LEED} is a powerful and standard technique for investigating the surface structure of crystalline materials by the diffraction of low energy electrons. The technique was first used by Davisson and Germer in 1927 on a Nickel crystal.\autocite{Davisson1927} Since then, \ac{LEED} has become a widely used technique in surface science and materials research.\autocite{Kolasinski2012}
 
 The basic principle of \ac{LEED} is to direct a beam of low-energy electrons onto a crystalline surface and to analyze the resulting diffraction pattern. The diffraction pattern is formed by the interference of the scattered electrons from the surface atoms, which leads to a characteristic pattern of bright spots on a fluorescent screen. The positions and intensities of these spots provide information about the surface structure, such as the lattice constant, surface reconstruction, and orientation of the surface.\autocite{Kolasinski2012}
 
@@ -199,7 +200,7 @@ The diffraction spots in the \ac{LEED} pattern are arranged in a hexagonal patte
 \clearpage
 \subsection{Determination of the sample distance to the LEED screen}
 
-The spot distances in the \ac{LEED} pattern were measured to determine the distance $r$ between the Au(111) sample and the detector, which is equivalent to the screen radius. The distances between the diffraction spots were extracted from the \ac{LEED} patterns in \autoref{fig:leed_patterns_angle} recorded at the same electron energy of 119.6~\si{eV} but at different angles. The distances were measured in pixels.
+The spot distances in the \ac{LEED} pattern were measured to determine the distance $r$ between the Au(111) sample and the detector, which is equivalent to the \ac{LEED} screen radius. To fulfill this assumption, the sample has to be placed in the center of the sphere that is partly formed by the \ac{LEED} screen. The distances between the diffraction spots were extracted from the \ac{LEED} patterns in \autoref{fig:leed_patterns_angle} recorded at the same electron energy of 119.6~\si{eV} but at different angles.
 
 \begin{figure}[htbp]
     \centering
@@ -234,15 +235,14 @@ The distances between the diffraction spots were measured in pixels and are summ
 \begin{table}[htbp]
     \centering
     \caption{Measured distances between the diffraction spots in pixels for different angles.}
-    \begin{tabular}{|c|c|c|c|c|}
-        \hline
+    \begin{tabular}{@{}cc@{}} \toprule
         angle $\theta$ (\si{\degree}) & distance $\Delta x$ [px] \\
-        \hline 
+        \midrule
         0 & 0 \\
         5 & 132 \\
         10 & 192 \\
         15 & 328  \\
-        \hline
+        \bottomrule
     \end{tabular}
     \label{tab:spot_distances}
 \end{table}
@@ -338,46 +338,45 @@ The bulk lattice constant $\mathbf{a_b}$ can be calculated from the surface latt
 \begin{table}[htbp]
     \centering
     \caption{Measured \ac{LEED} spot distances and calculated lattice parameters for Au(111) surface at different electron energies.}
-                \begin{tabular}{|c|c|c|c|c|c|c|}
-                \hline
+        \begin{tabular}{@{}ccccccc@{}} \toprule
                 $E$ [eV] & $\lambda_e$ [\AA] & $\mathbf{k_0}$ [\AA$^{-1}$] & $d$ [pixel] & $\mathbf{a^*}$ [\AA$^{-1}$] & $\mathbf{a}$ [\AA] & $\mathbf{a_{b}}$ [\AA] \\
-                \hline
-                \multirow{6}{*}{80.0} & \multirow{6}{*}{1.371} & \multirow{6}{*}{4.583} & 307.0 & $2.20 \pm 0.23$ & $3.29 \pm 0.35$ & $4.66 \pm 0.49$ \\
+                \midrule
+                \multirow{7}{*}{80.0} & \multirow{7}{*}{1.371} & \multirow{7}{*}{4.583} & 307.0 & $2.20 \pm 0.23$ & $3.29 \pm 0.35$ & $4.66 \pm 0.49$ \\
                 & & & 310.5 & $2.23 \pm 0.23$ & $3.26 \pm 0.34$ & $4.61 \pm 0.48$ \\
                 & & & 308.6 & $2.21 \pm 0.23$ & $3.28 \pm 0.34$ & $4.63 \pm 0.49$ \\
                 & & & 308.2 & $2.21 \pm 0.23$ & $3.28 \pm 0.34$ & $4.64 \pm 0.49$ \\
                 & & & 308.4 & $2.21 \pm 0.23$ & $3.28 \pm 0.34$ & $4.64 \pm 0.49$ \\
                 & & & 306.9 & $2.20 \pm 0.23$ & $3.30 \pm 0.35$ & $4.66 \pm 0.49$ \\
-                \hline
+                \cmidrule{4-7}
                 & & & $308.3 \pm 1.4$ & $2.21 \pm 0.23$ & $3.28 \pm 0.34$ & $4.64 \pm 0.49$ \\
-                \hline \hline
+                \midrule \midrule
                 \multirow{6}{*}{119.6} & \multirow{6}{*}{1.121} & \multirow{6}{*}{5.603} & 255.4 & $2.24 \pm 0.23$ & $3.24 \pm 0.34$ & $4.58 \pm 0.48$ \\
                 & & & 253.7 & $2.23 \pm 0.23$ & $3.26 \pm 0.34$ & $4.61 \pm 0.48$ \\
                 & & & 254.4 & $2.23 \pm 0.23$ & $3.25 \pm 0.34$ & $4.60 \pm 0.48$ \\
                 & & & 251.6 & $2.21 \pm 0.23$ & $3.29 \pm 0.34$ & $4.65 \pm 0.49$ \\
                 & & & 252.8 & $2.22 \pm 0.23$ & $3.27 \pm 0.34$ & $4.63 \pm 0.48$ \\
                 & & & 253.5 & $2.22 \pm 0.23$ & $3.26 \pm 0.34$ & $4.61 \pm 0.48$ \\
-                \hline
+                \cmidrule{4-7}
                 & & & $253.6 \pm 1.4$ & $2.22 \pm 0.23$ & $3.26 \pm 0.34$ & $4.61 \pm 0.48$ \\
-                \hline \hline
-                \multirow{6}{*}{179.3} & \multirow{6}{*}{0.916} & \multirow{6}{*}{6.860} & 216.3 & $2.32 \pm 0.24$ & $3.12 \pm 0.33$ & $4.42 \pm 0.46$ \\
+                \midrule \midrule
+                \multirow{7}{*}{179.3} & \multirow{7}{*}{0.916} & \multirow{7}{*}{6.860} & 216.3 & $2.32 \pm 0.24$ & $3.12 \pm 0.33$ & $4.42 \pm 0.46$ \\
                 & & & 219.4 & $2.36 \pm 0.25$ & $3.08 \pm 0.32$ & $4.35 \pm 0.46$ \\
                 & & & 218.9 & $2.35 \pm 0.25$ & $3.09 \pm 0.32$ & $4.36 \pm 0.46$ \\
                 & & & 215.2 & $2.31 \pm 0.24$ & $3.14 \pm 0.33$ & $4.44 \pm 0.46$ \\
                 & & & 217.8 & $2.34 \pm 0.25$ & $3.10 \pm 0.32$ & $4.39 \pm 0.46$ \\
                 & & & 217.1 & $2.33 \pm 0.24$ & $3.11 \pm 0.33$ & $4.40 \pm 0.46$ \\
-                \hline
+                \cmidrule{4-7}
                 & & & $217.4 \pm 1.6$ & $2.34 \pm 0.25$ & $3.11 \pm 0.33$ & $4.39 \pm 0.46$ \\
-                \hline \hline
-                \multirow{6}{*}{198.7} & \multirow{6}{*}{0.870} & \multirow{6}{*}{7.222} & 211.6 & $2.39 \pm 0.25$ & $3.03 \pm 0.32$ & $4.29 \pm 0.45$ \\
+                \midrule \midrule
+                \multirow{7}{*}{198.7} & \multirow{7}{*}{0.870} & \multirow{7}{*}{7.222} & 211.6 & $2.39 \pm 0.25$ & $3.03 \pm 0.32$ & $4.29 \pm 0.45$ \\
                 & & & 213.6 & $2.42 \pm 0.25$ & $3.00 \pm 0.31$ & $4.25 \pm 0.44$ \\
                 & & & 211.7 & $2.39 \pm 0.25$ & $3.03 \pm 0.32$ & $4.29 \pm 0.45$ \\
                 & & & 210.0 & $2.37 \pm 0.25$ & $3.06 \pm 0.32$ & $4.32 \pm 0.45$ \\
                 & & & 210.9 & $2.38 \pm 0.25$ & $3.04 \pm 0.32$ & $4.30 \pm 0.45$ \\
                 & & & 209.0 & $2.36 \pm 0.25$ & $3.07 \pm 0.32$ & $4.34 \pm 0.45$ \\
-                \hline
+                \midrule
                 & & & $211.1 \pm 1.7$ & $2.39 \pm 0.25$ & $3.04 \pm 0.32$ & $4.30 \pm 0.45$ \\
-                \hline
+                \bottomrule
             \end{tabular}
     \label{tab:leed_lattice_parameters}
 \end{table}
@@ -443,7 +442,8 @@ The growth of \ac{PTCDA} on the Au(111) surface was investigated using \ac{LEED}
     \label{fig:ptcda}
 \end{figure}
 
-The \ac{LEED} pattern of \ac{PTCDA} on the Au(111) surface shows a superstructure, which is consistent with the expected structure of \ac{PTCDA} on the Au(111) surface. The superstructure is characterized by a complex unit cell with different rotational domains, which is indicated by the additional diffraction spots in the \ac{LEED} pattern. The superstructure matrix $\mathbf{M}$ for the \ac{PTCDA} superstructure is given by:
+The \ac{LEED} pattern of \ac{PTCDA} on the Au(111) surface shows a superstructure, which is consistent with the expected structure of \ac{PTCDA} on the Au(111) surface. The superstructure is characterized by an unit cell with different rotational domains, which is indicated by the additional diffraction spots in the \ac{LEED} pattern. The superstructure matrix $\mathbf{M}$ for the \ac{PTCDA} superstructure is given by:
+
 \begin{equation*}
     \mathbf{M} =
 \begin{pmatrix}
@@ -452,7 +452,8 @@ The \ac{LEED} pattern of \ac{PTCDA} on the Au(111) surface shows a superstructur
 \end{pmatrix}.
 \end{equation*}
 
-The superstructure matrix $\mathbf{M}$ is used to describe the positions of the additional diffraction spots in the \ac{LEED} pattern. In comparison with the literature\autocite{Kilian2002,Kilian2006}, the superstructure matrix $\mathbf{M}$ is consistent with the expected structure of \ac{PTCDA} on the Au(111) surface.
+The superstructure matrix $\mathbf{M}$ from the literature\autocite{Kilian2002,Kilian2006} is used to describe the positions of the additional diffraction spots in the \ac{LEED} pattern. The superstructure matrix shows good agreement with the positions of the additional diffraction spots in the \ac{LEED} pattern of \ac{PTCDA} on the Au(111) surface. The superstructure matrix corresponds to an equilibrium structure of \ac{PTCDA} on the Au(111) surface, which is supported by the fact that the structure of the \ac{LEED} pattern was taken on a sample that was prepared two days before the picture was taken.
+
 
 \clearpage
 \section{Discussion}
@@ -467,8 +468,6 @@ The values are in agreement with the literature\autocite{Dutta1963}, which repor
 
 \subsection{Reconstruction of the Au(111) surface}
 
-The reconstruction of the Au(111) surface is described by a (22x$\sqrt{3}$) superstructure. The reconstruction is characterized by the formation of additional diffraction spots in the \ac{LEED} pattern, which are not observed for unreconstructed surfaces. 
-
 The \ac{LEED} patterns of the Au(111) surface at different electron energies show the characteristic diffraction pattern of the (22x$\sqrt{3}$) reconstruction. Furthermore, the additional diffraction spots could be fitted with a superstructure matrix $\mathbf{M}$, which describes the positions of the additional diffraction spots in the \ac{LEED} pattern.
 
 The superstructure matrix $\mathbf{M}$ for the (22x$\sqrt{3}$) reconstruction is given by:
@@ -480,12 +479,12 @@ The superstructure matrix $\mathbf{M}$ for the (22x$\sqrt{3}$) reconstruction is
 \end{pmatrix}.
 \end{equation*}
 
-As conclusion, the Au(111) surface reconstruction is observed in the \ac{LEED} experiments in this report and could be characterized by a (22x$\sqrt{3}$) superstructure. 
+To conclude, the Au(111) surface reconstruction is observed in the \ac{LEED} experiments in this report and could be characterized by a (22x$\sqrt{3}$) superstructure. Nevertheless, \ac{LEED} measurements at not suitable for the determination of the unit cell for the reconstruction, as the diffraction spots are too close to each other and the resolution of the \ac{LEED} system is not sufficient to resolve the individual diffraction spots.
 
 
 \subsection{PTCDA on the Au(111) surface}
 
-The \ac{LEED} pattern of \ac{PTCDA} on the Au(111) surface shows a superstructure, which is consistent with the expected structure of \ac{PTCDA} on the Au(111) surface.\autocite{Kilian2002,Kilian2006} The superstructure is characterized by a complex unit cell with different rotational domains, which is indicated by the additional diffraction spots in the \ac{LEED} pattern. 
+The \ac{LEED} pattern of \ac{PTCDA} on the Au(111) surface shows a superstructure, which is consistent with the expected structure of \ac{PTCDA} on the Au(111) surface.\autocite{Kilian2002,Kilian2006} The superstructure is characterized by an unit cell with different rotational domains, which is indicated by the additional diffraction spots in the \ac{LEED} pattern. For a good description of all positions of the additional diffraction spots in the \ac{LEED} pattern, all rotational domains of the given superstructure matrix $\mathbf{M}$ must be used.
 
 The superstructure matrix $\mathbf{M}$ for the \ac{PTCDA} superstructure is given by:
 \begin{equation*}
@@ -497,6 +496,9 @@ The superstructure matrix $\mathbf{M}$ for the \ac{PTCDA} superstructure is give
 \end{equation*}
 
 This superstructure matrix $\mathbf{M}$ corresponds to an possible superstructure matrix of the structure $\mathbf{B_1}$, which corresponds to an equilibrium structure of \ac{PTCDA} on the Au(111) surface.\autocite{Kilian2002,Kilian2006} The fact that it is an equilibrium structure is supported by the fact that the structure of the \ac{LEED} pattern was taken on a sample that was prepared two days before the picture was taken.
+
+Furthermore, the superstructure matrix $\mathbf{M}$ indicates that the interactions between the \ac{PTCDA} molecules on the Au(111) surface are not strong enough to form a commensurate structure. This also shows that the interactions between different \ac{PTCDA} molecules are relevant for the formation of the superstructure on the Au(111) surface.
+
 
 \clearpage
 \section{Appendix}

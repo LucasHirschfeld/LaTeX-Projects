@@ -11,7 +11,7 @@
 \usepackage[onehalfspacing]{setspace}  
 \usepackage[headsepline]{scrlayer-scrpage}
 \usepackage{csquotes}
-\usepackage{nowidow}
+\usepackage[all]{nowidow}
 
 % Kopfzeilen-Konfiguration
 \clearpairofpagestyles  % Alle bestehenden Kopf- und Fußzeilen löschen
@@ -56,7 +56,8 @@
     isbn=false,
     url=false,
     eprint=false,
-    doi=false
+    doi=false,
+    date=year
 ]{biblatex}
 
 % Bibliographie-Dateien
@@ -91,7 +92,7 @@
 % ---- Metadaten ----
 \def\Autor{Lucas Hirschfeld, s6luhirs@uni-bonn.de}
 \def\Titel{QC II - Part 2: Application}
-\def\Date{First Submission: \today}
+\def\Date{First Submission: July 21, 2025 \\ Second Submission: July 28, 2025}
 \def\PiC{Supervisor: Benedikt Bädorf, Robin Dahl}
 \def\Abstract{} 
 
@@ -116,7 +117,9 @@
 
 \subsection{Multireference Methods}
 
-The dissociation of \ac{HF} was studied using different methods for H-F bond distances between 0.5~\AA{} and 4.0~\AA{} using the def2-TVZP basis set. The calculation was done using ORCA 5.0.4 \autocite{Neese2012,Neese2022}. The following methods were used: \ac{RHF}, \ac{UHF}, \ac{MP2}, \ac{CCSD(T)}, \acs{CASSCF}(2,2) and \acs{CASSCF}(6,6). \Acf{CASSCF}\autocite{Roos1980} is a multireference method that was used in two different ways, first with two active electrons in two active orbitals (CASSCF(2,2)) and second with six active electrons in six active orbitals (CASSCF(6,6)).
+Electron correlation is a fundamental concept in quantum chemistry, referring to the interactions between electrons that are not captured by mean-field approaches such as \ac{HF}. Accurate treatment of electron correlation is essential for reliable predictions of molecular properties, especially when the electronic structure cannot be adequately described by a single determinant. This distinction gives rise to single-reference and multireference methods.
+
+The dissociation of H-F was studied using different methods for H-F bond distances between 0.5~\AA{} and 4.0~\AA{} using the def2-TVZP\autocite{Hellweg2014} basis set. The calculation was done using ORCA 5.0.4 \autocite{Neese2012,Neese2022}. The following methods were used: \ac{RHF}, \ac{UHF}, \ac{MP2}\autocite{Moller1934}, \ac{CCSD(T)}, \acs{CASSCF}(2,2) and \acs{CASSCF}(6,6). \Acf{CASSCF}\autocite{Roos1980} is a multireference method that was used in two different ways, first with two active electrons in two active orbitals (CASSCF(2,2)) and second with six active electrons in six active orbitals (CASSCF(6,6)).
 
 \autoref{fig:multireference} shows the dissociation curves for the different methods. The calculated energies are calculated relative to the dissociation limit of the H-F molecule. The dissociation limit is defined as the energy of a hydrogen atom and a fluorine atom at infinite distance.
 
@@ -127,11 +130,15 @@ The dissociation of \ac{HF} was studied using different methods for H-F bond dis
     \label{fig:multireference}
 \end{figure}
 
-The \ac{RHF} and \ac{UHF} methods show a dissociation curve that is not suitable for describing the dissociation of H-F. The \ac{RHF} curve approaches relative energies larger than 0~kcal/mol, which is not physically meaningful. This is due to the problem that each pair of electrons needs to occupy the same spatial wave function. As a result of this, the ionic dissociation of H-F is not described correctly.
+The \ac{RHF} and \ac{UHF} methods show a dissociation curve that is not suitable for describing the dissociation of H-F. The \ac{RHF} curve approaches relative energies larger than 0~kcal/mol at the dissociation limit, which is not physically meaningful. This is due to the problem that static electron correlation is not accounted for, as each pair of electrons needs to occupy the same spatial wave function. As a result of this, the ionic dissociation of H-F is not described correctly, as the open-shell character can not be represented.
 
-This problem is absent in the \ac{UHF} curve, showing the correct dissociation limit. To obtain the best possible of the \ac{UHF} curve, the calculation was done from 0.5~\AA{} to 4.0~\AA{} and from 4.0~\AA{} to 0.5~\AA{} and the lowest energy was taken for each distance. Nevertheless, the \ac{UHF} curve shows a unphysical behaviour at 1.6~\AA{}, where the relative energy has a maximum. This is due to the fact that the \ac{UHF} method does not account for the electron correlation in the dissociation limit, which is caused by the way of how the calculation is done. Furthermore, both \ac{RHF} and \ac{UHF} methods calculate a binding energy at the equilibrium that is too low due to missing electron correlation.
+The problem of static electron correlation is absent in the \ac{UHF} curve, showing the correct dissociation limit, because \ac{UHF} partially captures static electron correlation by spin symmetry breaking.
 
-Post \ac{HF} methods like \ac{MP2} and \ac{CCSD(T)} show a much better description of the dissociation of H-F, because they take the correlation effects into account. The \ac{MP2} energy correction is calculated as follows:
+In order to obtain the most optimal result for the \ac{UHF} curve, the calculation was executed within the range of 0.5~\AA{} to 4.0~\AA{} and from 4.0~\AA{} to 0.5~\AA{}. The lowest energy value was obtained for each distance, as instructed by the tutor to minimize the software error. The software ORCA uses the previous solution for the calculations, which results in a difference in the symmetry breaking depending on the direction of the calculation.
+
+Nevertheless, the \ac{UHF} curve shows a unphysical behaviour at 1.6~\AA{}, where the relative energy has a maximum. This is due to the fact that the \ac{UHF} method allows for spin symmetry breaking, which can lead to unphysical results. Furthermore, both \ac{RHF} and \ac{UHF} methods calculate a binding energy at the equilibrium that is too high due to missing dynamic electron correlation.
+
+Post \ac{HF} methods like \ac{MP2} and \ac{CCSD(T)} show a much better description of the dissociation of H-F, because they take the dynamic correlation effects into account. The \ac{MP2} energy correction is calculated as follows:
 
 
 \begin{equation}
@@ -139,23 +146,29 @@ Post \ac{HF} methods like \ac{MP2} and \ac{CCSD(T)} show a much better descripti
         \label{eq:mp2_energy}
 \end{equation}
 
-where $\langle ij || ab \rangle$ are the two-electron integrals and $\epsilon_i$, $\epsilon_j$, $\epsilon_a$ and $\epsilon_b$ are the orbital energies of the occupied and virtual orbitals. However, this results that the \ac{MP2} energy correction approaches $- \infty$ for large distances, which is not physically meaningful. This occurs because the energy difference between occupied and virtual orbitals decreases for large distances, which leads to denominator approaching zero. A similar argument can be made to a lesser extent regarding \ac{CCSD(T)}, given the perturbative calculation of triple excitations.
+where $\langle ij || ab \rangle$ are the two-electron integrals and $\epsilon_i$, $\epsilon_j$, $\epsilon_a$ and $\epsilon_b$ are the orbital energies of the occupied and virtual orbitals.
 
-Both \ac{CASSCF} methods describe the dissociation of H-F correctly, but have an unphysical behavior at 2.5~\AA{} for the \ac{CASSCF}(2,2) and at 2.0~\AA{} for the \ac{CASSCF}(6,6) method, which is not as drastic as in the \ac{UHF} curve. The \ac{CASSCF}(2,2) method computed to high energies at the equilibrium distance, but the description of the dissociation limit is accurate with only 2 active electrons in 2 active orbitals.
+However, this results that the \ac{MP2} energy correction approaches $- \infty$ for large distances, which is not physically meaningful. This occurs because the energy difference between occupied and virtual orbitals decreases for large distances, which leads to denominator approaching zero. A similar argument can be made to a lesser extent regarding \ac{CCSD(T)}, given the perturbative calculation of triple excitations. Nevertheless, both \ac{MP2} and \ac{CCSD(T)} show a correct and similar behavior at the equilibrium, as both account for dynamic electron correlation.
+
+In total, single reference methods like \ac{RHF}, \ac{UHF}, \ac{MP2} and \ac{CCSD(T)} do not take static electron correlation into account, which is necessary for a correct description of the dissociation of H-F. Furthermore, some single reference methods like \ac{MP2} and \ac{CCSD(T)} include dynamic electron correlation, which leads to a better description of the dissociation of H-F.
+
+Both \ac{CASSCF} methods describe the dissociation of H-F correctly as they are multi-reference methods, which explicitly handle static electron correlation via the active space. Nevertheless, the \ac{CASSCF} methods have an unphysical behavior at 2.5~\AA{} for the \ac{CASSCF}(2,2) and at 2.0~\AA{} for the \ac{CASSCF}(6,6) method, which is not as drastic as in the \ac{UHF} curve. The \ac{CASSCF}(2,2) method computed to high energies at the equilibrium distance, but the description of the dissociation limit is accurate with only 2 active electrons in 2 active orbitals. The \ac{CASSCF}(6,6) method shows a better description of the equilibrium distance and the dissociation limit. 
+
+In summary, the \ac{CASSCF} method includes static electron correlation, which allows the description of the H-F dissociation, but does not describe dynamic electron correlation well. Further improvements can be made by using post-\ac{CASSCF} methods like the \ac{CASPT2} method, which is a post-\ac{CASSCF} method that accounts for dynamic electron correlation.
 
 \clearpage
 \subsection{Carbenes}
 
-The calculation of the singlet-triplet energy splitting $\Delta E_{S-T}$ for two carbenes, namely Methylene and \textit{p}-Benzyne, and the Methylene H-C-H angles $\alpha_\mathrm{HCH}$ were computed using the def2-TZVP basis set and the following methods: \ac{HF}, \ac{MP2}, \ac{CCSD(T)}, \ac{B3LYP}, \ac{TPSS} and \ac{PW6B95}. The geometries for the \ac{CCSD(T)} calculations were optimized using the \ac{MP2} method in a def2-TZVP basis set. The structure of the carbenes is shown in \autoref{fig:carbenes}.
+The calculation of the singlet-triplet energy splitting $\Delta E_{S-T}$ for two carbenes, namely Methylene and \textit{p}-Benzyne, and the Methylene H-C-H angles $\alpha_\mathrm{HCH}$ were computed using the def2-TZVP\autocite{Hellweg2014} basis set and the following methods: \ac{HF}, \ac{MP2}\autocite{Moller1934}, \ac{CCSD(T)}, \ac{B3LYP}\autocite{Becke1993,Lee1988}, \ac{TPSS}\autocite{Tao2003} and \ac{PW6B95}\autocite{Zhao2006}. The geometries for the \ac{CCSD(T)} calculations were optimized using the \ac{MP2} method in a def2-TZVP basis set. The structures of the carbenes are shown in \autoref{fig:carbenes}.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.4\textwidth]{images/carbenes.png}
-    \caption{Structure of Methylene (left) and \textit{p}-benzyne (right). Figure taken from \cite{AKGrimme2025}.}
+    \caption{Structures of Methylene (left) and \textit{p}-benzyne (right). Figure taken from reference \cite{AKGrimme2025}.}
     \label{fig:carbenes}
 \end{figure}
 
-The calcuulations for the geometry optimizations and the single point calculations were done using TURBOMOLE \autocite{Turbomole2007}. The results for the singlet-triplet energy splitting $\Delta E_{S-T}$ and the Methylene H-C-H angles $\alpha_\mathrm{HCH}$ are shown in \autoref{tab:carbenes}.
+The calculations for the geometry optimizations and the single point calculations were done using TURBOMOLE V7.7.1\autocite{Turbomole2007}. The results for the singlet-triplet energy splitting $\Delta E_{S-T}$ and the Methylene H-C-H angles $\alpha_\mathrm{HCH}$ are shown in \autoref{tab:carbenes}.
 
 \begin{table}[htbp]
     \centering
@@ -178,19 +191,20 @@ The calcuulations for the geometry optimizations and the single point calculatio
         \end{tabular}
 \end{table}
 
-The only method that describes the singlet-triplet energy splitting $\Delta E_{S-T}$ with almost chemical accuracy (1~kcal/mol) for both systems is \ac{CCSD(T)}. The other methods show larger deviations from the experimental values. \ac{HF} overestimamtes the singlet-triplet energy splitting for both systems and results in too large $\Delta E_{S-T}$ values. This is due to the fact that a triplet needs to be calculated using \ac{UHF}, which contains spin contamination and therefore lowers the energy.
+The only method that describes the singlet-triplet energy splitting $\Delta E_{S-T}$ with almost chemical accuracy (1~kcal/mol) for both systems is \ac{CCSD(T)}. The other methods show larger deviations from the experimental values. \Ac{HF} overestimates the singlet-triplet energy splitting for both systems and results in too large $\Delta E_{S-T}$ values. This is due to the fact that a triplet needs to be calculated using \ac{UHF}, which contains spin contamination and therefore lowers the energy.
 
-\ac{MP2} underestimates the $\Delta E_{S-T}$ for p-benzyne and overestimates the $\Delta E_{S-T}$ for methylene. Nevertheless, \ac{MP2} is the only method that describes the singlet-triplet energy splitting for p-benzyne with a negative value, which is in line with the experimental value and also gives a reasonable value for the $\Delta E_{S-T}$ of methylene. The large error in the p-benzyne $\Delta E_{S-T}$ is due to the small HOMO-LUMO gap, which leads to a large energy correction of the correlation energy (see \autoref{eq:mp2_energy}).
+\Ac{MP2} underestimates the $\Delta E_{S-T}$ for p-benzyne and overestimates the $\Delta E_{S-T}$ for methylene. Nevertheless, \ac{MP2} is the only method beside \ac{CCSD(T)} that describes the singlet-triplet energy splitting for p-benzyne with a negative value, which is in line with the experimental value and also gives a reasonable value for the $\Delta E_{S-T}$ of methylene. The large error in the p-benzyne $\Delta E_{S-T}$ is due to the small HOMO-LUMO gap, which leads to a large energy correction of the correlation energy (see \autoref{eq:mp2_energy}). Furthermore, \ac{MP2} does not account for the static correlation effects present in p-benzyne.
 
-All the other methods show positive values for the singlet-triplet energy splitting $\Delta E_{S-T}$ of p-benzyne, which are not physically meaningful.
+The different \ac{DFT} functionals follow the trend of the \textit{Jacob's Ladder} for the singlet-triplet energy splitting $\Delta E_{S-T}$ of methylene. The meta-GGA \ac{TPSS} is worse than the hybrid functionals \ac{B3LYP} and \ac{PW6B95}. The singlet-triplet energy splitting $\Delta E_{S-T}$ of p-benzyne does not exactly follow this trend, because the meta-GGA \ac{TPSS} shows a smaller deviation of the $\Delta E_{S-T}$ than the two hybrid functionals. Nevertheless, it is noteable that the two hybrid functionals give similar singlet-triplet energy splitting $\Delta E_{S-T}$ for both systems.
 
 The H-C-H angles for methylene are also affected by the choice of method, but all methods predict a similar results for the angle and are in good agreement with the experimental values. It is to be noted that the angles for \ac{HF} again have the largest deviations from the experimental values.
 
+The \ac{CCSD(T)} method is recommended for very precise calculations of the singlet-triplet energy splitting $\Delta E_{S-T}$ and the H-C-H angles for both carbenes. For the singlet-triplet energy splitting $\Delta E_{S-T}$ of p-benzyne, no other method is recommended. The calculation of the singlet-triplet energy splitting $\Delta E_{S-T}$ of methylene can be done with \ac{CCSD(T)} for the most accurate results or with \ac{B3LYP} or \ac{PW6B95} for still reasonable results with reduced scaling. The H-C-H angles can be calculated with all methods beside \ac{HF} or \ac{MP2}, as they all give similar results.
 
 \clearpage
 \section{Basis Set Convergence}
 
-The convergence of different basis sets is an important aspect of quantum chemical calculations. In this report, the basis set convergence of the formic acid dimer is investigated. The structure of the formic acid monomer and dimer are shown in \autoref{fig:monomer_dimer} and were optimized using the \ac{TPSS}-D3/def2-TZVP level of theory.
+The convergence of different basis sets is an important aspect of quantum chemical calculations. In this report, the basis set convergence of the formic acid dimer is investigated. The structure of the formic acid monomer and dimer are shown in \autoref{fig:monomer_dimer} and were optimized using the \ac{TPSS}\autocite{Tao2003}-D3\autocite{Grimme2010}/def2-TZVP\autocite{Hellweg2014} level of theory.
 
 \begin{figure}[htbp]
     \centering
@@ -214,35 +228,52 @@ The dimerization energy of formic acid is defined as the difference between the 
 
 where $E_\mathrm{dimer}$ is the energy of the dimer and $E_\mathrm{monomer}$ is the energy of the monomer.
 
-The dimerization energy was computed for three different methods, namely \ac{HF}, \ac{MP2} and \ac{TPSS}-D3, using the cc-pVXZ\autocite{Dunning1989} and aug-cc-PVXZ basis sets, where X = D, T, Q. The dimerization energy was computed for each method and basis set combination with optimized geometries at the \ac{TPSS}-D3/def2-TZVP level. The results are shown in \autoref{fig:basis_convergence}.
+The dimerization energy was computed for three different methods, namely \ac{HF}, \ac{MP2}\autocite{Moller1934} and \ac{TPSS}-D3, using the cc-pVXZ\autocite{Dunning1989} and aug-cc-pVXZ basis sets, where X = D, T, Q. The dimerization energy was computed for each method and basis set combination with optimized geometries at the \ac{TPSS}-D3/def2-TZVP level. The results are shown in \autoref{fig:basis_convergence}.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.95\textwidth]{images/ex2.pdf}
-    \caption{Convergence behaviour for the formic acid dimer aug-cc-PVXZ and cc-pVXZ basis sets at \ac{HF}, \ac{MP2}, and \ac{TPSS}-D3 levels of theory.}
+    \caption{Convergence behaviour for the formic acid dimer aug-cc-pVXZ and cc-pVXZ basis sets at \ac{HF}, \ac{MP2}, and \ac{TPSS}-D3 levels of theory.}
     \label{fig:basis_convergence}
 \end{figure}
 
-The dimerization energy for formic acid shows a strong dependence on the choice of basis set and method. The aug-cc-PVXZ basis sets generally yield more negative dimerization energies compared to the cc-pVXZ basis sets. For a cardinal number of four, all methods and basis sets are at similar dimerization energies.
+The dimerization energy for formic acid shows a strong dependence on the choice of basis set and method. The aug-cc-pVXZ basis sets generally yield more negative dimerization energies compared to the cc-pVXZ basis sets. For a cardinal number of four, all methods and basis sets are at different dimerization energies, indicating that the choice of method has a significant impact on the computed dimerization energy.
 
-The calculations generally contains two different errors, the \ac{BSIE} and the \ac{BSSE}. The \ac{BSIE} is the error that arises from the finite size of the basis set and is the difference between the \ac{CBS} limit and the energy computed with a finite basis set. This error is always present and not only limited to dimerization energies. The \ac{BSIE} can be reduced by using larger basis sets, but it is not possible to eliminate it completely. It is important to note that the convergence with respect to the basis set depends on the used method. For instance, SCF energies converge exponentially with respect to the basis set size, while correlation energies converge with inverse cubic behavior.
+The calculations generally contain two different errors, the \ac{BSIE} and the \ac{BSSE}. The \ac{BSIE} is the error that arises from the finite size of the basis set and is the difference between the \ac{CBS} limit and the energy computed with a finite basis set. This error is always present and not only limited to dimerization energies. The \ac{BSIE} can be reduced by using larger basis sets and can also be fully eliminated by using non-Gaussian basis sets, which were not used in this report.
+
+It is important to note that the convergence with respect to the basis set depends on the method used. For instance, SCF energies converge exponentially with respect to the basis set size, while correlation energies converge with inverse cubic behavior. \Ac{HF} energies converge faster than \ac{MP2} energies, which confirms the convergence behaviour, since \ac{HF} is a SCF method and \ac{MP2} is a post-SCF method that accounts for electron correlation. \Ac{TPSS}-D3 is a  meta-GGA functional, which also accounts for correlation, and the dimerization energy shows a convergence behaviour that lies between \ac{HF} and \ac{MP2}.
+
+\Ac{HF} and \ac{TPSS} with the cc-pVXZ basis sets show very similar convergence behaviour. Both exhibit almost no change in the dimerization energy, indicating that the dimerization energy is already converged with respect to the basis set size. The \ac{MP2} method with the cc-pVXZ basis sets shows a larger change in the dimerization energy, indicating that the dimerization energy is not yet converged with respect to the basis set size.
+
+The aug-cc-PVXZ basis sets show a different convergence behaviour for the three methods. The \ac{HF} and \ac{TPSS} methods again show a similar convergence behaviour. Both methods exhibit a more pronounced change in the dimerization energy with increasing basis set size, indicating that the dimerization energy is not yet fully converged. The \ac{MP2} method with the aug-cc-PVXZ basis sets shows a constant change in the dimerization energy, indicating that the dimerization energy is not yet converged with respect to the basis set size.
 
 The \ac{BSSE} is the error that arises from the interaction of the basis functions of the two monomers in the dimer. This error is present in energies for the dimer or other intramolecular interactions. The \ac{BSSE} is generally larger for an increased basis sets, because the interaction between the basis functions of the two monomers is stronger. The \ac{BSSE} compensates the \ac{BSIE} and leads to a artificially lowered dimerization energy. The \ac{BSSE} is only not present if one uses a minimal basis set, which is not the case here.
 
 Both errors can be reduced by using larger basis sets, but it is not possible to eliminate them completely, only by theoretically using a \ac{CBS}. Another possibility is the use of Boys-Bernardi counterpoise correction, which is a method to correct for the \ac{BSSE}.
 
+The total energies of the formic acid monomer and dimer for the different methods and basis sets are shown in \autoref{fig:basis_convergence_total_energies}. The total energies were computed using the same method and basis set as the dimerization energies.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/ex2-1.pdf}
+    \caption{Total energies for the formic acid monomer and the formic acid dimer with aug-cc-PVXZ and cc-pVXZ basis sets at \ac{HF}, \ac{MP2}, and \ac{TPSS}-D3 levels of theory.}
+    \label{fig:basis_convergence_total_energies}
+\end{figure}
+
+The total energies in \autoref{fig:basis_convergence_total_energies} show a similar convergence behaviour for the monomer and dimer for each method and basis set type. Again, \ac{HF} and \ac{TPSS}-D3 show similar convergence behaviour, while \ac{MP2} shows a different convergence behaviour, as already explained above.
+
 \clearpage
 \section{Thermochemistry}
 
-The reaction enthalpies $\Delta H$ for the Haber-Bosch process and the steam-reforming of methane were computed using the different level of theory.
+In quantum chemistry, thermodynamics provides an understanding of energy changes at the molecular level in industrial processes such as the Haber–Bosch synthesis of ammonia and the steam reforming of methane. This enables accurate predictions of reaction enthalpies, equilibria, and efficiencies from first principles. For this reason, the reaction enthalpies $\Delta H$ for the Haber-Bosch process and the steam-reforming of methane were computed using the different level of theory.
 
 \begin{center}
-    \chemfig{N_2 + 3H_2 \rightarrow 2NH_3}
+    \text{Haber-Bosch process: }\chemfig{N_2 + 3H_2 \rightarrow 2NH_3}
 
-    \chemfig{CH_4 + H_2O \rightarrow CO + 3H_2}
+    \text{Steam-reforming of methane: }\chemfig{CH_4 + H_2O \rightarrow CO + 3H_2}
 \end{center}
 
-The geometries were optimized on the \ac{TPSS}-D3/def2-TZVP level of theory. In addition, the geometries of the molecules involved in the Haber Bosch process were also optimized at the \ac{MP2}/def2-TZVP level of theory and the  RMSD to the \ac{TPSS}-D3/def2-TZVP geometries was computed. The results are shown in \autoref{tab:rmsd}. The RMSD values are in the order of $10^{-3}$~\AA{} and show that the geometries are very similar. This indicates that the choice of the method does not have a large impact on the geometry and the selection of the method can mainly be based on the computational cost.
+The geometries were optimized on the \ac{TPSS}\autocite{Tao2003}-D3\autocite{Grimme2010}/def2-TZVP\autocite{Hellweg2014} level of theory using TURBOMOLE V7.7.1\autocite{Turbomole2007}. In addition, the geometries of the molecules involved in the Haber Bosch process were also optimized at the \ac{MP2}\autocite{Moller1934}/def2-TZVP level of theory and the RMSD to the \ac{TPSS}-D3/def2-TZVP geometries was computed using the software RMSD\autocite{Coutsias2004}. The results are shown in \autoref{tab:rmsd}. The RMSD values are in the order of $10^{-3}$~\AA{} and show that the geometries are very similar. This indicates that the choice of the method does not have a large impact on the geometry and the selection of the method can mainly be based on the computational cost. Furthermore, this shows that the \ac{TPSS}-D3/def2-TZVP level of theory is good enough for the thermal corrections, as the change between \ac{TPSS}-D3 and \ac{MP2} is negligible.
 
 \begin{table}[htbp]
     \centering
@@ -250,39 +281,41 @@ The geometries were optimized on the \ac{TPSS}-D3/def2-TZVP level of theory. In 
     \label{tab:rmsd}
         \begin{tabular}{@{}lc@{}} \toprule
         & RMSD (\AA) \\ \midrule
-        N$_2$ & $5.67 \cdot 10^{-3}$ \\
-        H$_2$ & $3.06 \cdot 10^{-3}$ \\
-        NH$_3$ & $6.58 \cdot 10^{-3}$ \\ \bottomrule
+        N$_2$ & $5.7 \cdot 10^{-3}$ \\
+        H$_2$ & $3.1 \cdot 10^{-3}$ \\
+        NH$_3$ & $6.6 \cdot 10^{-3}$ \\ \bottomrule
         \end{tabular}
 \end{table}
 
-The reaction enthalpies of both reactions were computed using the \ac{MP2} and \ac{B3LYP}-D3 methods in a def2-TZVP basis set and The \ac{B2PLYP}-D3 and \ac{CCSD(T)} in a def2-QZVP basis set. First, the single point energies were computed using the optimized geometries from the \ac{TPSS}-D3/def2-TZVP level of theory. The single point energies were then corrected for the thermal corrections at 298 K. The results are shown in \autoref{tab:thermochemistry}.
+The reaction enthalpies of both reactions were computed using the \ac{MP2} and \ac{B3LYP}\autocite{Becke1993,Lee1988}-D3\autocite{Grimme2010} methods in a def2-TZVP basis set and the \ac{B2PLYP}\autocite{Grimme2006}-D3\autocite{Grimme2010} and \ac{CCSD(T)} in a def2-QZVP\autocite{Hellweg2014} basis set. First, the single point energies were computed using the optimized geometries from the \ac{TPSS}-D3/def2-TZVP level of theory. The single point energies were then corrected for the thermal corrections at 298 K, which were calculated at the \ac{TPSS}-D3/def2-TZVP level of theory. The results are shown in \autoref{tab:thermochemistry}.
 
 \begin{table}[htbp]
     \centering
     \caption{Reaction enthalpies in kcal/mol for the Haber-Bosch process and steam-reforming of methane. Geometries were optimized on the \ac{TPSS}-D3/def2-TZVP level. \ac{B2PLYP}-D3 and \ac{CCSD(T)} energies were computed in a def2-QZVP basis, def2-TZVP was used for all other methods.}
     \label{tab:thermochemistry}
-        \begin{tabular}{@{}lcccc@{}} \toprule
-        Reaction & \ac{MP2} & \ac{B3LYP}-D3 & \ac{B2PLYP}-D3 & \ac{CCSD(T)} \\ \midrule
-        \multirow{2}{*}{Haber-Bosch} & -12.1 & -21.0 & -23.9 & -24.5 \\ \cmidrule{2-5}
-        & \multicolumn{4}{c}{Exp\autocite{AKGrimme2025}: -22.5} \\ \midrule
-        \multirow{2}{*}{Steam-Reforming} & 43.1 & 47.3 & 50.4 & 51.4 \\ \cmidrule{2-5}  
-        & \multicolumn{4}{c}{Exp\autocite{AKGrimme2025}: 49.3} \\ \bottomrule
+        \begin{tabular}{@{}lccccccc@{}} \toprule
+        Reaction & \ac{TPSS}-D3 & \ac{MP2} & \ac{B3LYP}-D3 & \ac{B2PLYP}-D3 & \ac{CCSD(T)} \\ \midrule
+        \multirow{2}{*}{Haber-Bosch} & -12.7 & -12.1 & -21.0 & -23.9 & -24.5 \\ \cmidrule{2-6}
+        & \multicolumn{5}{c}{Exp\autocite{AKGrimme2025}: -22.5} \\ \midrule
+        \multirow{2}{*}{Steam-Reforming} & -42.4 & 43.1 & 47.3 & 50.4 & 51.4 \\ \cmidrule{2-6}  
+        & \multicolumn{5}{c}{Exp\autocite{AKGrimme2025}: 49.3} \\ \bottomrule
         \end{tabular}
 \end{table}
 
 In total, all methods yield a reasonable reaction enthalpies. The \ac{MP2} and the \ac{B3LYP}-D3 methods underestimate the reaction enthalpies for both reactions, while the \ac{B2PLYP}-D3 and \ac{CCSD(T)} methods overestimate them.
 
-The \ac{B2PLYP}-D3 method yields the best agreement with the experimental values for both reactions, while the \ac{CCSD(T)} method is slightly worse. The \ac{MP2} and \ac{B3LYP}-D3 methods are not as accurate.
+The \ac{B2PLYP}-D3 method yields the best agreement with the experimental values for both reactions, while the \ac{CCSD(T)} method is slightly worse. The \ac{MP2}, \ac{TPSS}-D3 and \ac{B3LYP}-D3 methods are not as accurate.
 
-The general trend of the \textit{Jacob's Ladder} is observed for this example, where the more accurate methods yield better results. The hybrid functional \ac{B3LYP}-D3 is more accurate than the pure \ac{MP2} method, but not as accurate as the double hybrid \ac{B2PLYP}-D3.
+The general trend of the \textit{Jacob's Ladder} is observed for this example, where the more accurate methods yield better results. The hybrid functional \ac{B3LYP}-D3 is more accurate than the \ac{MP2} method and the meta-GGA \ac{TPSS}-D3, but not as accurate as the double hybrid \ac{B2PLYP}-D3. Furthermore, the \ac{CCSD(T)} and the \ac{B2PLYP}-D3 methods used a larger basis set than the \ac{MP2} and \ac{B3LYP}-D3 methods, which also leads to more accurate results. It is expected that the \ac{CCSD(T)} method yields more accurate results than the \ac{B2PLYP}-D3 method, but this is not the case here. This could be due to the fact that the \ac{CCSD(T)} method converges more slowly with respect to the basis set than the \ac{B2PLYP}-D3 method, which is why the \ac{B2PLYP}-D3 method yields better results in this case. The \ac{CCSD(T)} method is also more expensive than the \ac{B2PLYP}-D3 method.
 
 \clearpage
 \section{Kinetics}
 
-The kinetic isotope effect for the reaction of methane with a hydroxyl radical was studied using the \ac{B3LYP}-D3\autocite{Becke1993}/def2-TZVP level of theory for a transition state search, which was performed using TURBOMOLE\autocite{Turbomole2007}.
+The kinetic isotope effect describes the change in reaction rate that occurs when an atom in the reactants is replaced by one of its isotopes, most commonly hydrogen by deuterium. This phenomenon provides valuable insight into reaction mechanisms, as differences in mass affect vibrational frequencies and \ac{ZPVE}, thereby influencing activation barriers and rate constants.
 
-The transition state research was done for \ce{CH4-OH} and \ce{CD4-OH}, where the latter is the deuteriated isotopologue of methane. The geometry of the transition state is shown in \autoref{fig:kinetics}.
+The kinetic isotope effect for the reaction of methane with a hydroxyl radical was studied using the \ac{B3LYP}\autocite{Becke1993,Lee1988}-D3\autocite{Grimme2010}/def2-TZVP\autocite{Hellweg2014} level of theory for a transition state search, which was performed using TURBOMOLE V7.7.1\autocite{Turbomole2007}.
+
+The transition state research was done for \ce{CH4 - OH} and \ce{CD4 - OH}, where the latter contains the deuteriated isotopologue of methane. The geometry of the transition state is shown in \autoref{fig:kinetics}.
 
 \begin{figure}[htbp]
     \centering
@@ -293,7 +326,7 @@ The transition state research was done for \ce{CH4-OH} and \ce{CD4-OH}, where th
 
 The electronic energies, \ac{ZPVE} and thermal corrections at 298 K for the reactants and transition states are shown in \autoref{tab:kinetics}. The electronic energies were computed using the \ac{B3LYP}-D3/def2-TZVP level of theory. The \ac{ZPVE} and thermal corrections were computed using the same level of theory.
 
-\begin{table}[htbp]
+\begin{table}[hbtp]
     \centering
     \caption{Electronic energies (E$_h$) along with zero-point vibrational energies and thermal corrections (298 K) for reactants and transition states.}
     \label{tab:kinetics}
@@ -308,16 +341,22 @@ The electronic energies, \ac{ZPVE} and thermal corrections at 298 K for the reac
 The energies in \autoref{tab:kinetics} amount to
 
 \begin{center}
-    $\Delta H_H^{\ddagger} = 0.325$ kcal/mol
+    $\Delta H_H^{\ddagger} = -0.67$ kcal/mol
 
-    $\Delta H_D^{\ddagger} = 1.434$ kcal/mol
+    $\Delta H_D^{\ddagger} = +0.44$ kcal/mol
 \end{center}
 
 with the subscripts H and D referring to regular and deuteriated methane respectively.
 
-As seen in \autoref{tab:kinetics}, the transition state for the reaction of methane with a hydroxy radical is lower in energy than the transition state for the reaction of deuteriated methane with a hydroxy radical due to the fact that the \ac{ZPVE} and the thermal corrections are lower for the regular methane. The electronic energies are the same for both transition states, because they do not depend on the mass of the nuclei in the molecules, as long as relativistic effects are not neglected.
+As seen in \autoref{tab:kinetics}, the transition state for the reaction of methane with a hydroxy radical is lower in energy than the transition state for the reaction of deuteriated methane with a hydroxy radical due to the fact that the \ac{ZPVE} and the thermal corrections are lower for the regular methane. The electronic energies are the same for both transition states, because they do not depend on the mass of the nuclei in the molecules.
 
-The thermal corrections in contrast depend on the mass of the nuclei, which is why the thermal correction for the transition state of deuteriated methane is larger than for regular methane. The vibrational frequencies, which are taken in account for the thermal correction, can be computed from the harmonic oscillator model:
+The thermal corrections in contrast depend on the mass of the nuclei, which is why the thermal correction for the transition state of deuteriated methane is larger than for regular methane. The \ac{ZPVE} is given by:
+
+\begin{equation}
+    \mathrm{ZPVE} = \frac{1}{2} h \nu,
+\end{equation}
+
+where $h$ is the Planck constant and $\nu$ are the vibrational frequencies of the system.  The vibrational frequencies, which are taken in account for the thermal correction, can be computed from the harmonic oscillator model:
 
 \begin{equation}
     \nu = \frac{1}{2\pi} \sqrt{\frac{k}{\mu}},
@@ -334,10 +373,14 @@ The reduced mass for the transition state of regular methane is smaller than for
 The relative reaction rates can then be determined from $\Delta H^{\ddagger}$ according to:
 
 \begin{equation}
-    \frac{k_H}{k_D} = \exp\left(\frac{\Delta H_D^{\ddagger} - \Delta H_H^{\ddagger}}{RT}\right) = 6.502
+    \frac{k_\mathrm{H}}{k_\mathrm{D}} = \exp\left(\frac{\Delta H_D^{\ddagger} - \Delta H_H^{\ddagger}}{RT}\right) = 6.52
 \end{equation}
 
 This indicates that the reaction of methane with a hydroxy radical is about 6.5 times faster than the reaction of deuteriated methane with a hydroxy radical.
+
+Wiberg et al.\autocite{Wiberg1955} investigated the deuterium isotope effect for different reactions, not including the reaction of methane with a hydroxy radical, and found relative reaction rates $ \frac{k_\mathrm{H}}{k_\mathrm{D}}$ between 1.2 and 10. As the exact same reaction was not investigated, it is not possible to compare the results directly. However, the result of 6.5 is in line with the results of Wiberg et al.\autocite{Wiberg1955}, which indicates that the method used in this report is suitable for the calculation of kinetic isotope effects.
+
+For example, the reaction of hydrogen with oxygen is about 1.56 times faster than the reaction of deuterium with oxygen at a temperature of 560~\si{\degreeCelsius} and the reaction of methyl radicals with hydrogen is about 5.5 times faster at 130~\si{\degreeCelsius} than the reaction of methyl radicals with deuterium.\autocite{Wiberg1955} This indicates that the kinetic isotope effect is significant for reactions involving hydrogen and deuterium, which is also observed in this report, and furthermore, the results suggest that the method used here is reliable for predicting kinetic isotope effects.
 
 \clearpage
 \section{Solvation}
@@ -353,7 +396,7 @@ The solvation effects on the reaction can be significant, as the presence of a s
     \label{fig:sn2_transition_state}
 \end{figure}
 
-The potential energy curves for the S$_\mathrm{N}$2 reaction of chloromethane with fluoride in vacuum and in the presence of methanol as an implicit solvent were computed using the \ac{PW6B95}\autocite{Zhao2006}-D3\autocite{Grimme2011}/def2-TZVP\autocite{Weigend2023} level of theory. Both calculations were performed using TURBOMOLE\autocite{Turbomole2007}. The potential energy curves were computed for C-F distances between 2.25~\AA{} and 8.0~\AA{} in vacuum and in the presence of methanol as an implicit solvent using the COSMO model.
+The potential energy curves for the S$_\mathrm{N}$2 reaction of chloromethane with fluoride in vacuum and in the presence of methanol as an implicit solvent were computed using the \ac{PW6B95}\autocite{Zhao2006}-D3\autocite{Grimme2010}/def2-TZVP\autocite{Hellweg2014} level of theory. Both calculations were performed using TURBOMOLE V7.7.1\autocite{Turbomole2007}. The potential energy curves were computed for C-F distances between 2.25~\AA{} and 8.0~\AA{} in vacuum and in the presence of methanol as an implicit solvent using the COSMO\autocite{Klamt1993} model.
 The potential energy curves are shown in \autoref{fig:sn2_solvation}.
 
 \begin{figure}[htbp]
@@ -363,20 +406,21 @@ The potential energy curves are shown in \autoref{fig:sn2_solvation}.
     \label{fig:sn2_solvation}
 \end{figure}
 
-The potential energy curves in \autoref{fig:sn2_solvation} show that the reaction proceeds via a transition state, where the C-F distance is about 3.75~\AA{} in vacuum and about 4.00~\AA{} in the presence of methanol as an implicit solvent. The transition state is lower in energy in the presence of methanol, which indicates that the solvation stabilizes the transition state and lowers the activation barrier for the reaction. The different C-F distances in vacuum and in the presence of methanol are due to the charge shielding effect of the solvent.
+The potential energy curves in \autoref{fig:sn2_solvation} show that the reaction proceeds via a transition state, where the C-F distance is about 3.75~\AA{} in vacuum and about 4.00~\AA{} in the presence of methanol as an implicit solvent. The transition state is higher in energy in the presence of methanol. The different C-F distances in vacuum and in the presence of methanol are due to the charge screening effect of the solvent.
 
 The reaction barriers for the reactions can be estimated based on the potential curves:
 
 \begin{center}
     $\Delta E_\mathrm{solv}^{\ddagger} = 9.3$ kcal/mol
 
-    $\Delta E_\mathrm{gas}^{\ddagger} = 0.5$ kcal/mol
+    $\Delta E_\mathrm{gas}^{\ddagger} = 0.5$ kcal/mol~.
 \end{center}
 
-The reaction barrier in the presence of methanol as an implicit solvent is significantly higher than in vacuum, which indicates that the solvation effects are significant and can alter the reaction pathway.
+The reaction barrier from large C-F distances to smaller C-F distances in the presence of methanol as an implicit solvent is significantly higher than in vacuum, which indicates that the solvation effects are significant. In the other direction, the reaction barriers are very similar. This indicates that the COSMO model has the largest effect for large C-F distances, where the solvation effects for the fluoride ion are more pronounced.
 
-Nevertheless, the reaction barrier can not be compared this easy, because the fluoride ion in vacuum is not solvated, while the fluoride ion in the presence of methanol is solvated. The solvation of the fluoride ion in methanol leads to a stabilization of the fluoride ion, because the negative charge of the fluoride ion is shielded by the positive solvate molecules. In contrast, the fluoride ion in vacuum is not shielded and therefore unstable. As the distance between fluoride ion and the chloromethane molecule in vacuum decreases, the fluoride ion is stabilized by the chloromethane molecule. In the presence of methanol, the fluoride ion is already stabilized by the solvent and the energy curve converges towards the dissociation limit at a larger distance. This leads to a larger reaction barrier in the presence of methanol.
+Nevertheless, the reaction barrier can not be compared this easy, because the fluoride ion in vacuum does not experience the electrostatic interactions with the solvent. The COSMO model stabilizes the incoming fluoride ion, the leaving chloride ion and the transition state, which leads to a higher reaction barrier in the presence of methanol. The reaction barrier in vacuum is lower, because the fluoride ion is not stabilized by the charge screening and can therefore react more easily with chloromethane. When the fluoride ion approaches chloromethane, it experiences a stronger electrostatic interaction with the chloromethane, which leads to a stabilization of the fluoride ion. The negative charged fluoride ions are stabilized by the positive partial charges of the chloromethane molecule.
 
+The behavior for large C-F distances in vacuum are observed due to the fact that the fluoride ion is a highly charged small anion without any stabilization of the charge. The charge screening of the solvent for the reaction in methanol stabilizes the fluoride ion and shows a more realistic behavior for large C-F distances.
 
 \clearpage
 \section{Activation Energies}
@@ -390,7 +434,7 @@ The reaction path for the Claisen rearrangement of allyl-vinyl ether and the Die
     \label{fig:activation_energy_1}
 \end{figure}
 
-The activation energy for the Claisen rearrangement of allyl-vinyl ether is about 21.6~kcal/mol. The reaction proceeds via a cyclic transition state, where the C-O bond is broken and the C-C bond is formed. The transition state is lower in energy than the reactant and product, which indicates that the reaction is exothermic.
+The activation energy for the Claisen rearrangement of allyl-vinyl ether is about 21.6~kcal/mol. The reaction proceeds via a cyclic transition state, where the C-O bond is broken and the C-C bond is formed. The energy of the reactants is lower in energy than the products, which indicates that the reaction is exothermic.
 
 This activation energy is smaller than the experimental value of 30.6~kcal/mol \autocite{Schuler1950}, which suggests that the computational method used may underestimate the activation energy. This indicates that the transition state is not described accurately enough, which can be due to the limitations of the GFN2-xTB method. The GFN2-xTB method is a semi-empirical method that is not as accurate as ab initio methods, but it is computationally efficient and can be used for larger systems.
 
@@ -401,24 +445,27 @@ This activation energy is smaller than the experimental value of 30.6~kcal/mol \
     \label{fig:activation_energy_2}
 \end{figure}
 
-The activation energy for the Diels-Alder reaction of cyclopentadiene to \textit{endo}-dicyclopentadiene is about 9.9~kcal/mol. The reaction proceeds via a transition state, where the C-C bond is formed and the C=C bond is broken. The transition state is lower in energy than the reactant and product, which indicates that the reaction is exothermic.
+The activation energy for the Diels-Alder reaction of cyclopentadiene to \textit{endo}-dicyclopentadiene is about 9.9~kcal/mol. The reaction proceeds via a transition state, where the C-C bond is formed and the C=C bond is broken.
 
-The reliability of the activation energy for both reactions can be improved by using a higher level \ac{DFT} method. This would provide a more accurate description of the reaction path, but would also increase the computational cost. Furhter improvements can be made by optimizing the input geometries of the reactants and products, as this has a large impact on the used method.
+The GFN2-xTB method is a semi-empirical method that is not as accurate as ab initio methods, but it is computationally efficient and can be used for larger systems. It does not account for anharmonic vibrational corrections, which can lead to an underestimation of the activation energy. In addition, the GFN2-xTB method does not account for high-level electron correlation. It is parameterized against higher-level data, but it is still a approximation.
 
+The reliability of the activation energy for both reactions can be improved by using a higher level \ac{DFT} method. This would provide a more accurate description of the reaction path, but would also increase the computational cost. Further improvements can be made by more advanced optimizing of the input geometries of the reactants and products, as this has a large impact on the used method.
+
+The implementation of these two improvements was precluded by the tutor's instructions.
 
 \clearpage
 \section{Noncovalent Interactions}
 
-Noncovalent interactions are important in many chemical and biological processes. In this section, the interaction of methane with argon and krypton is investigated. The geometry of the methane-argon complex is shown in \autoref{fig:ng_ch4}.
+Noncovalent interactions are important in many chemical and biological processes. In this section, the interaction of methane with argon and krypton is investigated. One representative geometry of the methane-argon complex is shown in \autoref{fig:ng_ch4}.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.7\textwidth]{images/ng_ch4.png}
-    \caption{Geometry of the CH$_4 \cdot \cdot$ Ar compex. Figure taken from \cite{AKGrimme2025}.}
+    \caption{Geometry of the CH$_4 \cdots$ Ar complex. Figure taken from reference \cite{AKGrimme2025}.}
     \label{fig:ng_ch4}
 \end{figure}
 
-The potential energy curves for the interaction of methane with argon and krypton were computed using the following methods: \ac{BLYP}, \ac{BLYP}-D3 and \ac{MP2}. All calculations were performed using the def2-QZVP basis set. The potential energy curves were computed for CH$_4$-Ar/Kr distances between 4.5~\AA{} and 15.0~\AA{}, were normalized to the dissociation limit and are shown in \autoref{fig:noncovalent_interactions}.
+The potential energy curves for the interaction of methane with argon and krypton were computed using the following methods: \ac{BLYP}\autocite{Becke1988,Lee1988}, \ac{BLYP}\autocite{Becke1988,Lee1988}-D3\autocite{Grimme2010} and \ac{MP2}\autocite{Moller1934}. All calculations were performed using the def2-QZVP\autocite{Hellweg2014} basis set. The potential energy curves were computed for CH$_4$-Ar/Kr distances between 4.5~\AA{} and 15.0~\AA{}, were normalized to the dissociation limit and are shown in \autoref{fig:noncovalent_interactions}.
 
 \begin{figure}[htbp]
     \centering
@@ -433,9 +480,15 @@ The potential energy curves for the interaction of methane with argon and krypto
     \label{fig:noncovalent_interactions}
 \end{figure}
 
-The potential energy curves in \autoref{fig:noncovalent_interactions} show the importance of dispersion interactions for noncovalent interactions. The \ac{BLYP} method does not account for dispersion interactions and therefore yields a repulsive potential energy curve, which is not physically meaningful.
+The potential energy curves in \autoref{fig:noncovalent_interactions} show the importance of dispersion interactions for noncovalent interactions. The \ac{BLYP} method does not account for dispersion interactions and therefore yields a repulsive potential energy curve, which is not physically meaningful. The dispersion interactions are not included in the \ac{BLYP} method, because it is a GGA functional that only accounts for the exchange and correlation energy of the electrons, which only uses the local electron density and its gradient. In contrast, dispersion interactions are non-local and require a different treatment. The \ac{BLYP} method is therefore not suitable for describing noncovalent interactions.
 
-The \ac{BLYP}-D3 method accounts for dispersion interactions and yields a potential energy curve that is in good agreement with the \ac{MP2} method. The \ac{MP2} method yields a potential energy curve that is slightly lower in energy than the \ac{BLYP}-D3 method. Both methods yield a minimum at around 6.0~\AA{} for the CH$_4$-Ar complex and for the CH$_4$-Kr complex.
+The \ac{BLYP}-D3(BJ) method is the same GGA functional that does not account for dispersion interactions, but the D3 dispersion correction is added to the energy expression. This yields a potential energy curve that is in good agreement with the \ac{MP2} method.
+
+The \ac{MP2} method yields a potential energy curve that is slightly lower in energy than the \ac{BLYP}-D3(BJ) method. The \ac{MP2} method also includes dispersion interactions explicitly. Both methods yield a minimum at around 6.0~\AA{} for the CH$_4$-Ar complex and for the CH$_4$-Kr complex.
+
+Argon and krypton are noble gases and do not form covalent bonds with methane. Argon is the lighter of the two and therefore has a smaller van der Waals radius, which leads to a lower polarization and a weaker dispersion interaction. This results in a slightly lower binding energy for the CH$_4$-Ar complex compared to the CH$_4$-Kr complex.
+
+The only methods that should really be considered for these types of interactions are those that include dispersion corrections, such as \ac{MP2} and \ac{BLYP}-D3(BJ), where the latter inherently includes dispersion interactions and has a slightly higher accuracy. On the other hand, the \ac{MP2} method is more computationally expensive than the \ac{BLYP}-D3(BJ) method and therefore not always feasible for larger systems.
 
 \clearpage
 \section{Spectroscopy}
@@ -443,7 +496,7 @@ The \ac{BLYP}-D3 method accounts for dispersion interactions and yields a potent
 
 \subsection{IR-Spectroscopy}
 
-The IR-spectra of 1,4-Benzoquinone were computed on the \ac{TPSS}-D3/def2-SVP and \ac{HF}-D3/def2-SVP levels of theory using TURBOMOLE\autocite{Turbomole2007}. The structure of 1,4-Benzoquinone is shown in \autoref{fig:p_benzoquinone}.
+The IR-spectra of 1,4-Benzoquinone were computed on the \ac{TPSS}\autocite{Tao2003}-D3\autocite{Grimme2010}/def2-SVP\autocite{Hellweg2014} and \ac{HF}-D3\autocite{Grimme2010}/def2-SVP levels of theory using TURBOMOLE V7.7.1\autocite{Turbomole2007}. The structure of 1,4-Benzoquinone is shown in \autoref{fig:p_benzoquinone}.
 
 \begin{figure}[htbp]
     \centering
@@ -452,7 +505,7 @@ The IR-spectra of 1,4-Benzoquinone were computed on the \ac{TPSS}-D3/def2-SVP an
     \label{fig:p_benzoquinone}
 \end{figure}
 
-First, the geometry of 1,4-Benzoquinone was optimized with TURBOMOLE\autocite{Turbomole2007} using the respective level of theory. Then, the vibrational modes were computed using the subprogram aoforce. The resulting IR-modes are shown in \autoref{tab:ir_spectrum}. Furthermore, the scaling factor for the IR-modes was calculated using the experimental values from \cite{AKGrimme2025} and the theoretical values from the \ac{TPSS}-D3/def2-SVP and \ac{HF}-D3/def2-SVP levels of theory. The scaling factor was calculated using the following equation:
+First, the geometry of 1,4-Benzoquinone was optimized with TURBOMOLE V7.7.1\autocite{Turbomole2007} using the respective level of theory. Then, the vibrational modes were computed using the subprogram aoforce. The resulting IR-modes are shown in \autoref{tab:ir_spectrum}. Furthermore, the scaling factor for the IR-modes was calculated using the experimental values from \cite{AKGrimme2025} and the theoretical values from the \ac{TPSS}-D3/def2-SVP and \ac{HF}-D3/def2-SVP levels of theory. The scaling factor was calculated using the following equation:
 \begin{equation}
     f_{\text{scal}} = \frac{\tilde{\nu}_{\text{exp}}}{\tilde{\nu}_{\text{theo}}},
     \label{eq:scaling_factor}
@@ -477,14 +530,14 @@ where $\tilde{\nu}_{\text{exp}}$ is the experimental wavenumber and $\tilde{\nu}
     \label{tab:ir_spectrum}
 \end{table}
 
-The averaged scaling factors for the IR-modes were found to be 0.88 for \ac{HF}-D3 and 0.99 for \ac{TPSS}-D3. This indicates that the \ac{TPSS}-D3 method yields more accurate results than the \ac{HF}-D3 method for the IR-spectra of 1,4-Benzoquinone. Both methods overestimate the wavenumbers, but the \ac{TPSS}-D3 method is almost identical to the experimental values. This large overstimation for \ac{HF}-D3 is due to the underestimation of the bond strength. \ac{TPSS}-D3 is a meta-GGA that includes the kinetic energy of the electrons inside the exchange correlation potential, which leads to a better description of the bond strength and therefore a better description of the IR-spectra.
+The averaged scaling factors for the IR-modes were found to be 0.88 for \ac{HF}-D3 and 0.99 for \ac{TPSS}-D3. This indicates that the \ac{TPSS}-D3 method yields more unscaled results than the \ac{HF}-D3 method for the IR-spectra of 1,4-Benzoquinone. Both methods overestimate the wavenumbers, but the \ac{TPSS}-D3 method is almost identical to the experimental values. This large overstimation for \ac{HF}-D3 is due to the underestimation of the bond length. \ac{TPSS}-D3 is a meta-GGA that includes the kinetic energy of the electrons inside the exchange correlation potential, which leads to a better description of the bond strength and therefore a better description of the IR-spectra. Nevertheless, the electron correlation included in \ac{TPSS}-D3 is the main reason for the better agreement with the experimental values.
 
-The calculations could be improved by using a larger basis set or using a higher level of theory. However, this would increase the computational cost significantly.
+The calculations could be improved by using a larger basis set or using a higher level of theory. However, this would increase the computational cost significantly. It is therefore important to find a balance between accuracy and computational efficiency when performing such calculations, which leads to the choice of the \ac{TPSS}-D3/def2-SVP level of theory for this task, as it is accurate enough.
 
 \clearpage
 \subsection{The Color of Indigo}
 
-The color of indigo is a well-known example of a molecule that exhibits strong color due to its electronic structure. The structure of indigo was optimized using the \ac{TPSS}-D3/def2-SVP level of theory and is shown in \autoref{fig:indigo}.
+The color of indigo is a well-known example of a molecule that exhibits strong color due to its electronic structure. The structure of indigo was optimized using the \ac{TPSS}\autocite{Tao2003}-D3\autocite{Grimme2010}/def2-SVP\autocite{Hellweg2014} level of theory and is shown in \autoref{fig:indigo}.
 
 \begin{figure}[htbp]
     \centering
@@ -493,17 +546,17 @@ The color of indigo is a well-known example of a molecule that exhibits strong c
     \label{fig:indigo}
 \end{figure}
 
- The optical transitions of indigo were calculated using time-dependent \ac{HF} method and time-dependent \ac{DFT} methods with the \ac{PBE} and \ac{PBE0} functionals in a def2-SVP basis set. The results are shown in \autoref{tab:indigo_optical_transitions}.
+ The optical transitions of indigo were calculated using time-dependent \ac{HF} method and time-dependent \ac{DFT} methods with the \ac{PBE}\autocite{Perdew1996} and \ac{PBE0}\autocite{Adamo1999} functionals in a def2-SVP basis set. The results are shown in \autoref{tab:indigo_optical_transitions}.
 
 
 \begin{table}[htbp]
     \centering
-    \caption{Optical transition the indigo molecule calculated using different methods in the def2-SVP basis set.}
+    \caption{Optical transition of the indigo molecule calculated using different methods in the def2-SVP basis set.}
         \begin{tabular}{@{}lcccc@{}} \toprule
-        & HF & PBE & PBE0 & Exp \\
+        & HF & PBE & PBE0 & Exp\autocite{AKGrimme2025} \\
         \midrule
         $\lambda$ (nm) & 373.9 & 618.7 & 533.5 & 610 \\
-        Colour & yellow/orange & blue & violet & blue \\
+        Colour & yellow/orange & blue & violet/red & blue (solution/solid) \\
         \bottomrule
         \end{tabular}
         \label{tab:indigo_optical_transitions}
@@ -511,30 +564,29 @@ The color of indigo is a well-known example of a molecule that exhibits strong c
 
 The \ac{PBE} and \ac{PBE0} methods yield a blue and violet color, respectively, while \ac{HF} yields a yellow/orange color. The experimental value is in good agreement with the \ac{PBE} method.
 
-The \ac{PBE0} method is not in agreement with the experimental value. The \ac{HF} method also does not match the experimental valuea and has even more significant deviations than \ac{PBE0}. This indicates that the \ac{HF} method is not suitable for the calculation of optical transitions of indigo at all.
+The \ac{PBE0} method is not in agreement with the experimental value. The \ac{HF} method also does not match the experimental values and has even more significant deviations than \ac{PBE0}. This indicates that the \ac{HF} method is not suitable for the calculation of optical transitions of indigo at all, because it does not account for electron correlation, which is important for the description of the electronic structure of indigo and the excitation energies. 
 
-The \ac{PBE} method is a GGA functional that should perform worse than the hybrid \ac{PBE0} functional according to \textit{Jacob's Ladder}, but in this case it yields a better result.
+The \ac{PBE} method is a GGA functional that should perform worse than the hybrid \ac{PBE0} functional according to \textit{Jacob's Ladder}, but in this case it yields a better result. This is due to the fact that the \ac{PBE0} functional is based on the \ac{PBE} functional, but includes 25~\% of the exact \ac{HF} exchange energy. This leads to a larger deviation from the experimental value.
 
 \clearpage
 \subsection{NMR Parameters}
 
 \subsubsection*{$^\mathbf{13}$C NMR Shifts for Organic Compounds}
 
-The $^{13}$C NMR shifts for several organic compounds were calculated using the PBEh-3c method for geometry optimization and the PBE/pcSeg-2 method for the calculation of the shielding tensors in ORCA 5.0.4\autocite{Neese2012,Neese2022}. The Lewis structures of the compounds are shown in \autoref{fig:nmr_compounds}. 
+The $^{13}$C NMR shifts for several organic compounds were calculated using the \ac{PBEh-3c}\autocite{Grimme2015} method for geometry optimization and the \ac{PBE}\autocite{Perdew1996}/pcSeg-2\autocite{Jensen2001} method for the calculation of the shielding tensors in ORCA 5.0.4\autocite{Neese2012,Neese2022}. \Ac{PBEh-3c} is based on \ac{PBE} and includes exact \ac{HF} exchange as it is a hybrid (h). It further includes three corrections (3c): dispersion correction, \ac{BSSE} correction and geometrical counterpoise correction. The Lewis structures of the compounds are shown in \autoref{fig:nmr_compounds}.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.9\textwidth]{images/nmr_compounds.png}
-    \caption{Lewis structures of four organic compounds A – D with their experimentally obtained chemical shift as well as four aromatic compounds Ar-1 - Ar-4. Figure taken from \cite{AKGrimme2025}.}
+    \caption{Lewis structures of four organic compounds A – D with their experimentally obtained chemical shift as well as four aromatic compounds Ar-1 - Ar-4. Figure taken from reference \cite{AKGrimme2025}.}
     \label{fig:nmr_compounds}
 \end{figure}
 
 The chemical shifts were calculated relative to \ac{TMS} and the results are shown in \autoref{tab:nmr_shifts}.
 
-
 \begin{table}[htbp]
     \centering
-    \caption{$^{13}$C chemical shifts ($\delta$) for several organic molecules in reference to \ac{TMS}. Geometries were optimized using PBEh-3c and shielding tensors were calculated at the PBE/pcSeg-2 level of theory.}
+    \caption{$^{13}$C chemical shifts ($\delta$) for several organic molecules in reference to \ac{TMS}. Geometries were optimized using \ac{PBEh-3c} and shielding tensors were calculated at the \ac{PBE}/pcSeg-2 level of theory.}
     \label{tab:nmr_shifts}
     \begin{tabular}{@{}lcccc@{}} \toprule
         Compound & & \multicolumn{3}{c}{$\delta$ (ppm)} \\
@@ -561,14 +613,14 @@ The \ac{MD} and \ac{MAD} values for the chemical shifts of the organic compounds
     \text{MAD} = \frac{1}{N} \sum_{i=1}^{N} |\delta_{\text{calc}} - \delta_{\text{exp}}| = 4.33 \text{ ppm}.
 \end{equation*}
 
-The similarity of the \ac{MD} and \ac{MAD} values indicates that the method has a general difference in the chemical shifts, but the deviations are not too large. The largest deviation is for compound A, which has a difference of 7.1~ppm, and the smallest deviation is for compound D, which has a difference of -1.3~ppm.
+The similarity of the \ac{MD} and \ac{MAD} values indicates that the method has a systematic error in the chemical shifts, but the deviations are not too large. The largest deviation is for compound A, which has a difference of 7.1~ppm, and the smallest deviation is for compound D, which has a difference of -1.3~ppm.
 
-The aromatic compounds Ar-1 - Ar-4 were also calculated using the PBE/pcSeg-2 method and their chemical shifts are shown in relation to their $\pi$-electron density $\rho_\pi$ in \autoref{fig:shifts_electron_density}. The chemical shifts were calculated relative to \ac{TMS}.
+The aromatic compounds Ar-1 - Ar-4 were also calculated using the \ac{PBE}/pcSeg-2 method and their chemical shifts are shown in relation to their $\pi$-electron density $\rho_\pi$ in \autoref{fig:shifts_electron_density}. The chemical shifts were calculated relative to \ac{TMS}.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{images/ex8.pdf}
-    \caption{Chemical shifts $\delta$ of the aromatic compounds Ar-1 - Ar-4 plotted against the $\pi$-Electron Density $\rho_\pi$. The linear fit is shown as red line and the calculated values as blue circles. The chemical shifts were calculated using the PBE/pcSseg-2 level of theory.}
+    \caption{Chemical shifts $\delta$ of the aromatic compounds Ar-1 - Ar-4 plotted against the $\pi$-electron density $\rho_\pi$. The linear fit is shown as red line and the calculated values as blue circles. The chemical shifts were calculated using the \ac{PBE}/pcSeg-2 level of theory.}
     \label{fig:shifts_electron_density}
 \end{figure}
 
@@ -577,11 +629,11 @@ The chemical shifts of the aromatic compounds show a linear correlation with the
 \clearpage
 \subsubsection*{$^\mathbf{13}$C and $^\mathbf{17}$O NMR Shifts for Acetone}
 
-The effect of the solvent on the NMR shifts of acetone was investigated by calculating the chemical shieldings for acetone in gas-phase and in a solvent (water) using the PBE/pcSeg-2 method. The geometries were optimized in gas-phase and in a solvent using the COSMO model. The chemical shieldings were calculated relative to \ac{TMS} for $^{13}$C and relative to water for $^{17}$O. The results are shown in \autoref{tab:nmr_acetone}.
+The effect of the solvent on the NMR shifts of acetone was investigated by calculating the chemical shieldings for acetone in gas-phase and in a solvent (water) using the \ac{PBE}\autocite{Perdew1996}/pcSeg-\autocite{Jensen2001} method. The geometries were optimized in gas-phase and in a solvent using the COSMO \autocite{Klamt1993} model. The chemical shieldings were calculated relative to \ac{TMS} for $^{13}$C and relative to water for $^{17}$O. The results are shown in \autoref{tab:nmr_acetone}.
 
 \begin{table}[htbp]
     \centering
-    \caption{Chemical shieldings for Acetone relative to \ac{TMS} ($^{13}$C) and water ($^{17}$O) ($\delta$ in ppm). Reference data was optimized and calculated in gas-phase.}
+    \caption{Chemical shieldings for acetone relative to \ac{TMS} ($^{13}$C) and water ($^{17}$O) ($\delta$ in ppm). Reference was optimized and calculated in gas-phase.}
         \begin{tabular}{@{}lcccccc@{}} \toprule
         \multirow{2}{*}{Geometry} & \multirow{2}{*}{NMR} & \multicolumn{2}{c}{$^{13}$C} & \multicolumn{2}{c}{$^{17}$O} \\
         \cmidrule{3-4} \cmidrule{5-6}
@@ -590,19 +642,24 @@ The effect of the solvent on the NMR shifts of acetone was investigated by calcu
         Gas & Gas & 214.01 & 0.00 & 672.54 & 0.00 \\
         Gas & Solvent & 224.08 & 10.07 & 616.54 & -60.62 \\
         Solvent & Gas & 216.17 & 2.16 & 682.76 & 10.23 \\
-        Solvent & Solvent & 226.25 & 12.24 & 618.83 & -53.71 \\ \bottomrule
+        Solvent & Solvent & 226.25 & 12.24 & 618.83 & -53.71 \\ \midrule
+        \multicolumn{2}{l}{Experiment\autocite{AKGrimme2025}} & & - & 18.9 & - & -75.5 \\
+        \bottomrule
         \end{tabular}
     \label{tab:nmr_acetone}
 \end{table}
 
-The difference in the chemical shifts for the different combinations of gas-phase and solvent-phase geometries is 2.16~ppm for $^{13}$C and 10.23~ppm for $^{17}$O. In comparison to the absolute value, this gives differences of 1.0-1.5\%. This indicates that the solvent has a significant effect on the chemical shifts of acetone, especially for $^{17}$O. The chemical shift for $^{13}$C is less affected by the solvent, but still shows a significant difference.
+The difference of the chemical shifts with the geometry in gas-phase and the NMR in solvent to the geometry in solvent and the NMR in gas-phase is shown in \autoref{tab:nmr_acetone}. The differences are 7.19 ppm for $^{13}$C and 70.85 ppm for $^{17}$O. This shows the importance of the choice of media for the NMR calculation.
 
-The differences in the chemical shifts for gas-phase and solvent-phase for the NMR calculations are larger than that for the geometry. This indicates that the choice for the NMR calculation is more significant than the choice for the geometry.
+In total, the chemical shifts for $^{13}$C and $^{17}$O in acetone calculated with the gas geometry and the solvent NMR matches the experimental value for $^{17}$O, while the solvent geometry and solvent NMR matches the experimental value for $^{13}$C.
+
+The differences in the chemical shifts for gas-phase and solvent-phase for the NMR calculations are larger than that for the geometry. This indicates that the choice for the NMR calculation is more significant than the choice for the geometry, but it is still important to consider the solvent effects for both.
+
 
 \clearpage
 \subsubsection*{$^\mathbf{1}$H NMR Shifts for Metacyclophane}
 
-The $^{1}$H NMR shifts for in- and out-Metacyclophane were calculated using the PBEh-3c method for geometry optimization and the PBE/pcSeg-2 method for the calculation of the shielding tensors in ORCA 5.0.4\autocite{Neese2012,Neese2022}. The optimized geometries on the PBE-3c method of in- and out-Metacyclophane are shown in \autoref{fig:nmr_metacyclophane}.
+The $^{1}$H NMR shifts for in- and out-Metacyclophane were calculated using the \ac{PBEh-3c}\autocite{Grimme2015} method for geometry optimization and the \ac{PBE}\autocite{Perdew1996}/pcSeg-2\autocite{Jensen2001} method for the calculation of the shielding tensors in ORCA 5.0.4\autocite{Neese2012,Neese2022}. The optimized geometries on the \ac{PBEh-3c} method of in- and out-Metacyclophane are shown in \autoref{fig:nmr_metacyclophane}.
 
 \begin{figure}[htbp]
     \centering
@@ -613,7 +670,7 @@ The $^{1}$H NMR shifts for in- and out-Metacyclophane were calculated using the 
     \subfloat[out-Metacyclophane]{
         \includegraphics[width=0.48\textwidth]{images/Metacyclophane-Out.png}
     }
-    \caption{Optimized geometry of in- and out- [$3^{4,10}$][7]Metacyclophane on the PBE-3c level.}
+    \caption{Optimized geometry of in- and out- [$3^{4,10}$][7]Metacyclophane on the PBEh-3c level.}
     \label{fig:nmr_metacyclophane}
 \end{figure}
 
@@ -625,7 +682,7 @@ The chemical shifts were calculated relative to \ac{TMS} and are:
     out: $\delta(^{1}\mathrm{H})$: 2.07.
 \end{center}
 
-The chemical shifts for in-Metacyclophane are negative, which indicates that the protons are shielded by the aromatic ring current. The chemical shifts for out-Metacyclophane are positive, which indicates that the protons are deshielded by the aromatic ring current.
+The chemical shift for in-Metacyclophane is more upfield, which indicates that the protons are stronger shielded by the aromatic ring current than for the out-Metacyclophane.
 
 \clearpage
 \section{Appendix}
@@ -638,6 +695,7 @@ The chemical shifts for in-Metacyclophane are negative, which indicates that the
     \acro{BLYP}{Becke-Lee-Yang-Parr}
     \acro{BSIE}{basis set incompleteness error}
     \acro{BSSE}{basis set superposition error}
+    \acro{CASPT2}{complete active space with perturbation theory of second order}
     \acro{CASSCF}{complete active space self-consistent field}
     \acro{CBS}{complete basis set}
     \acro{CCSD(T)}{coupled cluster with single, double and perturbative triple excitations}
@@ -649,6 +707,7 @@ The chemical shifts for in-Metacyclophane are negative, which indicates that the
     \acro{MP2}{Møller-Plesset perturbation theory of second order}
     \acro{PBE}{Perdew-Burke-Ernzerhof}
     \acro{PBE0}{Perdew-Burke-Ernzerhof with 25\% Hartree-Fock exchange}
+    \acro{PBEh-3c}{Perdew-Burke-Ernzerhof hybrid with 3 corrections}
     \acro{PW6B95}{Perdew-Wang 6-parameter exchange functional with Becke-95 correlation}
     \acro{RHF}{restricted Hartree-Fock}
     \acro{TMS}{tetramethylsilane}

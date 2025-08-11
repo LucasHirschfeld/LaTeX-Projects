@@ -1,0 +1,119 @@
+\documentclass[a4paper,12pt]{article}
+
+% === Pakete ===
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xsim}
+\usepackage{tasks}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage[a4paper,includehead,
+textwidth=10cm,% Set \textwidth to 10cm
+headheight=3mm,% Set \headheight to 10mm
+]{geometry}
+\geometry{margin=2cm}
+
+\usepackage[version=4]{mhchem} %% Fuer Schreiben chemischer Reaktionen
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{multicol}
+
+%%%  Klausur ID
+\usepackage{pgf} % oder \usepackage{tikz}
+\pgfmathsetseed{\number\pdfuniformdeviate10000} % halb-zufällig bei jedem Lauf
+\pgfmathtruncatemacro{\randomid}{1000 + int(8999*rand)}
+\newcommand{\klausurID}{K-\randomid}
+
+% === Titelbox-Stil ===
+\newtcolorbox{examheaderbox}{
+  colback=gray!10,
+  colframe=black,
+  boxrule=0.8pt,
+  arc=4pt,
+  top=3mm,
+  bottom=3mm,
+  left=5mm,
+  right=5mm,
+  before skip=10pt,
+  after skip=20pt
+}
+
+
+% === XSIM Setup ===
+\xsimsetup{
+  collect,
+  exercise/template = default,
+  exercise/within = section,
+  solution/template = default, 
+  exercise/name = Aufgabe,
+  exercise/the-counter = \arabic{exercise}
+}
+
+
+% === Collections ===
+\DeclareExerciseCollection[Punkt=0.5]{0.5P}
+\DeclareExerciseCollection[Punkt=1]{1P}
+\DeclareExerciseCollection[Punkt=2]{2P}
+\DeclareExerciseTagging{Punkt} %% Hier kannst du unterschiedliche Tags definieren
+
+
+% === Multiple Choice Struktur ===
+\NewTasksEnvironment[label=(\textbf{\Alph*}), label-width=18pt]{choices}[\task]
+\DeclareExerciseProperty{choice}
+
+\DeclareExerciseProperty{answer}
+
+\newcommand*\answer[1]{%
+  \XSIMexpandcode{%
+    \SetExerciseProperty{answer}
+      { (\noexpand\textit{\alph{task}}) \unexpanded{#1}}}%
+  #1%
+}
+
+% === Dokument ===
+
+\begin{document}
+
+\pagestyle{fancy}
+\fancyhead[R]{\textbf{\klausurID}}
+
+
+% === Klausurtitel separat ===
+\begin{center}
+  {\LARGE\bfseries Antestat zum Versuch P7 - Kinetik}\\[1ex]
+  {\large Assistent: Long Nguyen}\\[1ex]
+    {\large Sommersemester \the \year}
+\end{center}
+
+\begin{examheaderbox}
+\begin{tabular}{p{5cm}p{8cm}}
+\textbf{Klausur-ID:} & \klausurID \\
+\textbf{Datum:} & \today \\
+\textbf{Dauer:} & 30 Minuten \\
+\textbf{Name:} & \hrulefill \\
+\textbf{Matrikelnummer:} & \hrulefill \\
+\textbf{Erreichte Punktzahl:} & \hrulefill \\
+\end{tabular}
+\end{examheaderbox}
+
+\section*{Hinweise}
+Beantworten Sie alle Aufgaben sorgfältig. Hilfsmittel sind nicht erlaubt.\\
+
+\input{0.5 Punkt}
+\input{1 Punkt}
+
+\section{Teil 1}
+
+
+\section{Teil 2}
+\printcollection{1P}
+
+
+\printsolutions[Punkt=0.5]
+\printcollection{0.5P}\printsolutions[Punkt=1]
+
+
+\end{document}

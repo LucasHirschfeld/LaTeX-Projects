@@ -1,0 +1,134 @@
+\documentclass[a4paper,10pt]{article}
+
+% === Pakete ===
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{xsim}
+\usepackage{tasks}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage[a4paper,
+  top=1.5cm,
+  headheight=50pt,
+  headsep=1cm,
+  textwidth=10cm
+]{geometry}
+
+\geometry{margin=2.5cm}
+
+\usepackage[version=4]{mhchem}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{multicol}
+
+
+%%%  Klausur ID
+\usepackage{pgf} % oder \usepackage{tikz}
+\pgfmathsetseed{\number\pdfuniformdeviate10000} % halb-zufällig bei jedem Lauf
+\pgfmathtruncatemacro{\randomid}{1000 + int(8999*rand)}
+\newcommand{\klausurID}{K-\randomid}
+
+% === Titelbox-Stil ===
+\newtcolorbox{examheaderbox}{
+  colback=gray!10,
+  colframe=black,
+  boxrule=0.8pt,
+  arc=4pt,
+  top=3mm,
+  bottom=3mm,
+  left=5mm,
+  right=5mm,
+  before skip=10pt,
+  after skip=20pt
+}
+
+
+% === XSIM Setup ===
+\xsimsetup{
+  collect,
+  exercise/template = compact,
+
+\DeclareExerciseEnvironmentTemplate{compact}{
+  \par\noindent
+  {\small\textbf{Aufgabe \theexercise: }\ignorespaces}%
+}{%
+  \par\medskip
+}
+  exercise/within = none,
+  solution/template = default, 
+  exercise/name = Aufgabe,
+  exercise/the-counter = \arabic{exercise}
+}
+
+\xsimsetup{collect}
+
+% === Collections ===
+\DeclareExerciseCollection[Punkt=0.5]{0.5P}
+\DeclareExerciseCollection[Punkt=1]{1P}
+\DeclareExerciseCollection[Punkt=2]{2P}
+\DeclareExerciseTagging{Punkt}
+
+% === Multiple Choice Struktur ===
+\NewTasksEnvironment[label=(\textbf{\Alph*}), label-width=22pt]{choices}[\task]
+\DeclareExerciseProperty{choice}
+
+\DeclareExerciseProperty{answer}
+
+\newcommand*\answer[1]{%
+  \XSIMexpandcode{%
+    \SetExerciseProperty{answer}
+      { (\noexpand\textit{\alph{task}}) \unexpanded{#1}}}%
+  #1%
+}
+
+% === Dokument ===
+\begin{document}
+
+\pagestyle{fancy}
+\fancyhead[R]{\textbf{\klausurID}}
+\fancyhead[L]{\textsc{Long Nguyen}}
+
+
+% === Klausurtitel separat ===
+\begin{center}
+  {\LARGE\bfseries Antestat zum Versuch P7 - Kinetik}\\[1ex]
+  {\large Assistent: Long Nguyen}\\[1ex]
+    {\large Sommersemester \the \year}
+\end{center}
+
+\begin{examheaderbox}
+\begin{tabular}{p{5cm}p{8cm}}
+\textbf{Klausur-ID:} & \klausurID \\
+\textbf{Datum:} & \today \\
+\textbf{Dauer:} & 30 Minuten \\[1.5ex]
+\textbf{Name:} & \hrulefill \\[1.5ex]
+\textbf{Matrikelnummer:} & \hrulefill \\[1.5ex]
+\textbf{Erreichte Punktzahl:} & \hrulefill \\
+\end{tabular}
+\end{examheaderbox}
+
+% Hinweise:
+\section*{Hinweise}
+Zum Bestehen sind mindestens 10 von 20 Punkten sowie die Bearbeitung aller drei Teile erforderlich. Hilfsmittel sind nicht erlaubt.\\
+Geben Sie, falls vorhanden, die entsprechende Formel an und erläutern Sie deren Größen.
+
+
+\input{0.5 Punkt}
+\input{1 Punkt}
+
+% --- Ausgewählte Aufgaben anzeigen ---
+\section*{Teil 1}
+\printrandomexercises[collection=0.5P]{10}
+\section*{Teil 2}
+\printrandomexercises[collection=1P]{8}
+\section*{Teil 3}
+
+
+\newpage
+\printsolutions[Punkt=0.5]
+\printsolutions[Punkt=1]
+
+\end{document}
