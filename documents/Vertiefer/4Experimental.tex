@@ -3,7 +3,7 @@
 
 \subsection{The Ag(100) crystal surface}
 
-A silver (Ag) single crystal that was provided by the team of the I09 beamline of the Diamond Light Source with a surfaces orientation of (100) was used as the substrate for the \ac{XPS} experiments. It is important that a single crystal is used, as this has a uniform and precisely defined surface and has almost no structural defects.
+A silver (Ag) single crystal that was provided by the team of the I09 beamline of the Diamond Light Source with a surface orientation of (100) was used as the substrate for the \ac{XPS} experiments. It is important that a single crystal is used, as this has a uniform and precisely defined surface and has almost no structural defects.
 
 Silver forms a \ac{fcc} crystal system, which is shown in \autoref{fig:Ag(100)}. This corresponds to the Pearson symbol cF. In the crystal system of silver, one silver atom is surrounded by twelve next neighbor atoms. Furthermore, the Ag(100) surface does not reconstruct. The lattice constant of silver in the volume crystal is $4.0853\pm0.0013$~\si{\angstrom} at a temperature of $23\pm3$~\si{\celsius}\autocite{Liu1973}.
 
@@ -19,7 +19,7 @@ As seen in \autoref{fig:Ag(100)}, the unit cell of the Ag(100) surface is quadra
 \newpage
 \section{Experimental setup}
 
-All \ac{XPS} measurements were performed in an \ac{UHV} chamber at the I09 endstation at the Diamond Light Source in Didcot, UK. A schematic overview is depicted in \autoref{fig:I09}.
+All \ac{XPS} measurements were performed in an \ac{UHV} chamber at the I09 endstation at the Diamond Light Source in Didcot, UK. A schematic overview of the I09 endstation is depicted in \autoref{fig:I09}.
 
 \begin{figure}[htbp]
 	\centering
@@ -39,7 +39,9 @@ All \ac{XPS} measurements were performed in an \ac{UHV} chamber at the I09 endst
 
 The experimental sample preparation is described in the following. First, the Ag(100) surface was cleaned by sputtering with Ar$^+$ ions. Therefore, argon was dosed into the chamber up to a pressure of $5\cdot 10^{-5}$~\si{mbar} and Ar$^+$ ions were accelerated with a voltage of 1~\si{keV}. Afterwards, the surface was heated up to 825~\si{K} for 45~\si{min} to increase the thermal diffusion and heal defects on the Ag(100) surface.
 
-Subsequently, \ac{QA} was evaporated onto the Ag(100) surface with the sample being at room temperature. Therefore, the evaporator was heated to about 500~\si{\degreeCelsius}. The deposition process was performed according to procedures derived in the lab in Bonn, where the depostion could be controlled by a mass spectrometer and \ac{SPA-LEED} measurements. After evaporation, the phase of the \ac{QA} molecules was characterized using \ac{LEED}.
+Subsequently, \ac{QA} was evaporated on the Ag(100) surface with the sample being at room temperature. Therefore, the evaporator was heated to about 500~\si{\degreeCelsius}. The deposition process was performed according to procedures derived in the lab in Bonn, where the depostion could be controlled by a mass spectrometer and \ac{SPA-LEED} measurements. 
+
+After evaporation, the phase of the \ac{QA} molecules on the Ag(100) surface was characterized using \ac{LEED}. Exemplary \ac{LEED} pattern of the $\alpha$- and the $\beta$-phase are shown in \autoref{fig:LEED}. The $\alpha$-phase shows a \ac{POL} type superstructure with its characteristic streaky spots in the diffraction pattern, while the $\beta$-phase is commensurate with the Ag(100) surface and exhibits sharp spots in the diffraction pattern.
 
 For the measurements of the \ac{XPS} spectra, x-ray radiation with an energy of either 500~\si{\eV} for C1s and N1s or 630~\si{\eV} for O1s was used. For data collection, the sample normal was rotated by -45\si{\degree} out of the x-ray beam in the polar direction towards the analyzer.
 
@@ -65,17 +67,15 @@ The parameters for the measurements were chosen to achieve a good signal-to-nois
 
 \section{Data processing}
 
-The measured data were then subjected to an initial processing stage, whereby the values from multiple datasets employing identical settings for the measurements were averaged to obtain an increased signal-to-noise ratio. Subsequently, the data underwent further processing with the software CasaXPS.\autocite{CasaSoftwareLtd2022} Each XPS spectrum was processed in a consistent manner, as outlined below.
+The measured data were then subjected to an initial processing stage, whereby the values from multiple datasets employing identical settings for the measurements were averaged to obtain an increased signal-to-noise ratio. The number of averaged spectra was different for the various preparations. Subsequently, the data underwent further processing with the software CasaXPS.\autocite{CasaSoftwareLtd2022} Each XPS spectrum was processed in a consistent manner, as outlined below.
 
 Initially, the \ac{BE} of the \ac{XPS} spectrum was calibrated against the Fermi energy $E_\mathrm{F}$. For this purpose, an \ac{XPS} spectrum of the Fermi edge with the same photon energy as the corresponding component was fitted with a Fermi function. Without inaccuracies of the devices, $E_\mathrm{F}$ should be zero. Accordingly, the binding energy was shifted by the value of the Fermi energy, which was determined from the fit of the Fermi function.
 
-Afterwards, a linear background was fitted to the averaged and calibrated data. This background was then substracted for further data processing. Then, the corresponding fitting models from \autoref{sec:results} were applied. The different peaks with line shape and constraints from \autoref{tab:casa} were used. These settings were the same for each processed dataset.
-Subsequently, the processed data was exported from CasaXPS and illustrated using a customized python script, enabling the generation of various plots as outlined in \autoref{sec:results}.
-
+Afterwards, a linear background was fitted to the averaged and calibrated data. This background was then substracted for further data processing. Then, the corresponding fitting models from \autoref{sec:results} were applied. The different peaks with line shape and constraints from \autoref{tab:casa} were used. These settings were the same for each processed dataset. Subsequently, the processed data was exported from CasaXPS and illustrated using a customized python script, enabling the generation of various plots as outlined in \autoref{sec:results}.
 
 \begin{table}[H]
 	\centering
-	\caption{Parameters in CasaXPS\autocite{CasaSoftwareLtd2022} for the different peaks of the \ac{XPS} spectra of \ac{QA} on Ag(100).}
+	\caption{Parameters used in CasaXPS\autocite{CasaSoftwareLtd2022} for the different peaks of the \ac{XPS} spectra of \ac{QA} on Ag(100).}
 \begin{tabular}{@{}ccc@{}} \toprule
 	~~~~~~peak~~~~~~ & ~~~~~~line shape~~~~~~ & ~~~~~~area ratio~~~~~~ \\
 	\midrule
@@ -97,7 +97,7 @@ Subsequently, the processed data was exported from CasaXPS and illustrated using
 	\label{tab:casa}
 \end{table}
 
-For the line shapes, the LA($\alpha$,$\beta$,m) function was used, which is a numerical convolution of a Lorentzian and a Gaussian. The parameters $\alpha$ and $\beta$ define the asymmetry of the line shape, where $\alpha$ describes the left part and $\beta$ the right part. The parameter $m$ defines the width of the Gaussian.
+For the line shapes, the LA($\alpha$,$\beta$,$m$) function was used, which is a numerical convolution of a Lorentzian and a Gaussian. The parameters $\alpha$ and $\beta$ define the asymmetry of the line shape, where $\alpha$ describes the left part and $\beta$ the right part. The parameter $m$ defines the width of the Gaussian.
 
 The line shapes for the different components were slightly changed in order to observe the best description of the \ac{XPS} spectra. In general, the objective was to maintain consistency in the lines to the greatest extent possible.
 

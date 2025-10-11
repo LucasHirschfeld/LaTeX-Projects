@@ -1,0 +1,75 @@
+\documentclass[11pt,a4paper,sans]{moderncv}
+
+% Modern CV theme matching cv.tex
+\moderncvstyle{casual}
+\moderncvcolor{purple}
+
+% LuaLaTeX specific packages and settings
+\usepackage[scale=0.8, footskip=70pt]{geometry}
+\usepackage{fontspec}
+\usepackage{fontawesome5}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{unicode-math}
+
+% Modern fonts for LuaLaTeX
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\setmonofont{Latin Modern Mono}
+
+% Disable biblatex if loaded by moderncv
+\PassOptionsToPackage{backend=none}{biblatex}
+
+% Personal data (matching cv.tex)
+\name{Lucas}{Hirschfeld}
+\address{Bergfeldstraße 9}{53121 Bonn}{Germany}
+\phone[mobile]{+49~178~1480222}
+\email{hirschfeld@pc.uni-bonn.de}
+
+% Modern color scheme (matching cv.tex)
+\definecolor{primarycolor}{RGB}{88,24,69}
+\definecolor{secondarycolor}{RGB}{199,0,57}
+\definecolor{accentcolor}{RGB}{255,87,51}
+\definecolor{textcolor}{RGB}{40,40,40}
+\definecolor{lightgray}{RGB}{245,245,245}
+
+% Configure hyperref after moderncv
+\AtBeginDocument{\hypersetup{
+    bookmarksnumbered=true,
+    bookmarksopen=true,
+    bookmarksopenlevel=1
+}}
+
+\begin{document}
+
+% Custom header for cover letter
+\makecvtitle
+
+\vspace{-1cm}
+
+% Recipient information
+\recipient{TIDE – Template-Designed Organic Electronics}{Research Training Group}
+
+% Date
+\date{\today}
+
+% Opening
+\opening{Dear Members of the TIDE Research Training Group,}
+
+% Closing
+\closing{Yours sincerely,}
+
+% Letter content
+\makelettertitle
+
+I am writing to express my keen interest in joining the TIDE – Template-Designed Organic Electronics research training group. Having successfully completed my Bachelor's degree in Chemistry at the Rheinische Friedrich-Wilhelms-Universität Bonn and currently pursuing my Master's degree in the same discipline, I am eager to advance my research career in the captivating field of organic electronics.
+
+Through conversations with my office colleague, I have learned about TIDE's strong reputation and the interesting research being conducted there. I am especially interested in the regular seminars from specialists in their respective fields and the opportunity for interdisciplinary collaboration, as I believe working with researchers from different backgrounds leads to valuable new ideas.
+
+Thank you for your consideration of my application.
+
+\vspace{1cm}
+\makeletterclosing
+
+\end{document}

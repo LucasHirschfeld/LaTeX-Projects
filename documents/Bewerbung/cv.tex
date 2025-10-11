@@ -1,0 +1,82 @@
+\documentclass[11pt,a4paper,sans]{moderncv}
+
+% Modern CV theme with improved styling
+\moderncvstyle{casual}
+\moderncvcolor{purple}
+
+% LuaLaTeX specific packages and settings
+\usepackage[scale=0.8, footskip=70pt]{geometry}
+\usepackage{fontspec}
+\usepackage{fontawesome5}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{unicode-math}
+
+% Adjust moderncv layout for wider date column
+\setlength{\hintscolumnwidth}{3.5cm}
+
+% Modern fonts for LuaLaTeX
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\setmonofont{Latin Modern Mono}
+
+% Disable biblatex if loaded by moderncv
+\PassOptionsToPackage{backend=none}{biblatex}
+
+% Personal data
+\name{Lucas}{Hirschfeld}
+\address{Bergfeldstraße 9}{53121 Bonn}{Germany}
+\phone[mobile]{+49~178~1480222}
+\email{hirschfeld@pc.uni-bonn.de}
+\extrainfo{Born August 14, 2000}
+
+% Modern color scheme
+\definecolor{primarycolor}{RGB}{88,24,69}
+\definecolor{secondarycolor}{RGB}{199,0,57}
+\definecolor{accentcolor}{RGB}{255,87,51}
+\definecolor{textcolor}{RGB}{40,40,40}
+\definecolor{lightgray}{RGB}{245,245,245}
+
+% Configure hyperref after moderncv
+\AtBeginDocument{\hypersetup{
+    bookmarksnumbered=true,
+    bookmarksopen=true,
+    bookmarksopenlevel=1
+}}
+
+\begin{document}
+
+\makecvtitle
+
+% Education
+\section{Education}
+
+\cventry{Apr 2024--present}{Master of Science Chemistry, \textit{Expected graduation: 2025}}{Rheinische Friedrich-Wilhelms-Universität Bonn}{Bonn}{}{Specialization: Physical Chemistry and Surface Science}
+
+\vspace{0.5em}
+\cventry{Oct 2020--Mar 2024}{Bachelor of Science Chemistry, \textit{Grade: 1.9}}{Rheinische Friedrich-Wilhelms-Universität Bonn}{Bonn}{}{Bachelor thesis: "Thermische Desorptionsspektroskopie von Merocyaninen auf Ag(100)"}
+
+\vspace{0.5em}
+\cventry{Aug 2011--Mar 2020}{Abitur, \textit{Grade: 2.1}}{Westerwald-Gymnasium}{Altenkirchen}{}{}
+
+\vspace{0.5em}
+\cventry{Aug 2007--Aug 2011}{Primary School}{Pestalozzi-Grundschule}{Altenkirchen}{}{}
+
+% Teaching Experience
+\section{Professional Experience}
+\cventry{Sep 2022--present}{Student Teaching Assistant}{Rheinische Friedrich-Wilhelms-Universität Bonn}{Department of Chemistry}{}{
+\begin{itemize}
+\item Tutor for Chemistry Preparatory Course
+\item Tutor for Thermodynamics Practice Module
+\item Tutor for Physical Chemistry Laboratory Course for Pharmacy Students
+\end{itemize}}
+
+% Languages  
+\section{Languages}
+\cvitemwithcomment{German}{Native speaker}{}
+\cvitemwithcomment{English}{Advanced (B2/C1 level)}{}
+
+\clearpage
+
+\end{document}
