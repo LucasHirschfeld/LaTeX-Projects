@@ -15,6 +15,8 @@
 \usepackage{fancyhdr}
 \usepackage{luacode}
 \usepackage{xparse}
+\usepackage{graphicx}
+\usepackage{tabularx}
 
 % ---- Kopfzeile & Fußzeile ----
 \pagestyle{fancy}
@@ -53,178 +55,386 @@
 \begin{luacode}
 
 -- Fragendatenbank: Hier können Sie Ihre Fragen und Antworten einfügen.
--- Die Struktur ist: {question = "Frage", answer = "Antwort"}.
+-- Die Struktur ist: {questionA = "Frage", answerA = "Antwort"}.
 -- Die richtige Verwendung von \\ ist zu beachten.
-questions = {
+
+-- Fragen und Antworten für Abschnitt A (1.0 Punkte pro Frage)
+questionsA = {
     {
-        question = "Welche Größen werden während des Versuchs gemessen? Welche Messzelle wird dafür verwendet? \\newline \\newline Gemessen: \\newline \\newline Messzelle: \\newline",
-        answer = "Gemessen: Eingestellte Widerstände der Wheatstone-Brücke, Spannungsminimum der abgeglichenen Brücke.\\newline Messzelle: Kohlrausche-Leitfähigkeitsmesszelle mit planparallelen Platinelektroden."
+        questionA = "Welche Größen werden während des Versuchs gemessen? Welche Messzelle wird dafür verwendet? \\newline \\newline Gemessen: \\newline \\newline Messzelle: \\newline",
+        answerA = "Gemessen: Eingestellte Widerstände der Wheatstone-Brücke, Spannungsminimum der abgeglichenen Brücke.\\newline Messzelle: Kohlrausche-Leitfähigkeitsmesszelle mit planparallelen Platinelektroden."
     },
     {
-        question = "Skizzieren Sie eine \\underline{vollständige} \\textit{Wheatstonesche} Brückenschaltung, wie sie im Praktikum verwendet wird. Welche Beziehung gilt bei reinen \\textit{Ohm}schen Widerständen? \\vspace{3.5cm}",
-        answer = "Skizze der Wheatstoneschen Brückenschaltung \\newline $R_x=\\frac{R_N R_K}{R}$"
+        questionA = "Geben Sie die Gleichung für die Kapazität eines Plattenkondensators an. \\vspace{1cm}",
+        answerA = "$C=\\frac{\\varepsilon_0 \\varepsilon A}{d}$"
     },
     {
-        question = "Worin besteht der Unterschied zwischen dem Leitwert, der Leitfähigkeit und der molaren Leitfähigkeit? \\vspace{2.5cm}",
-        answer = "$\\kappa = G\\frac{l}{A}=G~K_z$ \\newline $\\Lambda_m=\\frac{\\kappa}{c}$"
+        questionA = "Worin besteht der Unterschied zwischen dem Leitwert, der Leitfähigkeit und der molaren Leitfähigkeit? \\vspace{2.5cm}",
+        answerA = "$\\kappa = G\\frac{l}{A}=G~K_z$ \\newline $\\Lambda_m=\\frac{\\kappa}{c}$"
     },
     {
-        question = "Skizzieren Sie die Strom-Spannungs-Kurven für Gleich- und Wechselspannung. \\vspace{3.5cm}",
-        answer = "Skizze Strom-Spanungs-Kurven für Gleich- und Wechselspannung"
+        questionA = "Durch welche Maßnahmen wird der Einfluss der Polarisation minimiert? \\vspace{1.5cm}",
+        answerA = "Platinierung der Elektrodenoberfläche (Vergrößerung der Oberfläche) \\newline Verwendung von Wechselspannung (Vermeidung von Gleichstrompolarisation)."
     },
     {
-        question = "Durch welche Maßnahmen wird der Einfluss der Polarisation minimiert? \\vspace{1.5cm}",
-        answer = "Platinierung der Elektrodenoberfläche (Vergrößerung der Oberfläche) \\newline Verwendung von Wechselspannung (Vermeidung von Gleichstrompolarisation)."
+        questionA = "Was versteht man unter der Polarisation einer Elektrode? \\vspace{2cm}",
+        answerA = "Um einen bestimmten Stromfluss zu erzwingen, ist eine größere Spannung als nach dem Ohmschen Gesetz erforderlich. Es handelt sich um einen nichtlinearen Polarisationwiderstand."
     },
     {
-        question = "Was versteht man unter der Polarisation einer Elektrode? \\vspace{2cm}",
-        answer = "Um einen bestimmten Stromfluss zu erzwingen, ist eine größere Spannung als nach dem Ohmschen Gesetz erforderlich. Es handelt sich um einen nichtlinearen Polarisationwiderstand."
+        questionA = "Welche beiden möglichen Auftragungen können gewählt werden, um Messwerte entsprechend des \\textit{Ostwald}schen Verdünnungsgesetzes zu linearisieren? \\vspace{1.5cm}",
+        answerA = "$\\Lambda$ vs. $\\Lambda^2c$ \\newline $\\frac{1}{\\Lambda}$ vs. $\\Lambda~c$"
     },
     {
-        question = "Wie hängt der kapazitive Blindwiderstand von der Messfrequenz und der Kapazität des Kondensators ab? \\vspace{1.5cm}",
-        answer = "$X_c = \\frac{1}{\\omega C}$ \\qquad kapazitiver Blindwiderstand $X_c$ ist umgekehrt proportional zur Messfrequenz $\\omega$ und Kapazität $C$."
+        questionA = "Welche Auftragung muss gewählt werden, um Messwerte entsprechend des \\textit{Kohlrausch}schen Quadratwurzelgesetzes zu linearisieren? \\vspace{1.5cm}",
+        answerA = "$\\Lambda$ vs. $\\sqrt{c}$"
     },
     {
-        question = "Formulieren Sie das \\textit{Kohlrausch}sche Quadratwurzelgesetz. Für welchen Elektrolyttyp gilt es? Welche Größe bestimmt man mit seiner Hilfe?\\vspace{2cm}",
-        answer = "$\\Lambda = \\Lambda^\\infty - k \\sqrt{c}$ \\newline starke Elektrolyte \\newline als Ordinatenabschnitt des quasilinearen Plots $\\Lambda$ vs. $\\sqrt{c}$ ergibt sich die Grenzleitfähigkeit (Äquivalenzleitfähigkeit bei unendlicher Verdünnung) $\\Lambda^\\infty$."
+        questionA = "Geben Sie die Definitionen folgender Größen an. Geben Sie für alle von Ihnen verwendeten Formelsymbole an, wofür diese stehen. \\newline \\newline Ionenäquivalenzleitfähigkeit $\\lambda _\\mathrm{i} =$ \\newline Leitfähigkeit $\\kappa = $ \\newline Äquivalenzleitfähigkeit $\\Lambda = $ \\newline",
+        answerA = "$\\lambda _\\mathrm{i} = F u_i = \\frac{F v_{Di}}{E} \\newline \\kappa = \\frac{K_z}{R}=K_z G = G \\frac{l}{A} = G \\frac{l^2}{V} \\newline \\Lambda = \\frac{\\kappa}{z c} = \\frac{\\Lambda_m}{z}$"
     },
     {
-        question = "Formulieren Sie das \\textit{Ostwald}sche Verdünnungsgesetz. Welche beiden Näherungen sind Basis dieser Gesetzes? \\vspace{2cm}",
-        answer = "$K_c^{app}=\\frac{\\alpha^2c^2}{(1-\\alpha)c}=\\frac{\\left( \\frac{\\Lambda}{\\Lambda^\\infty} \\right)^2}{1-\\frac{\\Lambda}{\\Lambda^\\infty}}$ \\newline \\vspace{0.5cm} Vernachlässigung vom Aktivitätskoeffizienten $\\gamma_i\\approx 1$ und Arrhenius-Näherung: $\\alpha=\\frac{\\Lambda}{\\Lambda^\\infty}$"
+        questionA = "Entspricht der Zahlenwert der Äquivalenzleitfähigkeit in der Einheit $\\mathrm{S~m^2~mol^{-1}}$ dem Leitwert von $1/z$~$\\mathrm{mol}$ Elektrolyt zwischen planparallelen Elektroden im Abstand von 1~$\\mathrm{cm}$? \\newline \\newline $\\Box$ Richtig \\hspace{6cm} $\\Box$ Falsch \\newline",
+        answerA = "Falsch"
     },
     {
-        question = "Worin besteht der Unterschied zwischen der thermodynamischen, konventionellen und scheinbaren Dissoziationskonstante? \\vspace{3cm}",
-        answer = "$K_c^\\circ= \\frac{a_{H^+}~a_{X^-}}{a_{HX}~a_{X,H_2O}}\\approx \\frac{c_+ ~c_-}{c_{HX}~c^\\circ} \\gamma_\\pm^2$ \\newline \\vspace{0.5cm} $K_c=\\frac{c_+ ~c_-}{c_{HX}}$ \\newline \\vspace{0.5cm} $K_c^{app}=\\frac{\\alpha^2c^2}{(1-\\alpha)c}=\\frac{\\left( \\frac{\\Lambda}{\\Lambda^\\infty} \\right)^2}{1-\\frac{\\Lambda}{\\Lambda^\\infty}}$"
+        questionA = "Worin besteht das Gesetz der unabhängigen Ionenwanderung? Welche Einschränkung(en) gilt/gelten? \\vspace{2cm}",
+        answerA = "$\\Lambda^\\infty = \\lambda_+^\\infty + \\lambda_-^\\infty$ \\qquad ideal verdünnte Lösungen"
     },
     {
-        question = "Welche Kräfte kompensieren sich in ideal verdünnter Lösung bei konstanter Ionengeschwindigkeit in einem elektrischen Feld? \\vspace{1.5cm}",
-        answer = "Beschleunigende Kraft des elektrischen Felds \\newline Bremsende Kraft ist die Reibungskraft gemäß dem Stokessche Gesetz"
+        questionA = "Erläutern Sie \\textit{kurz} den Unterschied zwischen einem \\textit{starken} und \\textit{schwachen} Elektrolyten. \\vspace{2cm}",
+        answerA = "Starker Elektrolyt: vollständige Dissoziation im gesamten Konzentrationsbereich \\newline Schwacher Elektrolyt: Dissoziation ist stark konzentrationsabhängig"
     },
     {
-        question = "Erläutern Sie kurz das der \\textit{Debye-Hückel}-Theorie zugrunde liegende Modell und veranschaulichen Sie die relevanten Kräfte. \\vspace{2.5cm}",
-        answer = "Jedes Ion ist von einer entgegengesetzt geladenen diffusen Ionenwolke umgeben, die thermisch instabil ist. \\newline Die Ionenwolke hinkt dem wandernden Zentralion hinterher und umgibt das Zentralion asymmetrisch (Relaxationseffekt) \\newline Die Ionenwolke wandert mit den Solvathüllen ihrer Ionen in entgegengesetzte Richtung zum Zentralion (Gegenströmung des Lösungsmittels)"
+        questionA = "Erläutern Sie \\textit{kurz} den Unterschied zwischen einem \\textit{echten} und \\textit{potentiellen} Elektrolyten und geben Sie jeweils 1 Beispiel an. \\vspace{2cm}",
+        answerA= "Echt: Ionen in reiner Phase (Ionengitter als Festkörper, leiten elektr. Strom), NaCl, NaOH, ... \\newline Potentiell: Ionen nur durch Reaktion mit Lösungsmittel, HCl, organische Säuren, ..."
     },
     {
-        question = "Erläutern Sie \\textit{kurz} die \\underline{Funktionsweise} der \\textit{Wheatstoneschen} Brückenschaltung. \\vspace{3.5cm}",
-        answer = "Wheatstonesche Brücke setzt Widerstände in Beziehung, der Widerstand der Messzelle wird über die Widerstände der abgeglichenen Brücke bestimmt -> Widerstände verstellen bis Spannungsminimum erreicht ist"
+        questionA = "Geben Sie die Ionenwertigkeit aller Ionen und die elektrochemische Elektrolytwertigkeit für Li$_2$CO$_3$ an. \\vspace{2cm}",
+        answerA= "Ionenwertigkeit: Li$^+$: 1 und CO$_3^{2-}$: -2 \\newline Elektrochemische Elektrolytwertigkeit: 2"
     },
     {
-        question = "Erläutern Sie \\textit{kurz} die Unterschiede der beiden Strom-Spannungs-Kurven für Gleich- und Wechselspannung. \\vspace{2.5cm}",
-        answer = "\\newline Gleichspannung: Nichtlineares Verhalten, da Polarisationseffekte auftreten -> Entstehung galvanischer Zelle, die angelegter Spannung entgegenwirkt \\newline Wechselspannung: Lineares Verhalten, da die Polarisationseffekte nicht auftreten"
+        questionA = "Welche zwei bremsenden Kräfte bestimmen die Driftgeschwindigkeit in realen Lösungen? \\vspace{1cm}",
+        answerA= "Asymmetriekraft \\newline elektrophoretische Kraft"
     },
     {
-        question = "Geben Sie \\underline{alle} möglichen Darstellung der \\underline{linearisierten} Gleichung an. \\newline \\newline \\textit{Ostwald}sche Verdünnungsgesetz: \\newline \\newline \\textit{Kohlrausch}sche Quadratwurzelgesetz: \\newline",
-        answer = "Ostwaldsches Verdünnungsgesetz: $\\Lambda = \\Lambda^\\infty - \\frac{\\Lambda^2c}{K_c^{app}\\Lambda^\\infty} \\qquad \\frac{1}{\\Lambda} = \\frac{1}{\\Lambda^\\infty} +\\frac{\\Lambda c}{K_c^{app}(\\Lambda^\\infty) ^2}$ \\newline Kohlrauschsches Quadratwurzelgesetz: $\\Lambda=\\Lambda^\\infty - k \\sqrt{c}$"
+        questionA = "Wie hängt der kapazitive Blindwiderstand von der Messfrequenz und der Kapazität des Kondensators ab? \\vspace{1cm}",
+        answerA = "$X_c = \\frac{1}{\\omega C}$ \\qquad kapazitiver Blindwiderstand $X_c$ ist umgekehrt proportional zur Messfrequenz $\\omega$ und Kapazität $C$."
     },
     {
-        question = "Welche beiden möglichen Auftragungen können gewählt werden, um Messwerte entsprechend des \\textit{Ostwald}schen Verdünnungsgesetzes zu linearisieren? \\vspace{2cm}",
-        answer = "$\\Lambda$ vs. $\\Lambda^2c$ \\newline $\\frac{1}{\\Lambda}$ vs. $\\Lambda c$"
+        questionA = "Geben Sie die Definitionen für folgende Größen an.\\newline elektrischer Widerstand R = \\newline Leitwert G = \\newline spezifischer Widerstand $\\rho$ =",
+        answerA = "$R = U / I$ \\qquad $G = 1 / R$ \\qquad $\\rho= R \\cdot A/l = R / K_Z$"
     },
     {
-        question = "Welche Auftragung muss gewählt werden, um Messwerte entsprechend des \\textit{Kohlrausch}schen Quadratwurzelgesetzes zu linearisieren? \\vspace{1.5cm}",
-        answer = "$\\Lambda$ vs. $\\sqrt{c}$"
+        questionA = "Geben Sie die Größenordnung der Leitfähigkeit von Reinstwasser an. \\vspace{1cm}",
+        answerA = "Reinstwasser 0,05~$\\mathrm{\\mu S/cm}$"
     },
     {
-        question = "Geben Sie die \\underline{thermodynamische} Dissoziationskonstante für $\\text{HA} + \\text{H}_2\\text{O} \\rightarrow \\text{H}_3\\text{O}^+ + \\text{A}^-$ an. \\vspace{1.5cm}",
-        answer = "$K_c^\\circ = \\left( \\frac{a_{c,H_3O^+} a_{c,A^-}}{a_{c,HA}} \\right)_{eq} = \\left( \\frac{c_{H_3O^+}/c^\\circ~ c_{A^-}/c^\\circ}{c_{HA}/c^\\circ} \\frac{\\gamma_{H_3O^+}\\gamma_{A^-}}{\\gamma_{HA}} \\right)_{eq} = \\left( \\frac{c_{H_3O^+} c_{A^-}}{c_{HA} c^\\circ} \\gamma_\\pm^2 \\right)_{eq} $"
+        questionA = "Geben Sie die allgemein gültige Definition des Leitfähigkeitskoeffizienten $f_\\Lambda$ an. \\vspace{1cm}",
+        answerA = "$f_\\Lambda \\cdot \\alpha = \\frac{\\lambda_+ + \\lambda_-}{\\lambda^\\infty_+ + \\lambda^\\infty_-}$ $\\quad$ starke Elektrolyten $f_\\Lambda = \\frac{\\Lambda}{\\Lambda^\\infty}$"
     },
     {
-        question = "Geben Sie die Definitionen folgender Größen an. Geben Sie für alle von Ihnen verwendeten Formelsymbole an, wofür diese stehen. \\newline \\newline Ionenäquivalenzleitfähigkeit $\\lambda _\\mathrm{i} =$ \\newline Leitfähigkeit $\\kappa = $ \\newline Äquivalenzleitfähigkeit $\\Lambda = $ \\newline",
-        answer = "$\\lambda _\\mathrm{i} = F u_i = \\frac{F v_{Di}}{E} \\newline \\kappa = \\frac{K_z}{R}=K_z G = G \\frac{l}{A} = G \\frac{l^2}{V} \\newline \\Lambda = \\frac{\\kappa}{z c} = \\frac{\\Lambda_m}{z}$"
+        questionA = "Wie viel Prozent ändert sich die Beweglichkeit und Äquivalentleitfähigkeit von Ionen pro °C Temperaturerhöhung? \\vspace{1cm}",
+        answerA = "2-3 \\%"
     },
     {
-        question = "Die Äquivalenzleitfähigkeit eines starken Elektrolyten nimmt mit zunehmender Konzentration $\\Box ~\\mathrm{zu}$ / $\\Box ~\\mathrm{ab}$. Welche beiden Effekte bewirken dies? \\vspace{2cm}",
-        answer = "Abnahme der Äquivalenzleitfähigkeit bei zunehmender Konzentration \\newline Relaxationseffekt und elektrophoretischef Effekt"
+        questionA = "Nennen Sie die zwei wesentliche Fehlerquellen bei der Leitfähigkeitsmessung. \\vspace{1.5cm}",
+        answerA = "Temperierung, Luftblasen an den Elektroden, Elektrolyt in die nächste Lösung verschleppen, "
     },
     {
-        question = " Welche beiden Kräfte (mit Gleichung) wirken auf Ionen im elektrischen Feld? \\vspace{2cm}",
-        answer = "Beschleunigende Kraft des elektrischen Felds: $F_B = |z_i| e E$ \\newline Reibungskraft gemäß Stokes-Gesetz: $F_R = -6\\pi \\eta r_i v_{Di}$"
+        questionA = "Wie lautet der Name der Figuren, die bei der Darstellung zweier Wechselspannung unterschiedlicher Frequenz und Phasenverschiebung in einem XY-Oszilloskop entstehen? \\vspace{1cm}",
+        answerA = "Lissajous-Figuren"
     },
     {
-        question = "Skizzieren Sie die Ionenverteilung einer Elektrolytlösung nach der \\textit{Debye-Hückel-}Theorie. \\vspace{3cm}",
-        answer = "Skizze der Ionenverteilung einer Elektrolytlösung nach der Debye-Hückel-Theorie"
+        questionA = "Welche Form entsteht im Oszilloskop, wenn im x-y Modus die beiden angelegten Wechselspannungen sinusförmig mit gleicher Frequenz sind? \\vspace{1cm}",
+        answerA = "Ellipse, Form/Orientierung von Amplitudenverhältnis, Phasenverschiebunswinkel abhängig"
     },
     {
-        question = "Entspricht der Zahlenwert der Äquivalenzleitfähigkeit in der Einheit $\\mathrm{S~m^2~mol^{-1}}$ dem Leitwert von $1/z$~$\\mathrm{mol}$ Elektrolyt zwischen planparallelen Elektroden im Abstand von 1~$\\mathrm{m}$? \\newline \\newline $\\Box$ Richtig \\hspace{6cm} $\\Box$ Falsch \\newline",
-        answer = "Richtig"
+        questionA = "Welche Darstellung sollte das Oszilloskop im Experiment zeigen, wenn die Brücke erfolgreich abgeglichen wurde? \\vspace{1cm}",
+        answerA = "Horizontale Gerade (Phasenverschiebungswinkel $\\phi = 0^\\circ$)"
+    }
+}
+
+-- Fragen und Antworten für Abschnitt B (2.0 Punkte pro Frage)
+
+questionsB = {
+    {
+        questionB = "Geben Sie das \\textit{Debye-Hückel} Grenzgesetz an. Welche Einschränkungen gelten für das Grenzgesetz, damit es streng gültig ist? \\vspace{1.5cm}",
+        answerB = "$\\log \\gamma_{\\pm}= -0.510 |z_+ \\cdot z_-| \\cdot \\sqrt{I_c / c^\\circ}$ \\newline Nur gültig für unendlich verdünnte Lösungen, keinesfalls $I_c > 0.01$ mol/L"
     },
     {
-        question = "Worin besteht das Gesetz der unabhängigen Ionenwanderung? Für welchen Elektrolyttyp gilt es? \\vspace{2cm}",
-        answer = "$\\Lambda^\\infty = \\lambda_+^\\infty + \\lambda_-^\\infty$"
+        questionB = "Erläutern Sie möglichst \\underline{kurz} in \\underline{Stichpunkten} das komplette Abgleichen der \\textit{Wheatstone}schen Brücke. \\newline 1. \\newline 2. \\newline 3. \\newline",
+        answerB = "1. Grobabgleich mit R$_K$ und R$_N$ bis Spannungsminimum \\newline 2. Einstellung der variablen Kapazität C$_N$ \\newline 3. Nachjustieren von R$_N$. ggf. iteratives Vorgehen"
     },
     {
-        question = "Erläutern Sie \\textit{kurz} den Unterschied zwischen einem \\textit{starken} und \\textit{schwachen} Elektrolyten. \\vspace{2cm}",
-        answer = "Starker Elektrolyt: vollständige Dissoziation im gesamten Konzentrationsbereich \\newline Schwacher Elektrolyt: Dissoziation ist stark konzentrationsabhängig"
+        questionB = "Erläutern Sie möglichst \\underline{kurz} in \\underline{Stichpunkten} die Herstellung der Elektrolytlösungen. \\vspace{2cm}",
+        answerB = "Verdünnung der 0.1 M Stammlösung mit Reinstwasser auf die Hälfte des vorherigen Konzentrationswertes. \\newline 100 mL der Stammlösung in einen 200 mL Messkolben geben, mit Reinstwasser auffüllen, schütteln."
     },
     {
-        question = "Welche bremsenden Kräfte bestimmen die Driftgeschwindigkeit in realen Lösungen? \\vspace{2.5cm}",
-        answer= "Asymmetriekraft \\newline elektrophoretische Kraft"
+        questionB = "Welche Bedingung muss erfüllt sein, damit bei der Messung mittels Oszillopskop im x-y Modus aus der Ellipse eine Gerade entsteht? \\vspace{1cm}",
+        answerB = "Phasenverschiebungswinkel $\\phi = 0^\\circ$"
     },
     {
-        question = "Zeigen Sie, wie man mit Hilfe des Debye-Hückel-Grenzgesetzes den mittleren Henryschen Aktivitätskoeffizienten sehr verdünnter Kaliumsulfat-Lösungen berechnen kann. \\vspace{3cm}",
-        answer= "$\\log \\gamma_\\pm = -A |z_+~z_-| \\sqrt{I_c/c^\\circ}$ \\newline K$_2$SO$_4$: $z_+=1$, $z_-=-2$, $I_b=\\frac{1}{2}(z_+^2c_+ + z_-^2c_-)= \\frac{1}{2} (2c + 4c) = 3c \\newline \\log \\gamma_\\pm = -A ~2~ \\sqrt{3c/c^\\circ}$ \\newline $A=0.51$ bei 25 °C "
+        questionB = "Skizzieren Sie die Ionenverteilung einer Elektrolytlösung nach der \\textit{Debye-Hückel-}Theorie. \\vspace{3cm}",
+        answerB = "\\includegraphics[width=5cm]{images/skizze-elektrolytlösung.jpg}"
+    },
+    {
+        questionB = "Skizzieren Sie eine \\underline{vollständige} \\textit{Wheatstonesche} Brückenschaltung, wie sie im Praktikum verwendet wird. Welche Beziehung gilt bei einem vollständigen Abgleich? \\vspace{3.5cm}",
+        answerB = "\\includegraphics[width=5cm]{images/wheatstone-brücke.jpg} \\newline $R_x=\\frac{R_N R_K}{R}$"
+    },
+    {
+        questionB = "Geben Sie die \\underline{thermodynamische} Dissoziationskonstante für $\\text{HA} + \\text{H}_2\\text{O} \\rightarrow \\text{H}_3\\text{O}^+ + \\text{A}^-$ an. \\vspace{1.5cm}",
+        answerB = "$K_c^\\circ = \\left( \\frac{a_{c,H_3O^+} a_{c,A^-}}{a_{c,HA}} \\right)_{eq} = \\left( \\frac{c_{H_3O^+}/c^\\circ~ c_{A^-}/c^\\circ}{c_{HA}/c^\\circ} \\frac{\\gamma_{H_3O^+}\\gamma_{A^-}}{\\gamma_{HA}} \\right)_{eq} = \\left( \\frac{c_{H_3O^+} c_{A^-}}{c_{HA} c^\\circ} \\gamma_\\pm^2 \\right)_{eq} $"
+    },
+    {
+        questionB = " Welche beiden Kräfte (mit Gleichung) wirken auf Ionen im elektrischen Feld? \\vspace{2cm}",
+        answerB = "Beschleunigende Kraft des elektrischen Felds: $F_B = |z_i| e E$ \\newline Reibungskraft gemäß Stokes-Gesetz: $F_R = -6\\pi \\eta r_i v_{Di}$"
+    },
+        {
+        questionB = "Formulieren Sie das \\textit{Kohlrausch}sche Quadratwurzelgesetz. Für welchen Elektrolyttyp gilt es? Welche Größe bestimmt man mit seiner Hilfe?\\vspace{2cm}",
+        answerB = "$\\Lambda = \\Lambda^\\infty - k \\sqrt{c}$ \\newline starke Elektrolyte \\newline als Ordinatenabschnitt des quasilinearen Plots $\\Lambda$ vs. $\\sqrt{c}$ ergibt sich die Grenzleitfähigkeit (Äquivalenzleitfähigkeit bei unendlicher Verdünnung) $\\Lambda^\\infty$."
+    },
+    {
+        questionB = "Formulieren Sie das \\textit{Ostwald}sche Verdünnungsgesetz. Welche beiden Näherungen sind Basis dieser Gesetzes? \\vspace{2cm}",
+        answerB = "$K_c^{app}=\\frac{\\alpha^2c^2}{(1-\\alpha)c}=\\frac{\\left( \\frac{\\Lambda}{\\Lambda^\\infty} \\right)^2}{1-\\frac{\\Lambda}{\\Lambda^\\infty}}$ \\newline \\vspace{0.5cm} Vernachlässigung vom Aktivitätskoeffizienten $\\gamma_i\\approx 1$ und Arrhenius-Näherung: $\\alpha=\\frac{\\Lambda}{\\Lambda^\\infty}$"
+    },
+    {
+        questionB = "Geben Sie \\underline{alle} möglichen Darstellung der \\underline{linearisierten} Gleichung an. \\newline \\newline \\textit{Ostwald}sche Verdünnungsgesetz: \\newline \\newline \\textit{Kohlrausch}sche Quadratwurzelgesetz: \\newline",
+        answerB = "Ostwaldsches Verdünnungsgesetz: $\\Lambda = \\Lambda^\\infty - \\frac{\\Lambda^2c}{K_c^{app}\\Lambda^\\infty} \\qquad \\frac{1}{\\Lambda} = \\frac{1}{\\Lambda^\\infty} +\\frac{\\Lambda c}{K_c^{app}(\\Lambda^\\infty) ^2}$ \\newline Kohlrauschsches Quadratwurzelgesetz: $\\Lambda=\\Lambda^\\infty - k \\sqrt{c}$"
+    },
+    {
+        questionB = "Worin besteht der Unterschied zwischen der thermodynamischen, konventionellen und scheinbaren Dissoziationskonstante? Geben Sie die Gleichungen an. \\vspace{3cm}",
+        answerB = "$K_c^\\circ= \\frac{a_{H^+}~a_{X^-}}{a_{HX}~a_{X,H_2O}}\\approx \\frac{c_+ ~c_-}{c_{HX}~c^\\circ} \\gamma_\\pm^2$ \\newline \\vspace{0.5cm} $K_c=\\frac{c_+ ~c_-}{c_{HX}}$ \\newline \\vspace{0.5cm} $K_c^{app}=\\frac{\\alpha^2c^2}{(1-\\alpha)c}=\\frac{\\left( \\frac{\\Lambda}{\\Lambda^\\infty} \\right)^2}{1-\\frac{\\Lambda}{\\Lambda^\\infty}}$"
+    },
+    {
+        questionB = "Die Äquivalenzleitfähigkeit eines starken Elektrolyten nimmt mit zunehmender Konzentration $\\Box ~\\mathrm{zu}$ / $\\Box ~\\mathrm{ab}$. Welche Effekte bewirken dies? \\vspace{2cm}",
+        answerB = "\\textbf{Abnahme} der Äquivalenzleitfähigkeit bei zunehmender Konzentration \\newline Relaxationseffekt und elektrophoretischer Effekt"
+    },
+    {
+        questionB = "Skizzieren Sie die Strom-Spannungs-Kurven für Gleich- und Wechselspannung in ein gemeinsames Diagramm und erläutern Sie \\textit{kurz} die Unterschiede. \\vspace{4cm}",
+        answerB = "\\includegraphics[width=5cm]{images/strom-spannung.jpg} \\newline Gleichspannung: Nichtlineares Verhalten, da Polarisationseffekte auftreten -> Entstehung galvanischer Zelle, die angelegter Spannung entgegenwirkt \\newline Wechselspannung: Lineares Verhalten, da die Polarisationseffekte nicht auftreten"
+    },
+    {
+        questionB = "Erläutern Sie \\textit{kurz} die \\underline{Funktionsweise} der \\textit{Wheatstoneschen} Brückenschaltung. \\vspace{3.5cm}",
+        answerB = "Wheatstonesche Brücke setzt Widerstände in Beziehung, der Widerstand der Messzelle wird über die Widerstände der abgeglichenen Brücke bestimmt -> Widerstände verstellen bis Spannungsminimum erreicht ist"
+    },
+    {
+        questionB = "Füllen Sie die nachfolgende Tabelle aus: \\newline \\begin{tabular}{|c|c|c|} \\hline Elektrolyt & $~~~~~~\\alpha$ ~~~~~~& ~~~~~~ $f_\\Lambda$ ~~~~~~ \\\\ \\hline stark & & \\\\ \\hline schwach & & \\\\ \\hline \\end{tabular}",
+        answerB = "Füllen Sie die nachfolgende Tabelle aus: \\newline \\begin{tabular}{|c|c|c|} \\hline Elektrolyt & $~~~~~~\\alpha$ ~~~~~~& ~~~~~~ $f_\\Lambda$ ~~~~~~ \\\\ \\hline stark & $\\approx 1$ & $\\approx \\Lambda / \\Lambda^\\infty$ \\\\ \\hline schwach & $\\approx \\Lambda / \\Lambda^\\infty$ & $\\approx 1$ \\\\ \\hline \\end{tabular}"
+    },
+    {
+        questionB = "Skizzieren Sie das vereinfachte Ersatzschaltbild der Leitfähigkeitsmesszelle für ideal polarisierte Elektrode. \\vspace{3cm}",
+        answerB = "\\includegraphics[width=6cm]{images/Ersatzschaltnild-vereinfacht.jpg}"
+    }
+}
+
+-- Fragen und Antworten für Abschnitt C (4.0 Punkte pro Frage)
+
+questionsC = {
+    {
+        questionC = "Skizzieren Sie ein abgeschirmtes \\textit{Coulomb}-Potential für ein isoliertes Kation sowie eine reale Lösung in Abhängigkeit des Abstandes r in ein gemeinsames Diagramm. \\vspace{4cm}",
+        answerC= "\\includegraphics[width=6cm]{images/coulomb-potential.jpg}"
+    },
+    {
+        questionC = "Berechnen Sie für 25 °C die molare Grenzleitfähigkeit von Silberiodat in wässriger unendlich verdünnter Lösung. Die molaren Grenzleitfähigkeiten wässrige Lösungen von Natriumiodat, Natriumacetat und Silberacetat betragen bei 25 °C 76,94~$\\mathrm{S~cm^2~mol^{-1}}$, 78,16~$\\mathrm{S~cm^2~mol^{-1}}$ bzw. 88,80~$\\mathrm{S~cm^2~mol^{-1}}$. \\vspace{3cm}",
+        answerC = "$\\Lambda^\\infty_{AgIO_3} = \\lambda_{Ag^+}^\\infty + \\lambda_{IO_3^-}^\\infty = \\Lambda_{AgAc}^\\infty + \\Lambda_{NaIO_3}^\\infty - \\Lambda_{NaAc}^\\infty = (88,80 + 76,94 - 78,16)~\\mathrm{S~cm^2~mol^{-1}}= 87,58~\\mathrm{S~cm^2~mol^{-1}}$"
+    },
+    {
+        questionC = "Skizzieren Sie den Verlauf des Dissoziationsgrades von Essigsäure bei 25 °C in Abhängigkeit der Konzentration. \\vspace{4cm}",
+        answerC= "\\includegraphics[width=5cm]{images/dissoziationsgrad-essigsäure.jpg}"
+    },
+    {
+        questionC = "Skizzieren Sie den Verlauf der Leitfähigkeit von Salzsäure und Essigsäure bei 25 °C in Abhängigkeit der Konzentration in ein gemeinsames Diagramm. \\vspace{4cm}",
+        answerC= "\\includegraphics[width=5cm]{images/Leitfähigkeit-Konzentration-HCl.jpg} \\includegraphics[width=5cm]{images/Leitfähigkeit-Konzentration-HAc.jpg}"
+    },
+    {
+        questionC = "Skizzieren Sie den Verlauf der Äquivalenzleitfähigkeit für Salzsäure und Essigsäure bei 18 °C in Abhängigkeit der Konzentration in ein gemeinsames Diagramm. \\vspace{4cm}",
+        answerC = "\\includegraphics[width=5cm]{images/Äquivalenzleitfähigkeit-Konzentration.jpg}"
+    },
+    {
+        questionC = "Zeigen Sie, wie man mit Hilfe des Debye-Hückel-Grenzgesetzes den mittleren Henryschen Aktivitätskoeffizienten sehr verdünnter Kaliumsulfat-Lösungen berechnen kann. \\vspace{3cm}",
+        answerC= "$\\log \\gamma_\\pm = -A |z_+~z_-| \\sqrt{I_c/c^\\circ}$ \\newline K$_2$SO$_4$: $z_+=1$, $z_-=-2$, $I_c=\\frac{1}{2}(z_+^2c_+ + z_-^2c_-)= \\frac{1}{2} (2c + 4c) = 3c $ \\newline $\\log \\gamma_\\pm = -A ~2~ \\sqrt{3c/c^\\circ}$ \\newline A=0.51 bei 25 °C"
+    },
+    {
+        questionC = "Erläutern Sie das der \\textit{Debye-Hückel}-Theorie zugrunde liegende Modell und veranschaulichen Sie die relevanten Kräfte. \\vspace{4cm}",
+        answerC = "Jedes Ion ist von einer entgegengesetzt geladenen diffusen Ionenwolke umgeben, die thermisch instabil ist. \\newline Die Ionenwolke hinkt dem wandernden Zentralion hinterher und umgibt das Zentralion asymmetrisch (Relaxationseffekt) \\newline Die Ionenwolke wandert mit den Solvathüllen ihrer Ionen in entgegengesetzte Richtung zum Zentralion (Gegenströmung des Lösungsmittels)"
+    },
+    {
+        questionC = "Skizzieren Sie die Ladungsdoppelschicht einer Elektrode sowie den Verlauf des elektrischen Potentials als Funktion des Abstandes von der Elektrode. \\vspace{4cm}",
+        answerC = "\\includegraphics[width=6cm]{images/Ladungsdoppelschicht.jpg}"  
+    },
+    {
+        questionC = "Skizzieren Sie das vollständige Ersatzschaltbild der Leitfähigkeitsmesszelle ohne weitere Annahmen. \\vspace{4cm}",
+        answerC = "\\includegraphics[width=6cm]{images/Ersatzschaltbild-Leitfähigkeitsmesszelle.jpg}"  
     },
 }
 
 -- Funktion zur zufälligen Auswahl von Fragen
-function selectRandomQuestions(n)
+function selectRandomQuestionsA(n)
     math.randomseed(os.time())
     local selected = {}
     local indices = {}
     
     -- Erstelle Array mit allen Indizes
-    for i = 1, #questions do
+    for i = 1, #questionsA do
         indices[i] = i
     end
     
     -- Wähle n zufällige Fragen aus
-    for i = 1, math.min(n, #questions) do
+    for i = 1, math.min(n, #questionsA) do
         local randomIndex = math.random(1, #indices)
-        table.insert(selected, questions[indices[randomIndex]])
+        table.insert(selected, questionsA[indices[randomIndex]])
         table.remove(indices, randomIndex)
     end
     
     return selected
 end
 
+function selectRandomQuestionsB(n)
+    math.randomseed(os.time())
+    local selected = {}
+    local indices = {}
+    
+    -- Erstelle Array mit allen Indizes
+    for i = 1, #questionsB do
+        indices[i] = i
+    end
+    
+    -- Wähle n zufällige Fragen aus
+    for i = 1, math.min(n, #questionsB) do
+        local randomIndex = math.random(1, #indices)
+        table.insert(selected, questionsB[indices[randomIndex]])
+        table.remove(indices, randomIndex)
+    end
+    
+    return selected
+end
+
+function selectRandomQuestionsC(n)
+    math.randomseed(os.time())
+    local selected = {}
+    local indices = {}
+    
+    -- Erstelle Array mit allen Indizes
+    for i = 1, #questionsC do
+        indices[i] = i
+    end
+    
+    -- Wähle n zufällige Fragen aus
+    for i = 1, math.min(n, #questionsC) do
+        local randomIndex = math.random(1, #indices)
+        table.insert(selected, questionsC[indices[randomIndex]])
+        table.remove(indices, randomIndex)
+    end
+    
+    return selected
+end
+
+
 -- Hier wird die Anzahl der Fragen festgelegt, die ausgewählt werden sollen
-selectedQuestions = selectRandomQuestions(11)
+selectedQuestionsA = selectRandomQuestionsA(5)
+selectedQuestionsB = selectRandomQuestionsB(6)
+selectedQuestionsC = selectRandomQuestionsC(2)
+
 
 -- Funktionen für LaTeX-Output
-function printQuestions()
-    for i, q in ipairs(selectedQuestions) do
-        tex.print("\\question{" .. i .. "}{" .. q.question .. "}")
+function printQuestionsA()
+    for i, q in ipairs(selectedQuestionsA) do
+        tex.print("\\questionA{" .. i .. "}{" .. q.questionA .. "}")
     end
 end
 
-function printAnswers()
-    for i, q in ipairs(selectedQuestions) do
-        tex.print("\\answer{" .. i .. "}{" .. q.answer .. "}")
+function printAnswersA()
+    for i, q in ipairs(selectedQuestionsA) do
+        tex.print("\\answerA{" .. i .. "}{" .. q.answerA .. "}")
     end
 end
+
+function printQuestionsB()
+    for i, q in ipairs(selectedQuestionsB) do
+        tex.print("\\questionB{" .. i .. "}{" .. q.questionB .. "}")
+    end
+end
+
+function printAnswersB()
+    for i, q in ipairs(selectedQuestionsB) do
+        tex.print("\\answerB{" .. i .. "}{" .. q.answerB .. "}")
+    end
+end
+
+function printQuestionsC()
+    for i, q in ipairs(selectedQuestionsC) do
+        tex.print("\\questionC{" .. i .. "}{" .. q.questionC .. "}")
+    end
+end
+
+function printAnswersC()
+    for i, q in ipairs(selectedQuestionsC) do
+        tex.print("\\answerC{" .. i .. "}{" .. q.answerC .. "}")
+    end
+end
+
+function printAllQuestionsAndAnswersA()
+    for i, q in ipairs(questionsA) do
+        tex.print("\\questionA{" .. i .. "}{" .. q.questionA .. "}")
+        tex.print("\\answerA{" .. i .. "}{" .. q.answerA .. "}")
+        tex.print("\\vspace{0.5cm}")
+    end
+end
+
 \end{luacode}
 
 % Befehle für Fragen und Antworten
-\NewDocumentCommand{\question}{m m}{%
-    \textbf{Frage #1)} \\ #2 \\ \vspace{0.5cm}
+\NewDocumentCommand{\questionA}{m m}{%
+    \begin{minipage}{\textwidth} \textbf{Frage 1.#1)} \textit{1.0 Punkte} \\ #2 \\ \vspace{0.5cm}
+    \end{minipage}
 }
 
-\NewDocumentCommand{\answer}{m m}{%
-    \textbf{Lösung #1)} \\ #2 \\ \\
+\NewDocumentCommand{\answerA}{m m}{%
+    \begin{minipage}{\textwidth} \textbf{Lösung 1.#1)} \\ #2 \\ \vspace{0.5cm}
+    \end{minipage}
+}
+
+\NewDocumentCommand{\questionB}{m m}{%
+    \begin{minipage}{\textwidth} \textbf{Frage 2.#1)} \textit{2.0 Punkte} \\ #2 \\ \vspace{0.5cm}
+    \end{minipage}
+}
+
+\NewDocumentCommand{\answerB}{m m}{%
+    \begin{minipage}{\textwidth} \textbf{Lösung 2.#1)} \\ #2 \\ \vspace{0.5cm}
+    \end{minipage}
+}
+
+\NewDocumentCommand{\questionC}{m m}{%
+    \begin{minipage}{\textwidth} \textbf{Frage 3.#1)} \textit{4.0 Punkte} \\ #2 \\ \vspace{0.5cm}
+    \end{minipage}
+}
+
+\NewDocumentCommand{\answerC}{m m}{%
+    \begin{minipage}{\textwidth} \textbf{Lösung 3.#1)} \\ #2 \\ \vspace{0.5cm}
+    \end{minipage}
 }
 
 % ---- Dokumentenbeginn ----
 \begin{document}
-
-\textit{Bitte beschränken Sie sich auf möglichst kurze Stichpunkte oder Gleichungen bei Ihrer Antwort. Verwenden Sie eine von uns abweichende Verwendung der Formelsymbole, müssen diese erläutert werden.}
+Erreichte Punkte:  \qquad / 25
+\\ \\
+\textit{Bitte beschränken Sie sich auf möglichst kurze Stichpunkte bei Ihrer Antwort. Wenn möglich, nutzen Sie Gleichungen. Verwenden Sie eine von uns abweichende Verwendung der Formelsymbole, müssen diese erläutert werden.}
 
 \vspace{1cm}
 
-\directlua{printQuestions()}
+\directlua{printQuestionsA()}
+
+\directlua{printQuestionsB()}  
+
+\directlua{printQuestionsC()}
 
 \newpage
 
 \section*{Lösungen}
-\directlua{printAnswers()}
+\directlua{printAnswersA()}
+
+\directlua{printAnswersB()}
+
+\directlua{printAnswersC()}
 
 \end{document}
