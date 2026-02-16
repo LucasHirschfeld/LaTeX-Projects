@@ -1,7 +1,8 @@
 \chapter{Literature}
-\section{Quinachridone (QA)}
+\label{chap:literature}
+\section{Quinacridone (QA)}
 
-\begin{figure}[H]
+\begin{figure}[htbp]
 	\centering
 	\begin{subfigure}[b]{0.48\linewidth}
 		\centering
@@ -11,15 +12,23 @@
 	\hfill
 	\begin{subfigure}[b]{0.48\linewidth}
 		\centering
-		\includegraphics[width=\linewidth]{images/vertiefer/QA_molecule.png}
-		\caption{Ball-and-stick model}
+		\includegraphics[width=\linewidth]{images/qa.pdf}
+		\caption{Space-filling model}
 	\end{subfigure}
 	\caption{Molecular structure of \acf{QA}.}
 	\label{fig:QA}
 \end{figure}
 
 
-\section{Structures of Quinachridone (QA) on the Ag(100) surface}
+\section{Structures of QA on the Ag(100) surface}
+
+\Ac{QA} forms two different phases on the Ag(100) surface. Upon adsorption by room temperature, the molecules arrange in the so-called $\alpha$-phase with a \ac{pol} structure. By annealing the sample to 500~\si{K}, the molecules rearrange into the commensurate $\beta$-phase. These two phases were first observed and characterized by \ac{STM} and \ac{LEED} measurements. All information that are presented in the following is based on the work of Humberg et al. \autocite{Humberg2020, Humberg2025} if not stated otherwise.
+
+As said above, the $\alpha$-phase of \ac{QA} on the Ag(100) surface has forms when \ac{QA} molecules are deposited onto the Ag(100) surface at room temperature. The $\alpha$-phase consists of domains of homochiral molecular chains that are parallel to each other. The \ac{QA} molecules absorb with its $\pi$-system parallel to the surface in a face-on orientation.
+
+The molecular chains are dominantly formed due to intermolecular hydrogen bonds between the H atoms of the amine group of one molecule and the O atoms of the carbonyl group of another molecule. This means that each \ac{QA} molecule has four hydrogen bonds to its two nearest neighbors, resulting in two hydrogen bonds per molecule, as each hydrogen bond is shared between two molecules. 
+
+The evaluation of the \ac{SPA-LEED} pattern of the $\alpha$-phase results in the following unit cell matrix:
 
 \begin{equation*}
 \mathbf{M_\alpha} =\begin{pmatrix}
@@ -28,12 +37,24 @@
 \end{pmatrix},
 \end{equation*}
 
-\begin{figure}[htb]
+which indicates a \ac{pol} structure, because the values of the first column are integers.\autocite{Hooks2001} This indicates the importance of the substrate for the formation of the $\alpha$-phase, as every lattice point of the superstructure matches with a substrate lattice line of the [10] direction.
+
+The unit cell is primitive rectangular ($\alpha=90° \pm 1°$) with the intermolecular distance in one molecular chains of $\mathbf{b}_1=(6.8\pm0.1)~\si{\angstrom}$ and the distance of two parallel molecular chains of $\mathbf{b}_2=(16.4\pm0.1)~\si{\angstrom}$ and contains one \ac{QA} molecule. The \ac{STM} images, the \ac{SPA-LEED} pattern and the structure model of the $\alpha$-phase are shown in Figure \ref{fig:literature_alpha}.
+
+\begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.8\textwidth]{images/vertiefer/literature_alpha.png}
-	\caption{Current structure of complete \ac{ML} of \ac{QA} on Ag(100) in the $\alpha$-phase. The image shows an overview \ac{STM} image (a), a close-up \ac{STM} image of the molecular arrangement (b), the \ac{SPA-LEED} pattern (c) and the structure model (d). The image is taken from reference \cite{Humberg2024}.}
+	\includegraphics[width=0.9\textwidth]{images/vertiefer/literature_alpha.png}
+	\caption{Current structure of complete \ac{ML} of \ac{QA} on Ag(100) in the $\alpha$-phase. The image shows an overview \ac{STM} image (a), a close-up \ac{STM} image of the molecular arrangement (b), the \ac{SPA-LEED} pattern (c) and the structure model (d). The image is taken from reference \cite{Humberg2025}.}
 	\label{fig:literature_alpha}
 \end{figure}
+
+When the sample is annealed to 500~\si{K}, the molecules rearrange irreversibly into the thermodynamically favored $\beta$-phase. This means that the $\alpha$-phase is a metastable phase, which is kinetically stabilized by e.g. the intermolecular hydrogen bonds. The exact mechanism of the phase transition is not known.
+
+Similar to the $\alpha$-phase, the \ac{QA} molecules in the $\beta$-phase also adsorb with its $\pi$-system parallel to the surface in a face-on orientation and in molecular chains that are parallel to each other. In contrast to the $\alpha$-phase, the molecular chains are not homochiral, but consist of dimers with alternating handedness. In addition, the molecular chains also exhibit periodic indents.
+
+This leads to a diffferent situation of the hydrogen bonds. The two \ac{QA} molecules of a dimer are connected by two hydrogen bonds, but the dimers are only connected by one hydrogen bond due to the indents. This means that each \ac{QA} molecule has three hydrogen bonds to its two nearest neighbors, resulting in 1.5 hydrogen bonds per molecule and an energy loss due to the missing hydrogen bonds.
+
+The evaluation of the \ac{SPA-LEED} pattern of the $\beta$-phase results in the following unit cell matrix:
 
 \begin{equation*}
 \mathbf{M_\beta} =\begin{pmatrix}
@@ -42,11 +63,20 @@
 \end{pmatrix},
 \end{equation*}
 
-\begin{figure}[htb]
+which corresponds to a commensurate structure. This indicates strong substrate interactions and is related to generally related to a gain in energy, which compensates the energy loss due to the missing hydrogen bonds.\autocite{Hooks2001} It is important to note that the unit cell of the $\beta$-phase does not take the handedness of the molecules into account, as the unit cell is determined by \ac{SPA-LEED}, which is not sensitive to the handedness of the molecules, becuase the enantiomers have very similar structure factors.
+
+The unit cell of the $\beta$-phase is oblique ($\alpha=112.2° \pm 1°$) with the unit cell vectors $\mathbf{b}_1=(6.9\pm0.1)~\si{\angstrom}$ and $\mathbf{b}_2=(15.8\pm0.1)~\si{\angstrom}$ and contains two \ac{QA} molecules. The \ac{STM} images, the \ac{SPA-LEED} pattern and the structure model of the $\beta$-phase are shown in Figure \ref{fig:literature_beta}.
+
+\begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.8\textwidth]{images/vertiefer/literature_beta.png}
-	\caption{Current structure of complete \ac{ML} of \ac{QA} on Ag(100) in the $\beta$-phase. The image shows an overview \ac{STM} image (a), a close-up \ac{STM} image of the molecular arrangement (b), the \ac{SPA-LEED} image (c) and the structure model (d). The image is taken from reference \cite{Humberg2024}.}
+	\includegraphics[width=0.9\textwidth]{images/vertiefer/literature_beta.png}
+	\caption{Current structure of complete \ac{ML} of \ac{QA} on Ag(100) in the $\beta$-phase. The image shows an overview \ac{STM} image (a), a close-up \ac{STM} image of the molecular arrangement (b), the \ac{SPA-LEED} image (c) and the structure model (d). The image is taken from reference \cite{Humberg2025}.}
 	\label{fig:literature_beta}
 \end{figure}
+
+In addition, it was investigated if the $\beta$-phase involves metal-coordinated bonds between the \ac{QA} molecules, which could be dismissed.\autocite{Humberg2025,Bald2021}
+
+Further questions regarding the two phases are still open, e.g. why the thermodynamically favored $\beta$-phase does not form directly upon adsorption at room temperature, and what the exact mechanism of the phase transition is.
+
 
 \cleardoublepage

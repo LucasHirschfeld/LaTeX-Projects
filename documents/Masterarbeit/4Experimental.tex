@@ -1,7 +1,8 @@
 \chapter{Experimental}
-\section{Material}
 
-\subsection{The Ag(100) crystal surface}
+\section{The Ag(100) crystal surface}
+
+As substrate for the adsorption of \ac{QA} molecules, a silver crystal with a (100) surface orientation provided by the team of the I09 beamline of the Diamond Light Source is used. Silver crystallizes in a \ac{fcc} structure with a lattice constant of $a_\mathrm{Ag} = 4.0856 \pm 0.0020$~\si{\angstrom} at a temperature of 25~\si{\degreeCelsius}.\autocite{Weast1974, Smakula1955,Straumanis1971} The (100) surface is created by cutting the crystal along the plane defined by the [100] and [010] directions. This results in a square surface unit cell with a lattice constant of $a_\mathrm{Ag(100)} = a_\mathrm{Ag} / \sqrt{2} = 2.8890$~\si{\angstrom}. The unit cell of the Ag(100) surface and the distinct adsorption sites on the Ag(100) surface are illustrated in \autoref{fig:Ag(100)}.
 
 \begin{figure}[H]
 	\centering
@@ -10,24 +11,51 @@
 	\label{fig:Ag(100)}
 \end{figure}
 
-\ac{BE}
+The Ag(100) crystal was cleaned in ultra-high vacuum (UHV) conditions by repeated cycles of Ar$^+$ ion sputtering and annealing. For the Ar sputtering, argon gas was dosed into the chamber to an pressure of at a pressure of $5\cdot10^{-5}$~\si{mbar} and the Ar$^+$ ions were accelerated with an voltage of $1$~\si{keV}. The annealing was done at approximately 825~\si{\K} for 45~\si{minutes} to heal defects on the Ag(100) surface. The cleanliness of the Ag(100) surface is verified by \ac{LEED} and \ac{XPS} measurements before the deposition of \ac{QA} molecules.
 
 \newpage
 \section{Experimental setup}
 
+The \ac{XPS} and \ac{NIXSW} measurements were performed at the end-station in EH2 of the I09 beamline at the Diamond Light Source in Didcot, UK.\autocite{Diamond2025} A schematic drawing of the experimental end-station is shown in \autoref{fig:I09}. At the end-station in EH2, an \ac{UHV} chamber with a base pressure of $approx 10^{-10}$~\si{mbar} is available for surface science experiments, equipped with various preparation and analysis tools.
+
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.9\textwidth]{images/vertiefer/I09.jpg}
+	\includegraphics[width=\textwidth]{images/vertiefer/I09.jpg}
 	\caption{Schematic drawing of the I09 endstation of the Diamond Light Source in Didcot, UK. Picture taken from reference \cite{Diamond2025}.}
 	\label{fig:I09}
 \end{figure}
 
+The end-station in EH2 (\autoref{fig:I09}) utilizes synchrotron radiation from an undulator inside the electron storage ring of the Diamond Light Source. At the end-station in EH2, hard ($2.1-18$~\si{keV}) and soft  ($230-2000$~\si{eV}) x-rays are available for the experiments. For the hard x-rays, a double-crystal Si(111) monochromator is used, while for the soft x-rays a plane grating monochromator is employed. The x-rays are then directed into the experimental chamber using different focusing mirrors.\autocite{Diamond2025}
+
+The experimental chamber is equipped with a 5 axes manipulator that allows precise sample positioning in x,y,z direction as well as polar and azimuth angles and contains a cryostat for cooling the sample down with liquid nitrogen or liquid helium. In addition, there are different preparation chambers attached to the experimental chamber for sample preparation, such as \ac{QA} deposition.\autocite{Diamond2025}
+
+For the \ac{XPS} and \ac{NIXSW} measurements, a hemispherical electron energy analyzer (VG Scienta EW4000 HAXPES) with a 70 frame per second CCD camera is used that allows the detection of photoelectrons with kinetic energies up to 10~\si{kV}. The analyzer has an acceptance cone of 56$^\circ$ and the analyzer-incident beam angle is fixed at 90$^\circ$  or 60$^\circ$.\autocite{Diamond2025} The sample geometries for the \ac{XPS} and \ac{NIXSW} measurements are illustrated in \autoref{fig:experimental}.
+
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.6\textwidth]{images/vertiefer/experimental.png}
-	\caption{Top view of the sample geometries for the \ac{XPS} measurements at the I09 endstation of the Diamond Light Source in Didcot, UK. Illustrated as in reference \cite{Kny2025}.}
+	\begin{subfigure}{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/experimental_XPS.pdf}
+		\caption{\ac{XPS} setup}
+		\label{fig:experimental_XPS}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{images/experimental_NIXSW.pdf}
+		\caption{\ac{NIXSW} setup for Ag(200) Bragg reflection}
+		\label{fig:experimental_NIXSW}
+	\end{subfigure}
+	\caption{Top view of the sample geometries for the \ac{XPS} and \ac{NIXSW} measurements for the Ag(200) Bragg reflection at the I09 endstation of the Diamond Light Source in Didcot, UK. The angle $\theta$ denotes the deviation of the incident x-ray beam from the normal incidence with respect to the Ag(200) Bragg plane. Illustrated as in reference \cite{Kny2025}.}
 	\label{fig:experimental}
 \end{figure}
+
+In addition to the aforementioned components for \ac{XPS} and \ac{NIXSW} measurements, the experimental chamber is also equipped with a \ac{LEED} setup, an argon ion sputter gun, and an evaporator for the \ac{QA} deposition.\autocite{Diamond2025} 
+
+
+\section{XPS measurements}
+
+The \ac{XPS} and \ac{NIXSW} measurements of \ac{QA} on Ag(100) were performed with the previously described experimental setup at the I09 endstation of the Diamond Light Source in Didcot, UK. The \ac{XPS} measurements were conducted using photon energies of 500~\si{\eV} for the C1s and N1s core levels and 630~\si{\eV} for the O1s core level. The pass energy of the hemispherical electron energy analyzer was set to 20~\si{\eV}. The step width for the spectra acquisition was set to 40~\si{meV} and 17 frames were recorded for each core level and then averaged. The experimental parameters for the \ac{XPS} measurements are summarized in \autoref{tab:experimental_XPS}.
 
 \begin{table}[H]
 	\centering
@@ -40,10 +68,40 @@
 		N1s & 500~\si{\eV} & 20~\si{\eV} & 40~\si{meV} & 17 \\
 		\bottomrule
 	\end{tabular}
-	\label{tab:experimental}
+	\label{tab:experimental_XPS}
 \end{table}
 
-\section{Data processing}
+\section{Data processing for the XPS spectra}
+\label{sec:data-processing-XPS}
+
+The measured \ac{XPS} spectra were processed and analyzed using the CasaXPS software\autocite{CasaSoftwareLtd2022}. First, the \ac{XPS} spectra with same experimental parameters and same experimental preparation were averaged to increase the signal-to-noise ratio.
+
+Then, the \ac{BE} of the averaged \ac{XPS} spectra were calibrated against the Fermi edge, which was measured for each preparation after the \ac{XPS} measurements of \ac{QA} on the Ag(100) surface. This was done by fitting a \ac{XPS} spectrum of the Fermi edge with the Fermi function
+
+\begin{equation}
+	f(E) = \frac{a}{1 + e^{\frac{E - E_F}{k_\mathrm{B}T}}} + b
+	\label{eq:fermi}
+\end{equation}
+
+where $a$ is the amplitude, $b$ the offset, $E_F$ the Fermi energy, $k_\mathrm{B}$ the Boltzmann constant, and $T=300~\si{K}$ the temperature. The \ac{BE} scale of the \ac{XPS} spectra of \ac{QA} on Ag(100) was then calibrated by aligning the fitted Fermi energy $E_F$ to 0~\si{\eV} accordingly.
+
+After the calibration of the \ac{BE} scale, the background of the \ac{XPS} spectra was subtracted using a linear background or a Shirley background\autocite{Shirley1972} depending on the individual spectrum. 
+
+Finally, the different core level peaks of the \ac{XPS} spectra were fitted using a numerical convolution of Lorentzian and a Gaussian to produce a Voigt profile. This function is called asymmetric Lorentzian lineshape LA($\alpha$,$\beta$,$m$), where $\alpha$ and $\beta$ describe the asymmetry of the peak and $m$ the width of the Gaussian.\autocite{CasaSoftwareLtd2022} The asymmetric Lorentzian lineshape is defined as
+
+\begin{equation}
+	LA(\alpha,\beta) = \begin{cases}
+		\left[L(x) \right]^\alpha & x \leq E \\
+		\left[L(x) \right]^\beta & x > E
+	\end{cases}
+\end{equation}
+
+with 
+\begin{equation}
+	L(x) = \frac{1}{1 + 4 \left( \frac{(x - E)}{\text{FWHM}} \right)^2} ~.
+\end{equation}
+
+This lineshape was used because it shows the best description of the \ac{XPS} spectra. In addition to the lineshape, the area of the peak can be constrained. This was used to match the number of C atoms in the molecule to the number of C atoms in the corresponding peak. The exact parameters used for the peak fitting in CasaXPS are summarized in \autoref{tab:casa}.
 
 \begin{table}[H]
 	\centering
@@ -54,12 +112,11 @@
 	$\mathrm{C_{arom}}$ & LA(1,8,800) & 10 \\
 	$\mathrm{C_{NH}}$ & LA(1,8,800) & 4 \\
 	$\mathrm{C_{CO}}$ & LA(1,8,800) & 4 \\
-	$\mathrm{C_{O}}$ & LA(1,8,200) & 2 \\
+	$\mathrm{C_{O}}$ & LA(1,8,800) & 2 \\
 	\midrule
 	O1 & LA(1,8,400) & 1 (for $\beta$-phase) \\
-	$\mathrm{O1_{sat}}$ & LA(1,1,400) & - \\
+	$\mathrm{O1_{damage}}$ & LA(1,8,400) & - \\
 	O2 & LA(1,8,400) & 1 (for $\beta$-phase) \\
-	$\mathrm{O2_{sat}}$  & LA(1,1,400) & - \\
 	\midrule
 	N1 & LA(1,8,400) & 1 (for $\beta$-phase) \\
 	$\mathrm{N1_{damage}}$  & LA(1,8,400) & - \\
@@ -68,5 +125,55 @@
 \end{tabular}
 	\label{tab:casa}
 \end{table}
+
+As explained in the previous chapter, the \ac{FWHM} of the peaks in the \ac{XPS} spectra is influenced by various effects, such as instrumental broadening and the lifetime of the photohole. To account for these, the \ac{FWHM} of the different peaks was not constrained to a fixed value, but was allowed to vary within a certain range. The exact values of the \ac{FWHM} for the different peaks are given in the following chapter for each fit. 
+
+\section{NIXSW measurements}
+
+The \ac{NIXSW} measurements were performed with the Ag(200) Bragg reflection. The Bragg energy of the Ag(200) reflection is $E^{200}_\mathrm{Bragg} = 3035.54$~\si{\eV}. For the \ac{NIXSW} measurements, energies of the x-ray beam $E_\mathrm{\gamma}$ around the Bragg energy were used to excite photoelectrons from the C1s, O1s, and N1s core levels. The photon energy $E_\mathrm{\gamma}$ is between $E^{200}_\mathrm{Bragg} - 4.5~\si{eV}$ and $E^{200}_\mathrm{Bragg} + 4.5~\si{eV}$.
+
+The different \ac{NIXSW} spectra were measured at a fresh sample position to avoid radiation damage effects. Furthermore, before an \ac{NIXSW} measurement was performed, the reflectivity curve of the Ag(200) Bragg reflection was recorded to ensure that the position is usable und for the data evaluation. The maximum \ac{FWHM} of the reflectivity curve was set to 0.90~\si{eV}. 
+
+The energy of the x-ray beam can be further classified as the \textit{out-of-Bragg} regions, which is 2.5~\si{eV} below and above the Bragg energy. For these two regions, 4 data points (photoemission spectea) were measured, because there is no standing wavefield in the {out-of-Bragg} region and thus only the photoemission yield of the measured orbitals. The region with an energy of $E^{200}_\mathrm{Bragg} \pm 2.5~\si{eV}$ was measured with 26 data points. The other experimental parameters for the \ac{NIXSW} measurements are summarized in \autoref{tab:experimental_NIXSW}. 
+
+\begin{table}[H]
+	\centering
+	\caption{Experimental parameters for \ac{NIXSW} measurements at the I09 endstation of the Diamond Light Source in Didcot, UK.}
+	\begin{tabular}{@{}cccccc@{}} \toprule
+		& pass energy $E_\mathrm{pass}$ & step width & size & number of frames\\
+		\midrule
+		C1s & 200~\si{\eV} & 40~\si{meV} & 150~\si{meV} & 6 \\ 
+		O1s & 200~\si{\eV} & 40~\si{meV} & 150~\si{meV} & 5 \\ 	
+		N1s & 200~\si{\eV} & 40~\si{meV} & 150~\si{meV} & 3 \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:experimental_NIXSW}
+\end{table}
+
+
+
+\section{Data processing for the NIXSW spectra}
+
+The \ac{NIXSW} data was processed and analyzed with CasaXPS\autocite{CasaSoftwareLtd2022} and Torricelli 4.0.1.\autocite{Bocquet2019}
+ 
+First, all single \ac{XPS} spectra of the \ac{NIXSW} measurement were processed in the same way as described for the \ac{XPS} spectra in the \autoref{sec:data-processing-XPS}, but without the calibration of the \ac{BE} to the Fermi edge and the area constraint. The relative positions and the \ac{FWHM} of the peaks were constrained to the values from the fit model for the \ac{XPS} spectra for all measurements and only the peak areas were allowed to vary. The errors of the integrated peak areas were computed by means of the Monte Carlo-based procedure implemented in CasaXPS\autocite{CasaSoftwareLtd2022} and were used for the error calculation of the \ac{NIXSW} data in Torricelli 4.0.1.\autocite{Bocquet2019}.
+
+Afterwards, the peak areas of the different core levels for each photon energy $E_\mathrm{\gamma}$ were then further processed in Torricelli 4.0.1.\autocite{Bocquet2019}. Torricelli computes the ideal reflectivity curve and the phase of the standing wavefield for the given Bragg plane (here: Ag(200)) for the temperature of the experiment (here: $T=300$~\si{K}) and the Bragg angle (here: ). Then, the experimental relfectivity curve is fitted. Finally, the photoemission yield is fitted with taking the non-dipolar correction parameters from \autoref{tab:non-dipolar} into account to determine the coherent fraction and the coherent position. The normalized errors of the photoemission yield were calculated by a Monte Carlo analysis that is implemented in Torricelli 4.0.1.\autocite{Bocquet2019} The final results of the \ac{NIXSW} measurements are the coherent fraction $f_\mathrm{c}$ and the coherent position $p_\mathrm{c}$ with their respective errors.
+
+\begin{table}[htbp]
+	\centering
+	\caption{Non-dipolar correction parameters for the Ag(200) Bragg reflection.\autocite{Jablonski2010}}
+	\begin{tabular}{@{}ccccc@{}} \toprule
+		core level & $E_\mathrm{kin}$ & $\delta p$ & $\delta d$ & $\Delta = \delta d -\delta p$ \\
+		\midrule
+		C1s & 2748.74 & 0.76647 & 0.56969 & -0.19678 \\
+		O1s & 2496.96 & 0.9676 & 0.69386 & -0.27374 \\
+		N1s & 2633.74 & 0.86944 & 0.63570 & -0.23374 \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:non-dipolar}
+\end{table}
+
+
 
 \cleardoublepage

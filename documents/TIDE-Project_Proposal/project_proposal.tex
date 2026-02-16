@@ -1,4 +1,4 @@
-documentclass[twoside, 11pt, a4paper]{scrreprt}
+\documentclass[11pt, a4paper]{scrreprt}
 
 \author{Lucas Hirschfeld}
 \date{\today}
@@ -18,6 +18,7 @@ documentclass[twoside, 11pt, a4paper]{scrreprt}
 \usepackage{microtype}
 \usepackage{csquotes}
 \usepackage[hidelinks, unicode]{hyperref}
+\usepackage{pgfgantt}
 
 % Bibliographie-Einstellungen
 \usepackage[backend=biber,
@@ -132,7 +133,7 @@ Date of submission:~\today \\
 \centering
 %{\scshape\LARGE \par}
 \vspace{2cm}
-{\Large\bfseries C1: Ordering and film growth of quinacridone and derivatives on metallic surfaces\par}
+{\Large\bfseries C2: Ordering and reaction of quinacridone and derivatives on metal surfaces\par}
 
 % Supervisor
 \vspace{3 cm}
@@ -147,22 +148,22 @@ Co-Supervisor: & Prof.~Dr.~Thomas Bredow\\
 \end{titlepage}
 
 \newpage
-\pagenumbering{numstyle}
+\pagenumbering{arabic}
 \chapter{State of the art \& preliminary work}
 
-\Ac{QA} is a high symmetric, prochiral organic molecule with the IUPAC name 5,12-dihydro-quino[2,3-\textit{b}]acridine-7,14-dione and the sum formula \ce{C20H12N2O2}. Organic crystals exhibit a color which can range from red to violet.\autocite{ChemicalBook2025,ChemSpider2025}
+Surfaces play a crucial role in various scientific and technological fields, including catalysis, sensor technology, and the development of organic electronics. The interaction between organic molecules and metal surfaces is of particular interest due to its implications for the design and optimization of organic electronics.\autocite{Koch2007} This exactly matches to one of the main interests of the TiDE project.\autocite{Meerholz2019}
 
-\Ac{QA} is most prominently recognized as the parent structure of a group of pigments, most notably Pigment Violet 19 (C.I. 73900). This particular pigment is extensively utilized in industrial applications due to its remarkable color properties and stability.\autocite{ChemicalBook2025,ChemSpider2025} The molecular structure of \ac{QA} is shown in \autoref{fig:QA}.
+One organic molecule that has been extensively studied in the context of organic electronics is \acf{QA}, which structure is shown in \autoref{fig:QA}. \Ac{QA} is an organic, prochiral molecule with a $\pi$-conjugated system, that is known for its use as a dye in printer toners and varnishes.\autocite{Hye2012} Its potential extends beyond its application as a dye, as previous studies demonstrated the application of \ac{QA} in organic electronics.\autocite{Glowacki2013, DanielGlowacki2012, Wang2016} Specific applications for \ac{QA} have been identified, including its use in \acp{OLED}\autocite{Wang2016a, Min2021, Cunha2018}, \acp{OPV}\autocite{Dunst2017, Sung2017} and \acp{OFET}\autocite{Jeon2018, Jeong2017, Kanbur2019, Berg2009}. In addition, \ac{QA} has been found to form well-defined structures on metal surfaces, such as the Ag(100), the Ag(111), and the Cu(111) surface.\autocite{Humberg2020,Humberg2024,Humberg2023,Humberg2024a,Wagner2014}
 
-\begin{figure}[H]
+\begin{figure}[htbp]
 	\centering
-	\begin{subfigure}[b]{0.48\linewidth}
+	\begin{subfigure}[t]{0.35\linewidth}
 		\centering
 		\includegraphics[width=\linewidth]{images/QA.pdf}
 		\caption{Skeletal structure}
 	\end{subfigure}
-	\hfill
-	\begin{subfigure}[b]{0.48\linewidth}
+	\hspace{2cm}
+	\begin{subfigure}[t]{0.35\linewidth}
 		\centering
 		\includegraphics[width=\linewidth]{images/QA_molecule.png}
 		\caption{Ball-and-stick model}
@@ -171,14 +172,159 @@ Co-Supervisor: & Prof.~Dr.~Thomas Bredow\\
 	\label{fig:QA}
 \end{figure}
 
-The molecule is classified as a heterocyclic compound. Its structure is characterized by a conjugated ring system that induces significant rigidity and planarity to the molecule.\autocite{forBiotechnologyInformation2025} \Ac{QA} is of the symmetry group $\mathrm{C_{2h}}$ and has a molar mass of 312.32~\si{g/mol}. The molecule is a crystalline solid with four known different crystal structures under standard conditions.\autocite{Paulus2007,Mizuguchi}
+A common structural motif of \ac{QA} monolayers on surfaces\autocite{Humberg2024, Wagner2014, Trixler2007, Eberle2019} and in its bulk structure\autocite{Paulus2007} are 1D molecular chains, which form due to intermolecular hydrogen bonds.\autocite{Humberg2024, Humberg2020}
+
+In particular, \ac{QA} on the Ag(100) surface forms two different phases, the $\alpha$-phase and the $\beta$-phase. The $\alpha$-phase consists of the previously described homochiral, parallel lying 1D molecular chains. This leads to a \ac{POL} structure for the $\alpha$-phase. In contrast, the $\beta$-phase is characterized by a commensurate phase, which is thermodynamically more stable than the $\alpha$-phase and forms irreversibly when the sample is heated. The $\beta$-phase has fewer hydrogen bonds and stronger adsorbate-substrate interactions.
+
+The reaction from the $\alpha$- to the $\beta$-phase and their differences are of particular interest, as the reaction involves a partly deprotonation of the amine groups of the \ac{QA} molecules on the Ag(100) surface and a drastic change in the binding situation of the different atoms, including a change of the handedness of the molecule. This is not yet fully understood and will be further investigated in this project.
+
+\section{Preliminary work: XPS and NIXSW measurements of quinacridone on the Ag(100) surface}
+
+As said above, \ac{QA} on the Ag(100) surface forms two structural phases: the $\alpha$- and the $\beta$-phase. The arrangements of both phases are expected to be driven by intermolecular hydrogen bonds between the keto group of one molecule with the amine group of another molecule and adsorbate-substrate interactions.\autocite{Humberg2024,Humberg2020,Humberg2023}
+
+\begin{figure}[htbp]
+  \centering
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/XPS-N1s.pdf}
+    \caption{N1s XPS spectra of \acf{QA} on the Ag(100) surface for the $\alpha$- and $\beta$-phases, showing the different components, the envelope and the data points.\autocite{Hirschfeld2025}}
+    \label{fig:XPS_N1s}
+\end{figure}
+
+As the knowledge about these two phases was originally limited to \ac{STM} and \ac{LEED} measurements, which only give information about the structural arrangement, \ac{XPS} and \ac{NIXSW} measurements were lately performed to gain insight into the electronic structure and adsorption height of \ac{QA} on the Ag(100) surface.\autocite{Hirschfeld2025,Hirschfeld2026}
+
+\autoref{fig:XPS_N1s} shows the \ac{XPS} measurements that revealed significant differences in the C1s, O1s, and especially N1s core-level spectra between the two phases. This indicates drastic changes in the chemical environment of the N- and O-atoms upon the phase transition. The amine groups of the \ac{QA} molecules undergo a partly deprotonation during the phase transition from the $\alpha$- to the $\beta$-phase, as evidenced by the emergence of a second peak in the N1s \ac{XPS} at lower binding energies.\autocite{Hirschfeld2025}
+
+Furthermore, the \ac{NIXSW} measurements provided valuable information about the adsorption heights of the N-atoms in both phases, revealing a smaller adsorption height of the deprotonated N-atoms on the Ag(100) surface in the $\beta$-phase. This shows a stronger interaction between the deprotonated N-atoms and the Ag(100) surface in the $\beta$-phase compared to the $\alpha$-phase. In contrast, the C- and O-atoms exhibit only a minor decrease in their adsorption heights from the $\alpha$ to the $\beta$-phase. The N1s \ac{NIXSW} spectra for both phases are illustrated in \autoref{fig:nixsw}.\autocite{Hirschfeld2026}
+
+\begin{figure}[htbp]
+  \centering
+    \begin{subfigure}[b]{0.49\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{images/NIXSW_N1s_Alpha.pdf}
+      \caption{$\alpha$-phase}
+      \label{fig:nixsw_n_alpha}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{images/NIXSW_N1s_Beta.pdf}
+      \caption{$\beta$-phase}
+      \label{fig:nixsw_n_beta}
+    \end{subfigure}
+    \caption{N1s NIXSW spectra of \acf{QA} on the Ag(100) surface for the (a) $\alpha$- and (b) $\beta$-phases, showing the different components, the envelope and the data points.\autocite{Hirschfeld2026}}
+    \label{fig:nixsw}
+\end{figure}
+
+The \ac{XPS} and \ac{NIXSW} measurements result in a revised structure model of the $\beta$-phase of \ac{QA} on the Ag(100) surface. The structures are based on the \ac{LEED} and \ac{STM} results from literature\autocite{Humberg2024,Humberg2020} and the new insights from the \ac{XPS} and \ac{NIXSW} measurements. The revised structure models for both phases are illustrated in \autoref{fig:structure_model}.
+
+\begin{figure}[htbp]
+  \centering
+    \begin{subfigure}[t]{0.52\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{images/qa_alpha-2_top-view_with_vdw-hbonds.pdf}
+      \caption{$\alpha$-phase with hydrogen bonds (white)}
+      \label{fig:structure_model_alpha}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.47\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{images/qa_beta_top-view_with_vdw-hbonds.pdf}
+      \caption{$\beta$-phase with hydrogen bonds (white) \& missing hydrogen bonds (green)}
+      \label{fig:structure_model_beta}
+    \end{subfigure}
+    \caption{Structure model of the $\alpha$- and $\beta$-phases of \ac{QA} on the Ag(100) surface.\autocite{Hirschfeld2026}}
+    \label{fig:structure_model}
+\end{figure}
+
+The major change in this structure model is the deprotonation of one N-atom per \ac{QA} molecule in the $\beta$-phase, which leads to a stronger interaction with the Ag(100) surface and a reduced adsorption height. This revised structure model provides a more accurate representation of the adsorption behavior of \ac{QA} on the Ag(100) surface in both phases and highlights the significant changes that occur during the phase transition. However, further investigation are necessary to fully understand the mechanisms driving the phase transition and the associated structural changes, such as the partly deprotonation or the change in the handedness of 50~\% of the molecules.
 
 \newpage
 \chapter{Research vision \& project idea}
 
+The research vision of this project is to gain a comprehensive understanding of the adsorption behavior, surface reactions, and structural properties of \ac{QA} and its derivatives on metallic surfaces. The key objectives of this project are twofold: one is to investigate the effect of molecular modifications on the ordering of \ac{QA} derivatives on metallic surfaces, and the other is to further explore the reaction of \ac{QA} on the Ag(100) surface, particularly focusing on the deprotonation and the change in the handedness of the molecules during the phase transition from the $\alpha$- to the $\beta$-phase.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.48\linewidth}
+    \centering
+    \includegraphics[height=2.5cm]{images/FQA.pdf}
+    \caption{\acf{FQA}}
+    \label{fig:FQA}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.48\linewidth}
+    \centering
+    \includegraphics[height=2.5cm]{images/MQA.pdf}
+    \caption{\acf{MQA}}
+    \label{fig:MQA}
+  \end{subfigure}
+  \caption{Molecular structures of \ac{FQA} and \ac{MQA}.}
+  \label{fig:FQA_MQA}
+\end{figure}
+
+\textit{Part 1: Influence of molecular modifications on adsorption behavior and film growth}
+
+This includes investigating the influence of molecular modifications on the adsorption characteristics and film growth. \Ac{FQA} and \ac{MQA} are of particular interest due to their altered electronic properties and potential impact on intermolecular interactions and surface interactions.
+
+For example, the presence of F-atoms in \ac{FQA} introduces strong electronegativity, which can affect the adsorption behavior and ordering on metallic surfaces. The position of the F-atoms at the ends of the molecule will introduce electronegative substituents between the 1D-linear chains of \ac{QA}, having a significant impact of the intermolecular chain distances. In addition, the F-atoms can influence the molecule-substrate interactions due to their high electronegativity, which may influence the phase behavior.
+
+This can be directly compared to the known behavior of \ac{QA} on the same surface, allowing an interpretation of the effect by the F-atoms. Similar investigations on fluorinated organic molecules on metallic surfaces have shown significant changes, e.g. for \ac{PTCDA}.\autocite{Wang2020}
+
+On the other side, \ac{MQA} introduces steric hindrance due to the presence of methyl groups on the N-atoms, which will affect the ordering of the molecules via hydrogen bonds. There are already \ac{QA} derivates with long alkyl groups on the N-atoms, showing hydrogen bonding in their crystal structures.\autocite{Zhao2009,Wang2007} Investigating \ac{MQA} on metallic surfaces will provide insights into how altered hydrogen bonding influence the ordering of \ac{MQA} compared to \ac{QA}.
+
+\textit{Part 2: Reaction of quinacridone with metallic surfaces}
+
+The second part of the project focuses on the phase transition of \ac{QA} on the Ag(100) surface. The \ac{XPS} and \ac{NIXSW} measurements have already revealed significant changes in the chemical environment and adsorption heights of the N-atoms upon the phase transition from the $\alpha$- to the $\beta$-phase. However, the detailed mechanisms underlying this phase transition and the associated structural changes are not yet fully understood. 
+
+The phase transition involves two major changes, that need to be further investigated: the partly deprotonation of the amine groups of the \ac{QA} molecules and the change in the handedness of 50~\% of the molecules. 
+
+This investigation will involve equipping the \ac{UHV} chamber containing the \ac{STM} with a heating stage to enable controlled temperature variations during the measurements. This allows the observation of the structural changes that occur during the phase transition to a preset a temperature. Furthermore, one may be able to observe intermediate states during the phase transition, providing information about the rearrangement process.
+
+Another interesting aspect of this part is to investigate whether similar phase transitions occur for \ac{FQA} or even \ac{MQA} on the Ag(100) surface or other metallic surfaces, such as Cu(111) and Au(111). This will provide insights into the influence of molecular modifications and surface properties on the phase transition behavior of \ac{QA} and its derivatives.
+
+Especially the phases for \ac{MQA} are of interest, as the methyl groups attached to the N-atoms will definitly effect the deprotonation of the reaction from the $\alpha$- to the $\beta$-phase observed for \ac{QA}.
+
+\textit{Applied techniques}
+
+The project will primarily utilize \ac{STM} and \ac{LEED} techniques to investigate the adsorption behavior, film growth, and phase transition of \ac{QA} and its derivatives on metallic surfaces. \Ac{STM} will provide details about the molecular arrangement and ordering on the surfaces, while \ac{LEED} will provide complementary information about the surface unit cell and periodicity.
+
+In addition, \ac{XPS} and \ac{NIXSW} techniques may be employed to gain detailed information into the electronic structure and chemical environment of the molecules on the surfaces. A beamtime at the \ac{DLS} must be used for these techniques. This will either focus on the \ac{FQA} properties on the Ag(100) surface to allow a comparison to the \ac{QA} molecule or the triangulation of the $\beta$-phase of \ac{QA} on the Ag(100) surface to further investigate the deprotonation process.
+
+\textit{Context in the TiDE project}
+
+This project perfectly matches with the Focus Area C: Surfaces and Interfaces. The proposed research will contribute to this focus area by providing insights into the adsorption behavior and film growth of \ac{QA} and its derivatives on metallic surfaces, as well as the influence of molecular modifications on these processes.
+
+Furthermore, there are synergies with other projects within the TiDE initiative, such as the Focus Area A: Molecular Building Blocks, which e.g. synthesizes molecules, that may be used as an adsorbate. In addition, the Focus Area E: Theory \& Modeling, would be able to support the interpretation and validation of the experimental results through theoretical calculations.
 
 \newpage
-\chapter{Project milestone \& working plan for the next 6 months}
+\chapter{Project milestone \& working plan for the next 12 months}
+
+The idea is to systematically investigate the adsorption behavior and film growth of \ac{QA} and its derivatives on various metallic surfaces, including Ag(100), Cu(111), and Au(111). The project will be divided into several key milestones, illustrated in \autoref{fig:gannt}.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{ganttchart}[expand chart=\textwidth, newline shortcut=true, bar label node/.append style={align=left}, vgrid]{1}{12}
+    \gantttitle{2026}{3} \gantttitle{2027}{4} \gantttitle{2028}{4} \gantttitle{2028}{1} \\
+     \gantttitle{Q2}{1} \gantttitle{Q3}{1} \gantttitle{Q4}{1} \gantttitle{Q1}{1} \gantttitle{Q2}{1} \gantttitle{Q3}{1} \gantttitle{Q4}{1} \gantttitle{Q1}{1} \gantttitle{Q2}{1} \gantttitle{Q3}{1} \gantttitle{Q4}{1} \gantttitle{Q1}{1}\\
+    \ganttbar{FQA on Ag(100)}{1}{2} \\
+    \ganttbar{heating stage setup}{3}{4} \\
+    \ganttbar{Beamtime \ac{DLS}}{4}{5} \\
+    \ganttbar{QA on Ag(100) \ganttalignnewline STM phase transition}{5}{6} \\
+    \ganttbar{FQA on Cu(111) \ganttalignnewline and Au(111)}{7}{8} 
+    \ganttnewline[thick, blue] 
+    \ganttmilestone{New Molecule; MQA?}{8} \\
+    \ganttbar{New Molecule \ganttalignnewline on Ag(100)}{9}{10} \\
+    \ganttbar{New Molecule \ganttalignnewline on Cu(111)/Au(111)}{11}{12}
+  \end{ganttchart}
+  \caption{Gantt chart illustrating the project working plan.}
+  \label{fig:gannt}
+\end{figure}
+
+The first milestone is the investigation of the phase behavior of \ac{FQA} on the Ag(100) surface using \ac{STM} and \ac{LEED} techniques, providing insights into the structural arrangement of \ac{FQA} molecules on the Ag(100) surface. These results are comparable with the known behavior of \ac{QA} on the Ag(100) surface, allowing an interpretation of the effect by the F-atoms.
+
+The second milestone is the detailed study of the phase transition of \ac{QA} on the Ag(100) surface. This will involve temperature-dependent \ac{STM} measurements to elucidate the structural changes occurring during the phase transition from the $\alpha$- to the $\beta$-phase. Therefore, the \ac{UHV} chamber containing the \ac{STM} will be equipped with a heating stage to enable controlled temperature variations during the measurements, which are necessary for the phase transition.
+
+These two milestones are planned to be completed within the first 12 months of the project. Afterwards, the project will continue with further investigations into the adsorption behavior of \ac{QA} derivatives on the Ag(100) and other metallic surfaces, as well as exploring the effects of different deposition conditions on film growth and ordering. Which molecule is investigated next will depend on the results of the first two milestones and will be decided in consultation with the supervisors. A possible candidate is \ac{MQA}, which is quinacridone with methyl groups attached to the N-atoms.
 
 \newpage
 \chapter{Appendix}
@@ -187,14 +333,22 @@ The molecule is classified as a heterocyclic compound. Its structure is characte
 \section*{List of abbreviations}
 \addcontentsline{toc}{section}{List of abbreviations}
 \begin{acronym}
-    \acro{QA}[QA]{quinacridone}
-    \acro{XPS}[XPS]{x-ray photoelectron spectroscopy}
-    \acro{ML}[ML]{monolayer}
-    \acro{LEED}[LEED]{low energy electron diffraction}
-    \acro{UHV}[UHV]{ultra-high vacuum}
+  \acro{DLS}[DLS]{Diamond Light Source}
+  \acro{FQA}[FQA]{fluorinated quinacridone}
+  \acro{LEED}[LEED]{low energy electron diffraction}
+  \acro{MQA}[MQA]{methylated quinacridone}
+  \acro{NIXSW}[NIXSW]{normal incidence x-ray standing wave}
+  \acro{OFET}[OFET]{organic field-effect transistor}
+  \acro{OLED}[OLED]{organic light-emitting diode}
+  \acro{OPV}[OPV]{organic photovoltaic}
+  \acro{POL}[POL]{point-on-line}
+  \acro{PTCDA}[PTCDA]{Peryleno[3,4-cd:9,11-c'd']dipyran-3,5,10,12-tetrone}
+  \acro{QA}[QA]{quinacridone}
+  \acro{STM}[STM]{scanning tunneling microscopy}
+  \acro{UHV}[UHV]{ultra-high vacuum}
+  \acro{XPS}[XPS]{x-ray photoelectron spectroscopy}
 \end{acronym}
 
-\newpage
 \printbibliography[heading=bibliography]
 
 \end{document}

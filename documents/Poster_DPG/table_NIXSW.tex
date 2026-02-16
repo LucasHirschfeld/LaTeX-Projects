@@ -1,0 +1,54 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{array}
+
+\begin{document}
+
+\begin{table}[H]
+    \centering
+    \caption{NIXSW results for QA on Ag(100) - $\alpha$-phase: coherent positions $p_c$, coherent fractions $f_c$, and distances $z_{200}$.}
+    \begin{tabular}{@{}lccc@{}} \toprule
+        Component & $f_c$ & $p_c$ & $z_{200}$ (\si{\angstrom}) \\
+        \midrule
+        $\mathrm{C_{arom}}$ & $0.369 \pm 0.015$ & $0.459 \pm 0.007$ & $2.981 \pm 0.014$ \\
+        $\mathrm{C_{NH}}$ & $0.811 \pm 0.031$ & $0.438 \pm 0.006$ & $2.938 \pm 0.012$ \\
+        $\mathrm{C_{CO}}$ & $0.615 \pm 0.020$ & $0.469 \pm 0.007$ & $3.001 \pm 0.014$ \\
+        $\mathrm{C_{O}}$ & $0.436 \pm 0.029$ & $0.458 \pm 0.011$ & $2.979 \pm 0.022$ \\
+        $\mathrm{C_{total}}$ & $0.523 \pm 0.012$ & $0.455 \pm 0.004$ & $2.973 \pm 0.008$ \\ \midrule
+        $\mathrm{N1}$ & $0.288 \pm 0.013$ & $0.499 \pm 0.009$ & $3.062 \pm 0.018$ \\ \midrule
+        $\mathrm{O1}$ & $0.546 \pm 0.016$ & $0.332 \pm 0.004$ & $2.721 \pm 0.008$ \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:NIXSW-alpha-phase}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{NIXSW results for QA on Ag(100) - $\beta$-phase: coherent positions $p_c$, coherent fractions $f_c$, and distances $z_{200}$.}
+    \begin{tabular}{@{}lccc@{}} \toprule
+        Component & $f_c$ & $p_c$ & $z_{200}$ (\si{\angstrom}) \\
+        \midrule
+        $\mathrm{C_{arom}}+\mathrm{C_{NH}}$ & $0.758 \pm 0.017$ & $0.387 \pm 0.003$ & $2.834 \pm 0.006$ \\
+        $\mathrm{C_{CO}}$ & $0.660 \pm 0.025$ & $0.350 \pm 0.002$ & $2.758 \pm 0.004$ \\
+        $\mathrm{C_{O}}$ & $0.564 \pm 0.026$ & $0.387 \pm 0.007$ & $2.834 \pm 0.014$ \\
+        $\mathrm{C_{total}}$ & $0.712 \pm 0.012$ & $0.378 \pm 0.002$ & $2.815 \pm 0.004$ \\ \midrule
+        $\mathrm{N1}$ & $0.374 \pm 0.021$ & $0.486 \pm 0.008$ & $3.036 \pm 0.016$ \\
+        $\mathrm{N2}$ & $0.645 \pm 0.034$ & $0.184 \pm 0.004$ & $2.419 \pm 0.008$ \\
+        $\mathrm{N_{total}}$ & $0.645 \pm 0.034$ & $0.289 \pm 0.005$ & $2.633 \pm 0.010$ \\ \midrule
+        $\mathrm{O1}$ & $0.658 \pm 0.056$ & $0.272 \pm 0.007$ & $2.599 \pm 0.014$ \\
+        $\mathrm{O2}$ & $0.559 \pm 0.072$ & $0.291 \pm 0.011$ & $2.638 \pm 0.022$ \\
+        $\mathrm{O_{total}}$ & $0.598 \pm 0.042$ & $0.282 \pm 0.006$ & $2.619 \pm 0.012$ \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:NIXSW-beta-phase}
+\end{table}
+
+\end{document}

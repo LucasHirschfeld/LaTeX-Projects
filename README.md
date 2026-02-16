@@ -6,14 +6,14 @@ Dieses Repository enthält meine LaTeX-Dokumente und Projekte.
 
 - `documents/` - Hauptdokumente
 - `templates/` - Wiederverwendbare LaTeX-Vorlagen
-- `figures/` - Bilder und Grafiken
 - `bibliography/` - Literaturverzeichnisse und Zitationsdateien
 
 ## Automatischer Build
 
 Dieses Repository nutzt GitHub Actions, um LaTeX-Dokumente automatisch zu kompilieren. Bei jedem Push werden die PDFs erstellt und als Artifacts bereitgestellt.
 
-## Lokale Entwicklung
+## Setup Speicherort
+- vscode/settings.json
 
 ### Voraussetzungen
 - LaTeX-Distribution (MacTeX, TeX Live, MiKTeX)
